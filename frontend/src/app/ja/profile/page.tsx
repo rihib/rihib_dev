@@ -1,8 +1,8 @@
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { getTranslation } from '@/lib/i18n';
 
-export default function ProfilePage() {
-  const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation('en', key);
+export default function JaProfilePage() {
+  const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation('ja', key);
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -10,7 +10,7 @@ export default function ProfilePage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">rihib</h1>
-            <p className="text-gray-600 dark:text-gray-400">Software Engineer</p>
+            <p className="text-gray-600 dark:text-gray-400">ソフトウェアエンジニア</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -37,7 +37,7 @@ export default function ProfilePage() {
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/rihib"
+                  href="https://www.linkedin.com/in/rihito-bannai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"
@@ -46,13 +46,15 @@ export default function ProfilePage() {
                   <span>LinkedIn</span>
                 </a>
                 <a
-                  href="https://twitter.com/rihib"
+                  href="https://x.com/rihib_dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"
                 >
-                  <Twitter size={24} />
-                  <span>Twitter</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <span>X</span>
                 </a>
               </div>
             </div>
