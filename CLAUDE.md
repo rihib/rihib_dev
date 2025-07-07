@@ -86,12 +86,15 @@ Centralized layout pattern with unified routing:
 - SQLite database located at `frontend/data/app.db`
 - `articles` table: id, title, published_at, url, type, locale, created_at
   - `type` field distinguishes between 'blog' and 'news' articles
-  - `published_at` stores article publication date
+  - `published_at` uses DATETIME type with ISO-8601 format for proper date handling
 - **Performance optimizations:**
   - WAL (Write-Ahead Logging) mode for better write concurrency
   - Composite index on `(locale, type)` for efficient filtering
   - Index on `published_at` for optimized date-based sorting
-- **Safety features:**
+- **Data integrity features:**
+  - DATETIME type ensures proper date sorting and SQLite date function compatibility
+  - ISO-8601 format (YYYY-MM-DDTHH:MM:SSZ) for consistent date handling
   - Automatic directory creation to prevent runtime errors
   - CHECK constraint for type validation
+- **SQLite date functions:** Queries use `date()` and `datetime()` functions for robust date operations
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)`

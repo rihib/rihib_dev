@@ -13,7 +13,9 @@ export default function LanguageToggle() {
     const basePath = "/" + pathSegments.slice(1).join("/");
     const normalizedBasePath = basePath === "/" ? "" : basePath;
 
-    const newPathname = isJapanese ? `/en${normalizedBasePath}` : `/ja${normalizedBasePath}`;
+    const newPathname = isJapanese
+      ? `/en${normalizedBasePath}`
+      : `/ja${normalizedBasePath}`;
     router.push(newPathname);
   };
 
@@ -24,9 +26,7 @@ export default function LanguageToggle() {
       aria-label="Toggle language"
     >
       <Globe size={16} />
-      <span className="text-sm font-medium">
-        {isJapanese ? "EN" : "JA"}
-      </span>
+      <span className="text-sm font-medium">{isJapanese ? "EN" : "JA"}</span>
     </button>
   );
 }

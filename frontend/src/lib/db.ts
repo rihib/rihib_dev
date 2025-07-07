@@ -17,7 +17,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS articles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    published_at TEXT NOT NULL,
+    published_at DATETIME NOT NULL,
     url TEXT NOT NULL,
     type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
     locale TEXT NOT NULL DEFAULT 'en',
@@ -43,7 +43,7 @@ if (articleCount.count === 0) {
   // English blog posts
   insertArticle.run(
     "Getting Started with Next.js 14",
-    "2024-01-15",
+    "2024-01-15T00:00:00Z",
     "https://qiita.com/rihib/items/nextjs14-getting-started",
     "blog",
     "en",
@@ -51,7 +51,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "TypeScript Best Practices",
-    "2024-01-10",
+    "2024-01-10T00:00:00Z",
     "https://qiita.com/rihib/items/typescript-best-practices",
     "blog",
     "en",
@@ -59,7 +59,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "Cloudflare Workers with Hono",
-    "2024-01-05",
+    "2024-01-05T00:00:00Z",
     "https://qiita.com/rihib/items/cloudflare-workers-hono",
     "blog",
     "en",
@@ -68,7 +68,7 @@ if (articleCount.count === 0) {
   // Japanese blog posts
   insertArticle.run(
     "Next.js 14 入門",
-    "2024-01-15",
+    "2024-01-15T00:00:00Z",
     "https://qiita.com/rihib/items/nextjs14-getting-started",
     "blog",
     "ja",
@@ -76,7 +76,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "TypeScriptベストプラクティス",
-    "2024-01-10",
+    "2024-01-10T00:00:00Z",
     "https://qiita.com/rihib/items/typescript-best-practices",
     "blog",
     "ja",
@@ -84,7 +84,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "Cloudflare Workers with Hono",
-    "2024-01-05",
+    "2024-01-05T00:00:00Z",
     "https://qiita.com/rihib/items/cloudflare-workers-hono",
     "blog",
     "ja",
@@ -93,7 +93,7 @@ if (articleCount.count === 0) {
   // English news items
   insertArticle.run(
     "New Website Launch",
-    "2024-01-20",
+    "2024-01-20T00:00:00Z",
     "https://www.notion.so/rihib/new-website-launch",
     "news",
     "en",
@@ -101,7 +101,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "Speaking at Tech Conference",
-    "2024-01-18",
+    "2024-01-18T00:00:00Z",
     "https://www.notion.so/rihib/tech-conference-2024",
     "news",
     "en",
@@ -109,7 +109,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "Open Source Contribution",
-    "2024-01-12",
+    "2024-01-12T00:00:00Z",
     "https://www.notion.so/rihib/nextjs-contribution",
     "news",
     "en",
@@ -118,7 +118,7 @@ if (articleCount.count === 0) {
   // Japanese news items
   insertArticle.run(
     "新しいウェブサイトを公開",
-    "2024-01-20",
+    "2024-01-20T00:00:00Z",
     "https://www.notion.so/rihib/new-website-launch",
     "news",
     "ja",
@@ -126,7 +126,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "技術カンファレンスでの講演",
-    "2024-01-18",
+    "2024-01-18T00:00:00Z",
     "https://www.notion.so/rihib/tech-conference-2024",
     "news",
     "ja",
@@ -134,7 +134,7 @@ if (articleCount.count === 0) {
 
   insertArticle.run(
     "オープンソースへの貢献",
-    "2024-01-12",
+    "2024-01-12T00:00:00Z",
     "https://www.notion.so/rihib/nextjs-contribution",
     "news",
     "ja",
@@ -157,7 +157,19 @@ export const getArticles = (
 ): Article[] => {
   return db
     .prepare(
-      "SELECT * FROM articles WHERE locale = ? AND type = ? ORDER BY published_at DESC",
+      `
+      SELECT 
+        id, 
+        title, 
+        date(published_at) as published_at, 
+        url, 
+        type, 
+        locale, 
+        datetime(created_at) as created_at
+      FROM articles 
+      WHERE locale = ? AND type = ? 
+      ORDER BY datetime(published_at) DESC
+    `,
     )
     .all(locale, type) as Article[];
 };
