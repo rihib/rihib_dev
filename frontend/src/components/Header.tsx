@@ -10,7 +10,7 @@ interface HeaderProps {
 export default function Header({ locale }: HeaderProps) {
   const t = (key: keyof typeof import("@/lib/i18n").translations.en) =>
     getTranslation(locale, key);
-  const basePath = locale === "ja" ? "/ja" : "";
+  const basePath = locale === "ja" ? "/ja" : "/en";
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
@@ -26,22 +26,22 @@ export default function Header({ locale }: HeaderProps) {
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex items-center space-x-6">
               <Link
-                href={basePath || "/"}
+                href={`${basePath}/profile`}
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
-                {t("nav.home")}
-              </Link>
-              <Link
-                href={`${basePath}/blog`}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                {t("nav.blog")}
+                {t("nav.profile")}
               </Link>
               <Link
                 href={`${basePath}/news`}
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 {t("nav.news")}
+              </Link>
+              <Link
+                href={`${basePath}/blog`}
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                {t("nav.blog")}
               </Link>
             </div>
 

@@ -13,7 +13,8 @@ This is a monorepo with the main application in the `frontend/` directory. The p
 - `cd frontend && pnpm run dev` - Start development server on <http://localhost:3000>
 - `cd frontend && pnpm run build` - Build production application
 - `cd frontend && pnpm run start` - Start production server
-- `cd frontend && pnpm run lint` - Run ESLint
+- `cd frontend && pnpm run lint` - Run ESLint, markdownlint, and prettier checks
+- `cd frontend && pnpm run lint:fix` - Run linting with auto-fix (ESLint, markdownlint, prettier)
 - `cd frontend && pnpm run type-check` - Run TypeScript type checking
 
 ## Architecture Overview
@@ -24,6 +25,7 @@ The project uses a modern Next.js stack with dependencies configured for future 
 
 - Next.js 14 with App Router and TypeScript
 - TailwindCSS for styling
+- ESLint + Prettier + markdownlint for code quality
 - tRPC for type-safe APIs (configured but not yet implemented)
 - Drizzle ORM with NextAuth for future authentication
 - Lucide React for icons
@@ -32,14 +34,17 @@ The project uses a modern Next.js stack with dependencies configured for future 
 
 Manual internationalization with path-based routing:
 
-- English routes: `/`, `/blog`, `/news`, `/profile`
+- English routes: `/en`, `/en/blog`, `/en/news`, `/en/profile`
 - Japanese routes: `/ja`, `/ja/blog`, `/ja/news`, `/ja/profile`
+- Root redirects automatically redirect to English versions
 
 **Key files:**
 
 - `frontend/src/lib/i18n.ts` - Translation strings and locale detection logic
 - `frontend/src/components/ClientLayout.tsx` - Centralized layout with pathname-based locale detection
-- `frontend/src/components/LanguageToggle.tsx` - Language switching component
+- `frontend/src/components/LanguageToggle.tsx` - Language switching component (fixed to handle /en prefix)
+- `frontend/src/components/HomePage.tsx` - Shared homepage component for both locales
+- `frontend/src/components/Header.tsx` - Navigation header with Profile, News, Blog links
 
 ### Layout Architecture
 
@@ -48,7 +53,8 @@ Centralized layout pattern to prevent header duplication:
 - Root layout (`frontend/src/app/layout.tsx`) wraps all content with `ClientLayout`
 - `ClientLayout` uses `usePathname()` to detect locale from URL and renders appropriate Header
 - Individual pages do NOT include their own Header components
-- Japanese pages live in `/frontend/src/app/ja/` without their own layout.tsx file
+- Language-specific pages live in `/frontend/src/app/en/` and `/frontend/src/app/ja/` without their own layout.tsx files
+- Root redirects in `/frontend/src/app/` automatically redirect to English versions using `permanentRedirect`
 
 ### Current Implementation Status
 
@@ -59,8 +65,11 @@ Centralized layout pattern to prevent header duplication:
 
 ### Important Notes
 
-- Do NOT add layout.tsx files in `/frontend/src/app/ja/` directory - causes header duplication
-- Translations use dot notation keys (e.g., 'nav.home', 'profile.bio')
+- Do NOT add layout.tsx files in `/frontend/src/app/en/` or `/frontend/src/app/ja/` directories - causes header duplication
+- Translations use dot notation keys (e.g., 'nav.profile', 'profile.bio')
 - TypeScript paths use `@/` alias for src directory
+- Language toggle component handles both `/en` and `/ja` prefixes correctly
+- Homepage uses shared HomePage component with locale prop for consistency
+- Header navigation order: Profile, News, Blog (no Home link - logo serves as home)
 - Project is designed for static generation and Cloudflare Pages deployment
 - Backend integration planned with Supabase for auth and database, Hono for API layer
