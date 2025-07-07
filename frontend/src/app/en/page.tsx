@@ -2,9 +2,9 @@ import { ArrowRight, Code, Palette, Server } from "lucide-react";
 import { getTranslation } from "@/lib/i18n";
 import Link from "next/link";
 
-export default function JaHomePage() {
+export default function EnHomePage() {
   const t = (key: keyof typeof import("@/lib/i18n").translations.en) =>
-    getTranslation("ja", key);
+    getTranslation("en", key);
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -21,7 +21,7 @@ export default function JaHomePage() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Code className="w-12 h-12 text-blue-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">フロントエンド</h3>
+            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
             <p className="text-gray-700 dark:text-gray-300">
               React, Next.js, TypeScript
             </p>
@@ -29,7 +29,7 @@ export default function JaHomePage() {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Server className="w-12 h-12 text-green-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">バックエンド</h3>
+            <h3 className="text-xl font-semibold mb-2">Backend</h3>
             <p className="text-gray-700 dark:text-gray-300">
               Node.js, Hono, Cloudflare Workers
             </p>
@@ -37,7 +37,7 @@ export default function JaHomePage() {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Palette className="w-12 h-12 text-purple-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">デザイン</h3>
+            <h3 className="text-xl font-semibold mb-2">Design</h3>
             <p className="text-gray-700 dark:text-gray-300">
               TailwindCSS, UI/UX
             </p>
@@ -46,10 +46,10 @@ export default function JaHomePage() {
 
         <div className="text-center">
           <Link
-            href="/ja/profile"
+            href="/en/profile"
             className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            詳しくはこちら
+            Learn More About Me
             <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
         </div>
