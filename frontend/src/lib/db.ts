@@ -1,148 +1,166 @@
 import Database from "better-sqlite3";
 import { join, dirname } from "path";
-import { mkdirSync } from "fs";
+import { mkdir } from "fs/promises";
 
 const DB_PATH = join(process.cwd(), "data", "app.db");
 
-// Ensure the data directory exists before initializing the database
-mkdirSync(dirname(DB_PATH), { recursive: true });
+let db: Database.Database | null = null;
+let initPromise: Promise<void> | null = null;
 
-export const db = new Database(DB_PATH);
+// Async database initialization
+async function initializeDatabase(): Promise<void> {
+  if (db) return; // Already initialized
 
-// Set PRAGMA journal_mode to WAL for better write concurrency
-db.exec(`PRAGMA journal_mode = WAL;`);
+  // Ensure the data directory exists
+  await mkdir(dirname(DB_PATH), { recursive: true });
 
-// Initialize database schema
-db.exec(`
-  CREATE TABLE IF NOT EXISTS articles (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    published_at DATETIME NOT NULL,
-    url TEXT NOT NULL,
-    type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
-    locale TEXT NOT NULL DEFAULT 'en',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  );
+  // Initialize database connection
+  db = new Database(DB_PATH);
 
-  -- Create indexes for better query performance
-  CREATE INDEX IF NOT EXISTS idx_articles_locale_type ON articles(locale, type);
-  CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at);
-`);
+  // Set PRAGMA journal_mode to WAL for better write concurrency
+  db.exec(`PRAGMA journal_mode = WAL;`);
 
-// Insert initial data if table is empty
-const articleCount = db
-  .prepare("SELECT COUNT(*) as count FROM articles")
-  .get() as { count: number };
+  // Initialize database schema
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS articles (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      published_at DATETIME NOT NULL,
+      url TEXT NOT NULL,
+      type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
+      locale TEXT NOT NULL DEFAULT 'en',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
 
-if (articleCount.count === 0) {
-  const insertArticle = db.prepare(`
-    INSERT INTO articles (title, published_at, url, type, locale)
-    VALUES (?, ?, ?, ?, ?)
+    -- Create indexes for better query performance
+    CREATE INDEX IF NOT EXISTS idx_articles_locale_type ON articles(locale, type);
+    CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at);
   `);
 
-  const insertMany = db.transaction(() => {
-    // English blog posts
-    insertArticle.run(
-      "Getting Started with Next.js 14",
-      "2024-01-15T00:00:00Z",
-      "https://qiita.com/rihib/items/nextjs14-getting-started",
-      "blog",
-      "en",
-    );
+  // Insert initial data if table is empty
+  const articleCount = db
+    .prepare("SELECT COUNT(*) as count FROM articles")
+    .get() as { count: number };
 
-    insertArticle.run(
-      "TypeScript Best Practices",
-      "2024-01-10T00:00:00Z",
-      "https://qiita.com/rihib/items/typescript-best-practices",
-      "blog",
-      "en",
-    );
+  if (articleCount.count === 0) {
+    const insertArticle = db.prepare(`
+      INSERT INTO articles (title, published_at, url, type, locale)
+      VALUES (?, ?, ?, ?, ?)
+    `);
 
-    insertArticle.run(
-      "Cloudflare Workers with Hono",
-      "2024-01-05T00:00:00Z",
-      "https://qiita.com/rihib/items/cloudflare-workers-hono",
-      "blog",
-      "en",
-    );
+    const insertMany = db.transaction(() => {
+      // English blog posts
+      insertArticle.run(
+        "Getting Started with Next.js 14",
+        "2024-01-15T00:00:00Z",
+        "https://qiita.com/rihib/items/nextjs14-getting-started",
+        "blog",
+        "en",
+      );
 
-    // Japanese blog posts
-    insertArticle.run(
-      "Next.js 14 入門",
-      "2024-01-15T00:00:00Z",
-      "https://qiita.com/rihib/items/nextjs14-getting-started",
-      "blog",
-      "ja",
-    );
+      insertArticle.run(
+        "TypeScript Best Practices",
+        "2024-01-10T00:00:00Z",
+        "https://qiita.com/rihib/items/typescript-best-practices",
+        "blog",
+        "en",
+      );
 
-    insertArticle.run(
-      "TypeScriptベストプラクティス",
-      "2024-01-10T00:00:00Z",
-      "https://qiita.com/rihib/items/typescript-best-practices",
-      "blog",
-      "ja",
-    );
+      insertArticle.run(
+        "Cloudflare Workers with Hono",
+        "2024-01-05T00:00:00Z",
+        "https://qiita.com/rihib/items/cloudflare-workers-hono",
+        "blog",
+        "en",
+      );
 
-    insertArticle.run(
-      "Cloudflare Workers with Hono",
-      "2024-01-05T00:00:00Z",
-      "https://qiita.com/rihib/items/cloudflare-workers-hono",
-      "blog",
-      "ja",
-    );
+      // Japanese blog posts
+      insertArticle.run(
+        "Next.js 14 入門",
+        "2024-01-15T00:00:00Z",
+        "https://qiita.com/rihib/items/nextjs14-getting-started",
+        "blog",
+        "ja",
+      );
 
-    // English news items
-    insertArticle.run(
-      "New Website Launch",
-      "2024-01-20T00:00:00Z",
-      "https://www.notion.so/rihib/new-website-launch",
-      "news",
-      "en",
-    );
+      insertArticle.run(
+        "TypeScriptベストプラクティス",
+        "2024-01-10T00:00:00Z",
+        "https://qiita.com/rihib/items/typescript-best-practices",
+        "blog",
+        "ja",
+      );
 
-    insertArticle.run(
-      "Speaking at Tech Conference",
-      "2024-01-18T00:00:00Z",
-      "https://www.notion.so/rihib/tech-conference-2024",
-      "news",
-      "en",
-    );
+      insertArticle.run(
+        "Cloudflare Workers with Hono",
+        "2024-01-05T00:00:00Z",
+        "https://qiita.com/rihib/items/cloudflare-workers-hono",
+        "blog",
+        "ja",
+      );
 
-    insertArticle.run(
-      "Open Source Contribution",
-      "2024-01-12T00:00:00Z",
-      "https://www.notion.so/rihib/nextjs-contribution",
-      "news",
-      "en",
-    );
+      // English news items
+      insertArticle.run(
+        "New Website Launch",
+        "2024-01-20T00:00:00Z",
+        "https://www.notion.so/rihib/new-website-launch",
+        "news",
+        "en",
+      );
 
-    // Japanese news items
-    insertArticle.run(
-      "新しいウェブサイトを公開",
-      "2024-01-20T00:00:00Z",
-      "https://www.notion.so/rihib/new-website-launch",
-      "news",
-      "ja",
-    );
+      insertArticle.run(
+        "Speaking at Tech Conference",
+        "2024-01-18T00:00:00Z",
+        "https://www.notion.so/rihib/tech-conference-2024",
+        "news",
+        "en",
+      );
 
-    insertArticle.run(
-      "技術カンファレンスでの講演",
-      "2024-01-18T00:00:00Z",
-      "https://www.notion.so/rihib/tech-conference-2024",
-      "news",
-      "ja",
-    );
+      insertArticle.run(
+        "Open Source Contribution",
+        "2024-01-12T00:00:00Z",
+        "https://www.notion.so/rihib/nextjs-contribution",
+        "news",
+        "en",
+      );
 
-    insertArticle.run(
-      "オープンソースへの貢献",
-      "2024-01-12T00:00:00Z",
-      "https://www.notion.so/rihib/nextjs-contribution",
-      "news",
-      "ja",
-    );
-  });
+      // Japanese news items
+      insertArticle.run(
+        "新しいウェブサイトを公開",
+        "2024-01-20T00:00:00Z",
+        "https://www.notion.so/rihib/new-website-launch",
+        "news",
+        "ja",
+      );
 
-  insertMany();
+      insertArticle.run(
+        "技術カンファレンスでの講演",
+        "2024-01-18T00:00:00Z",
+        "https://www.notion.so/rihib/tech-conference-2024",
+        "news",
+        "ja",
+      );
+
+      insertArticle.run(
+        "オープンソースへの貢献",
+        "2024-01-12T00:00:00Z",
+        "https://www.notion.so/rihib/nextjs-contribution",
+        "news",
+        "ja",
+      );
+    });
+
+    insertMany();
+  }
+}
+
+// Get database instance (ensures initialization)
+async function getDatabase(): Promise<Database.Database> {
+  if (!initPromise) {
+    initPromise = initializeDatabase();
+  }
+  await initPromise;
+  return db!;
 }
 
 export interface Article {
@@ -155,11 +173,12 @@ export interface Article {
   created_at: string;
 }
 
-export const getArticles = (
+export const getArticles = async (
   locale: string,
   type: "blog" | "news",
-): Article[] => {
-  return db
+): Promise<Article[]> => {
+  const database = await getDatabase();
+  return database
     .prepare(
       `
       SELECT 
@@ -178,10 +197,10 @@ export const getArticles = (
     .all(locale, type) as Article[];
 };
 
-export const getBlogPosts = (locale: string): Article[] => {
-  return getArticles(locale, "blog");
+export const getBlogPosts = async (locale: string): Promise<Article[]> => {
+  return await getArticles(locale, "blog");
 };
 
-export const getNewsItems = (locale: string): Article[] => {
-  return getArticles(locale, "news");
+export const getNewsItems = async (locale: string): Promise<Article[]> => {
+  return await getArticles(locale, "news");
 };
