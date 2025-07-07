@@ -69,6 +69,7 @@ Centralized layout pattern with unified routing:
 - **Database:** SQLite database implemented with blog posts and news items storage
 - **Content:** Migrated from hardcoded data to SQLite database with locale-based retrieval
 - **Testing:** No test setup currently configured
+- **Documentation:** Project documentation reorganized with comprehensive implementation plan
 
 ### Important Notes
 
@@ -81,6 +82,8 @@ Centralized layout pattern with unified routing:
 - SQLite database stores all content with locale-specific data
 - Project is designed for static generation and Cloudflare Pages deployment
 - Backend integration planned with Supabase for auth and database, Hono for API layer
+- Technical stack migration planned: Node.js → Deno, SQLite → Supabase, tRPC → Hono RPC
+- Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
 - Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
 - UI components use reusable Card component pattern for consistency
 
@@ -108,6 +111,13 @@ Centralized layout pattern with unified routing:
   - Promise-based async API for all data access functions
   - Shared ArticleList component for consistent UI rendering
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)` (all async)
+
+### Project Documentation
+
+- **docs/plan.md** - Comprehensive implementation plan with current status analysis and phased approach
+- **docs/todo.md** - Simplified priority task list for immediate actions
+- **docs/requirement.md** - Updated requirements document 
+- **docs/adr/** - Architecture Decision Records for technical choices
 
 ### Claude Commands
 
