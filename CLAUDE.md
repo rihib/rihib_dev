@@ -57,7 +57,8 @@ Centralized layout pattern with unified routing:
 - `ClientLayout` uses `usePathname()` to detect locale from URL and renders appropriate Header
 - Individual pages do NOT include their own Header components
 - Unified structure uses `/frontend/src/app/[locale]/` dynamic route for all language-specific content
-- Root redirects in `/frontend/src/app/` automatically redirect to English versions using `permanentRedirect`
+- Root page (`/`) redirects to English homepage (`/en`)
+- Unknown paths handled by `not-found.tsx` which redirects to root
 
 ### Current Implementation Status
 
