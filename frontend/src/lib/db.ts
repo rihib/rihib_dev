@@ -9,7 +9,7 @@ const CREATE_ARTICLES_TABLE = `
   CREATE TABLE IF NOT EXISTS articles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    published_at DATETIME NOT NULL,
+    published_at DATE NOT NULL,
     url TEXT NOT NULL,
     type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
     locale TEXT NOT NULL DEFAULT 'en',
@@ -60,7 +60,7 @@ async function initializeDatabase(): Promise<void> {
       // English blog posts
       insertArticle.run(
         "Getting Started with Next.js 14",
-        "2024-01-15T00:00:00Z",
+        "2024-01-15",
         "https://qiita.com/rihib/items/nextjs14-getting-started",
         "blog",
         "en",
@@ -68,7 +68,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "TypeScript Best Practices",
-        "2024-01-10T00:00:00Z",
+        "2024-01-10",
         "https://qiita.com/rihib/items/typescript-best-practices",
         "blog",
         "en",
@@ -76,7 +76,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "Cloudflare Workers with Hono",
-        "2024-01-05T00:00:00Z",
+        "2024-01-05",
         "https://qiita.com/rihib/items/cloudflare-workers-hono",
         "blog",
         "en",
@@ -85,7 +85,7 @@ async function initializeDatabase(): Promise<void> {
       // Japanese blog posts
       insertArticle.run(
         "Next.js 14 入門",
-        "2024-01-15T00:00:00Z",
+        "2024-01-15",
         "https://qiita.com/rihib/items/nextjs14-getting-started",
         "blog",
         "ja",
@@ -93,7 +93,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "TypeScriptベストプラクティス",
-        "2024-01-10T00:00:00Z",
+        "2024-01-10",
         "https://qiita.com/rihib/items/typescript-best-practices",
         "blog",
         "ja",
@@ -101,7 +101,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "Cloudflare Workers with Hono",
-        "2024-01-05T00:00:00Z",
+        "2024-01-05",
         "https://qiita.com/rihib/items/cloudflare-workers-hono",
         "blog",
         "ja",
@@ -110,7 +110,7 @@ async function initializeDatabase(): Promise<void> {
       // English news items
       insertArticle.run(
         "New Website Launch",
-        "2024-01-20T00:00:00Z",
+        "2024-01-20",
         "https://www.notion.so/rihib/new-website-launch",
         "news",
         "en",
@@ -118,7 +118,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "Speaking at Tech Conference",
-        "2024-01-18T00:00:00Z",
+        "2024-01-18",
         "https://www.notion.so/rihib/tech-conference-2024",
         "news",
         "en",
@@ -126,7 +126,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "Open Source Contribution",
-        "2024-01-12T00:00:00Z",
+        "2024-01-12",
         "https://www.notion.so/rihib/nextjs-contribution",
         "news",
         "en",
@@ -135,7 +135,7 @@ async function initializeDatabase(): Promise<void> {
       // Japanese news items
       insertArticle.run(
         "新しいウェブサイトを公開",
-        "2024-01-20T00:00:00Z",
+        "2024-01-20",
         "https://www.notion.so/rihib/new-website-launch",
         "news",
         "ja",
@@ -143,7 +143,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "技術カンファレンスでの講演",
-        "2024-01-18T00:00:00Z",
+        "2024-01-18",
         "https://www.notion.so/rihib/tech-conference-2024",
         "news",
         "ja",
@@ -151,7 +151,7 @@ async function initializeDatabase(): Promise<void> {
 
       insertArticle.run(
         "オープンソースへの貢献",
-        "2024-01-12T00:00:00Z",
+        "2024-01-12",
         "https://www.notion.so/rihib/nextjs-contribution",
         "news",
         "ja",
@@ -192,14 +192,14 @@ export const getArticles = async (
       SELECT 
         id, 
         title, 
-        date(published_at) as published_at, 
+        published_at, 
         url, 
         type, 
         locale, 
         datetime(created_at) as created_at
       FROM articles 
       WHERE locale = ? AND type = ? 
-      ORDER BY published_at DESC
+      ORDER BY date(published_at) DESC
     `,
     )
     .all(locale, type) as Article[];

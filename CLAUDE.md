@@ -47,6 +47,7 @@ Unified internationalization with dynamic routing:
 - `frontend/src/components/ClientLayout.tsx` - Centralized layout using useLocale hook
 - `frontend/src/components/LanguageToggle.tsx` - Language switching component using useLocale hook
 - `frontend/src/components/HomePage.tsx` - Shared homepage component for both locales
+- `frontend/src/components/Card.tsx` - Reusable card component for consistent UI elements
 - `frontend/src/components/Header.tsx` - Navigation header with Profile, News, Blog links
 - `frontend/src/lib/db.ts` - SQLite database configuration and data access functions
 
@@ -80,13 +81,15 @@ Centralized layout pattern with unified routing:
 - SQLite database stores all content with locale-specific data
 - Project is designed for static generation and Cloudflare Pages deployment
 - Backend integration planned with Supabase for auth and database, Hono for API layer
+- Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
+- UI components use reusable Card component pattern for consistency
 
 ### Database Structure
 
 - SQLite database located at `frontend/data/app.db`
 - `articles` table: id, title, published_at, url, type, locale, created_at
   - `type` field distinguishes between 'blog' and 'news' articles
-  - `published_at` uses DATETIME type with ISO-8601 format for proper date handling
+  - `published_at` uses DATE type with YYYY-MM-DD format for proper date handling
 - **Performance optimizations:**
   - WAL (Write-Ahead Logging) mode for better write concurrency
   - Composite index on `(locale, type)` for efficient filtering
@@ -94,8 +97,8 @@ Centralized layout pattern with unified routing:
   - Transactional bulk inserts for improved initialization performance
   - Lazy database initialization to avoid blocking event loop during module import
 - **Data integrity features:**
-  - DATETIME type ensures proper date sorting and SQLite date function compatibility
-  - ISO-8601 format (YYYY-MM-DDTHH:MM:SSZ) for consistent date handling
+  - DATE type ensures proper date sorting and SQLite date function compatibility
+  - YYYY-MM-DD format for consistent date handling
   - Asynchronous directory creation to prevent runtime errors
   - CHECK constraint for type validation
   - Atomic bulk inserts using transactions for all-or-nothing data initialization

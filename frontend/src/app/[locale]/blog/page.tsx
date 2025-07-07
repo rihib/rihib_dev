@@ -1,4 +1,4 @@
-import { getTranslation } from "@/lib/i18n";
+import { getTranslation, locales } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/db";
 import ArticleList from "@/components/ArticleList";
@@ -10,7 +10,7 @@ export default async function BlogPage({
 }) {
   const { locale } = params;
 
-  if (!["en", "ja"].includes(locale)) {
+  if (!locales.includes(locale as any)) {
     notFound();
   }
 

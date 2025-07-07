@@ -1,6 +1,7 @@
 import { ArrowRight, Code, Palette, Server } from "lucide-react";
 import { getTranslation, type Locale } from "@/lib/i18n";
 import Link from "next/link";
+import Card from "@/components/Card";
 
 interface HomePageProps {
   locale: Locale;
@@ -23,29 +24,21 @@ export default function HomePage({ locale }: HomePageProps) {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-            <Code className="w-12 h-12 text-blue-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">{t("home.frontend")}</h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              React, Next.js, TypeScript
-            </p>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-            <Server className="w-12 h-12 text-green-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">{t("home.backend")}</h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              Node.js, Hono, Cloudflare Workers
-            </p>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-            <Palette className="w-12 h-12 text-purple-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">{t("home.design")}</h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              TailwindCSS, UI/UX
-            </p>
-          </div>
+          <Card
+            icon={<Code className="w-12 h-12 text-blue-500" />}
+            title={t("home.frontend")}
+            description="React, Next.js, TypeScript"
+          />
+          <Card
+            icon={<Server className="w-12 h-12 text-green-500" />}
+            title={t("home.backend")}
+            description="Node.js, Hono, Cloudflare Workers"
+          />
+          <Card
+            icon={<Palette className="w-12 h-12 text-purple-500" />}
+            title={t("home.design")}
+            description="TailwindCSS, UI/UX"
+          />
         </div>
 
         <div className="text-center space-y-4">

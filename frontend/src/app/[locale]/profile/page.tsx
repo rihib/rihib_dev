@@ -1,5 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
-import { getTranslation } from "@/lib/i18n";
+import { getTranslation, locales } from "@/lib/i18n";
 import XIcon from "@/components/XIcon";
 import { notFound } from "next/navigation";
 
@@ -10,7 +10,7 @@ export default function ProfilePage({
 }) {
   const { locale } = params;
 
-  if (!["en", "ja"].includes(locale)) {
+  if (!locales.includes(locale as any)) {
     notFound();
   }
 
