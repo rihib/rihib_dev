@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import Header from '@/components/Header';
-import { useEffect, useState } from 'react';
+import { usePathname } from "next/navigation";
+import Header from "@/components/Header";
+import { useEffect, useState } from "react";
 
 export default function ClientLayout({
   children,
@@ -11,8 +11,8 @@ export default function ClientLayout({
 }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const isJapanese = pathname.startsWith('/ja');
-  const locale = isJapanese ? 'ja' : 'en';
+  const isJapanese = pathname.startsWith("/ja");
+  const locale = isJapanese ? "ja" : "en";
 
   useEffect(() => {
     setMounted(true);
