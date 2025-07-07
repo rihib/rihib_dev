@@ -191,7 +191,7 @@ export const getArticles = async (
         datetime(created_at) as created_at
       FROM articles 
       WHERE locale = ? AND type = ? 
-      ORDER BY datetime(published_at) DESC
+      ORDER BY published_at DESC
     `,
     )
     .all(locale, type) as Article[];
