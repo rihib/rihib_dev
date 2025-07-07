@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation';
-import { Globe } from 'lucide-react';
+import { useRouter, usePathname } from "next/navigation";
+import { Globe } from "lucide-react";
 
 export default function LanguageToggle() {
   const router = useRouter();
   const pathname = usePathname();
 
   const toggleLanguage = () => {
-    const isJapanese = pathname.startsWith('/ja');
-    const newLocale = isJapanese ? 'en' : 'ja';
-    const newPathname = isJapanese 
-      ? pathname.slice(3) || '/' 
+    const isJapanese = pathname.startsWith("/ja");
+    const newLocale = isJapanese ? "en" : "ja";
+    const newPathname = isJapanese
+      ? pathname.slice(3) || "/"
       : `/ja${pathname}`;
-    
+
     router.push(newPathname as any);
   };
 
@@ -25,7 +25,7 @@ export default function LanguageToggle() {
     >
       <Globe size={16} />
       <span className="text-sm font-medium">
-        {pathname.startsWith('/ja') ? 'EN' : 'JA'}
+        {pathname.startsWith("/ja") ? "EN" : "JA"}
       </span>
     </button>
   );

@@ -72,11 +72,11 @@
   - Hono RPC（採用、Honoとの相性が良い）
   - tRPC（RESTじゃない）
 - 認証プラットフォーム
-  - Supabase
+  - Supabase（採用、認証とデータベースを統合）
 - 認証ライブラリ
-  - NextAuth
+  - NextAuth（採用、Supabaseとの統合が容易）
 - ORM
-  - Drizzle（採用、TypeScriptでSQLライクに書ける）
+  - Drizzle（採用、TypeScriptでSQLライクに書ける、Supabaseとの相性が良い）
   - Prisma（DSLで抽象度の高いクエリを書く必要がある）
 - レジストラ
   - Cloudflare Registrar
@@ -88,7 +88,8 @@
   - Cloudflare Workers（採用、Honoと相性が良い）
   - Vercel Functions（Cloudflareで統一したい）
 - DB
-  - Cloudflare D1（採用）
+  - Supabase（採用、PostgreSQLベース、認証と統合、無料枠が充実）
+  - Cloudflare D1（見送り、認証プラットフォームとの統合を優先）
   - MongoDB（Cloudflareで統一したい）
 - オブジェクトストレージ
   - Cloudflare R2（採用）
