@@ -1,5 +1,6 @@
 import { Github, Linkedin } from 'lucide-react';
 import { getTranslation } from '@/lib/i18n';
+import XIcon from '@/components/XIcon';
 
 export default function JaProfilePage() {
   const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation('ja', key);
@@ -51,9 +52,7 @@ export default function JaProfilePage() {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="X icon">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
+                  <XIcon size={24} />
                   <span>X</span>
                 </a>
               </div>
