@@ -91,10 +91,12 @@ Centralized layout pattern with unified routing:
   - WAL (Write-Ahead Logging) mode for better write concurrency
   - Composite index on `(locale, type)` for efficient filtering
   - Index on `published_at` for optimized date-based sorting
+  - Transactional bulk inserts for improved initialization performance
 - **Data integrity features:**
   - DATETIME type ensures proper date sorting and SQLite date function compatibility
   - ISO-8601 format (YYYY-MM-DDTHH:MM:SSZ) for consistent date handling
   - Automatic directory creation to prevent runtime errors
   - CHECK constraint for type validation
+  - Atomic bulk inserts using transactions for all-or-nothing data initialization
 - **SQLite date functions:** Queries use `date()` and `datetime()` functions for robust date operations
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)`

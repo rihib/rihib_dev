@@ -40,105 +40,109 @@ if (articleCount.count === 0) {
     VALUES (?, ?, ?, ?, ?)
   `);
 
-  // English blog posts
-  insertArticle.run(
-    "Getting Started with Next.js 14",
-    "2024-01-15T00:00:00Z",
-    "https://qiita.com/rihib/items/nextjs14-getting-started",
-    "blog",
-    "en",
-  );
+  const insertMany = db.transaction(() => {
+    // English blog posts
+    insertArticle.run(
+      "Getting Started with Next.js 14",
+      "2024-01-15T00:00:00Z",
+      "https://qiita.com/rihib/items/nextjs14-getting-started",
+      "blog",
+      "en",
+    );
 
-  insertArticle.run(
-    "TypeScript Best Practices",
-    "2024-01-10T00:00:00Z",
-    "https://qiita.com/rihib/items/typescript-best-practices",
-    "blog",
-    "en",
-  );
+    insertArticle.run(
+      "TypeScript Best Practices",
+      "2024-01-10T00:00:00Z",
+      "https://qiita.com/rihib/items/typescript-best-practices",
+      "blog",
+      "en",
+    );
 
-  insertArticle.run(
-    "Cloudflare Workers with Hono",
-    "2024-01-05T00:00:00Z",
-    "https://qiita.com/rihib/items/cloudflare-workers-hono",
-    "blog",
-    "en",
-  );
+    insertArticle.run(
+      "Cloudflare Workers with Hono",
+      "2024-01-05T00:00:00Z",
+      "https://qiita.com/rihib/items/cloudflare-workers-hono",
+      "blog",
+      "en",
+    );
 
-  // Japanese blog posts
-  insertArticle.run(
-    "Next.js 14 入門",
-    "2024-01-15T00:00:00Z",
-    "https://qiita.com/rihib/items/nextjs14-getting-started",
-    "blog",
-    "ja",
-  );
+    // Japanese blog posts
+    insertArticle.run(
+      "Next.js 14 入門",
+      "2024-01-15T00:00:00Z",
+      "https://qiita.com/rihib/items/nextjs14-getting-started",
+      "blog",
+      "ja",
+    );
 
-  insertArticle.run(
-    "TypeScriptベストプラクティス",
-    "2024-01-10T00:00:00Z",
-    "https://qiita.com/rihib/items/typescript-best-practices",
-    "blog",
-    "ja",
-  );
+    insertArticle.run(
+      "TypeScriptベストプラクティス",
+      "2024-01-10T00:00:00Z",
+      "https://qiita.com/rihib/items/typescript-best-practices",
+      "blog",
+      "ja",
+    );
 
-  insertArticle.run(
-    "Cloudflare Workers with Hono",
-    "2024-01-05T00:00:00Z",
-    "https://qiita.com/rihib/items/cloudflare-workers-hono",
-    "blog",
-    "ja",
-  );
+    insertArticle.run(
+      "Cloudflare Workers with Hono",
+      "2024-01-05T00:00:00Z",
+      "https://qiita.com/rihib/items/cloudflare-workers-hono",
+      "blog",
+      "ja",
+    );
 
-  // English news items
-  insertArticle.run(
-    "New Website Launch",
-    "2024-01-20T00:00:00Z",
-    "https://www.notion.so/rihib/new-website-launch",
-    "news",
-    "en",
-  );
+    // English news items
+    insertArticle.run(
+      "New Website Launch",
+      "2024-01-20T00:00:00Z",
+      "https://www.notion.so/rihib/new-website-launch",
+      "news",
+      "en",
+    );
 
-  insertArticle.run(
-    "Speaking at Tech Conference",
-    "2024-01-18T00:00:00Z",
-    "https://www.notion.so/rihib/tech-conference-2024",
-    "news",
-    "en",
-  );
+    insertArticle.run(
+      "Speaking at Tech Conference",
+      "2024-01-18T00:00:00Z",
+      "https://www.notion.so/rihib/tech-conference-2024",
+      "news",
+      "en",
+    );
 
-  insertArticle.run(
-    "Open Source Contribution",
-    "2024-01-12T00:00:00Z",
-    "https://www.notion.so/rihib/nextjs-contribution",
-    "news",
-    "en",
-  );
+    insertArticle.run(
+      "Open Source Contribution",
+      "2024-01-12T00:00:00Z",
+      "https://www.notion.so/rihib/nextjs-contribution",
+      "news",
+      "en",
+    );
 
-  // Japanese news items
-  insertArticle.run(
-    "新しいウェブサイトを公開",
-    "2024-01-20T00:00:00Z",
-    "https://www.notion.so/rihib/new-website-launch",
-    "news",
-    "ja",
-  );
+    // Japanese news items
+    insertArticle.run(
+      "新しいウェブサイトを公開",
+      "2024-01-20T00:00:00Z",
+      "https://www.notion.so/rihib/new-website-launch",
+      "news",
+      "ja",
+    );
 
-  insertArticle.run(
-    "技術カンファレンスでの講演",
-    "2024-01-18T00:00:00Z",
-    "https://www.notion.so/rihib/tech-conference-2024",
-    "news",
-    "ja",
-  );
+    insertArticle.run(
+      "技術カンファレンスでの講演",
+      "2024-01-18T00:00:00Z",
+      "https://www.notion.so/rihib/tech-conference-2024",
+      "news",
+      "ja",
+    );
 
-  insertArticle.run(
-    "オープンソースへの貢献",
-    "2024-01-12T00:00:00Z",
-    "https://www.notion.so/rihib/nextjs-contribution",
-    "news",
-    "ja",
-  );
+    insertArticle.run(
+      "オープンソースへの貢献",
+      "2024-01-12T00:00:00Z",
+      "https://www.notion.so/rihib/nextjs-contribution",
+      "news",
+      "ja",
+    );
+  });
+
+  insertMany();
 }
 
 export interface Article {
