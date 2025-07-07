@@ -22,34 +22,46 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
           {t("blog.title")}
         </h1>
 
-        <div className="space-y-6">
-          {blogPosts.map((post) => (
-            <article
-              key={post.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {post.title}
-                </h2>
-                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                  <Calendar size={16} className="mr-1" />
-                  {post.published_at}
-                </div>
-              </div>
-
-              <a
-                href={post.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
+        {blogPosts.length > 0 ? (
+          <div className="space-y-6">
+            {blogPosts.map((post) => (
+              <article
+                key={post.id}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
               >
-                {t("blog.readMore")}
-                <ExternalLink size={16} className="ml-1" />
-              </a>
-            </article>
-          ))}
-        </div>
+                <div className="flex justify-between items-start mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    {post.title}
+                  </h2>
+                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                    <Calendar size={16} className="mr-1" />
+                    {post.published_at}
+                  </div>
+                </div>
+
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
+                >
+                  {t("blog.readMore")}
+                  <ExternalLink size={16} className="ml-1" />
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+              <p className="text-gray-600 dark:text-gray-400 text-lg">
+                {locale === "ja"
+                  ? "まだブログ記事がありません。"
+                  : "No blog posts available yet."}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
