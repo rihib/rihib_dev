@@ -9,12 +9,17 @@ export default function LanguageToggle() {
 
   const toggleLanguage = () => {
     const isJapanese = pathname.startsWith("/ja");
-    const newLocale = isJapanese ? "en" : "ja";
-    const newPathname = isJapanese
-      ? pathname.slice(3) || "/"
-      : `/ja${pathname}`;
+    const isEnglish = pathname.startsWith("/en");
 
-    router.push(newPathname as any);
+    let basePath = pathname;
+    if (isJapanese) {
+      basePath = pathname.slice(3) || "/";
+    } else if (isEnglish) {
+      basePath = pathname.slice(3) || "/";
+    }
+
+    const newPathname = isJapanese ? `/en${basePath}` : `/ja${basePath}`;
+    router.push(newPathname);
   };
 
   return (

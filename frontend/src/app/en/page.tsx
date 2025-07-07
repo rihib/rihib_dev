@@ -10,9 +10,7 @@ export default function EnHomePage() {
     <main className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">
-            {t("home.title")}
-          </h1>
+          <h1 className="text-4xl font-bold mb-4">{t("home.title")}</h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             {t("home.subtitle")}
           </p>
@@ -44,14 +42,30 @@ export default function EnHomePage() {
           </div>
         </div>
 
-        <div className="text-center">
-          <Link
-            href="/en/profile"
-            className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            Learn More About Me
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
+        <div className="text-center space-y-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/en/profile"
+              className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              Learn More About Me
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+            <Link
+              href="/en/news"
+              className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+            >
+              Latest News
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+            <Link
+              href="/en/blog"
+              className="inline-flex items-center px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+            >
+              Read Blog
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </main>
