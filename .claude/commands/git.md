@@ -1,5 +1,7 @@
 # Git Workflow for Claude Code
 
+NOTE: 変更が存在しないと思った場合も必ず`git add -A`を実行すること。そもそも変更があるからこの指示が出されているわけなので、変更はあるはずなのでどんな場合も必ず`git add -A`を実行すること。
+
 1. `git branch` で現在のブランチを確認し、mainブランチでないことを確認
 2. mainブランチの場合は `git checkout -b feature/description-of-change` で新しいフィーチャーブランチを作成
 3. `git diff` で変更内容を確認
