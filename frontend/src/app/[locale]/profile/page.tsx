@@ -1,10 +1,21 @@
 import { Github, Linkedin } from "lucide-react";
 import { getTranslation } from "@/lib/i18n";
 import XIcon from "@/components/XIcon";
+import { notFound } from "next/navigation";
 
-export default function JaProfilePage() {
+export default function ProfilePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const { locale } = params;
+
+  if (!["en", "ja"].includes(locale)) {
+    notFound();
+  }
+
   const t = (key: keyof typeof import("@/lib/i18n").translations.en) =>
-    getTranslation("ja", key);
+    getTranslation(locale as "en" | "ja", key);
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -13,7 +24,7 @@ export default function JaProfilePage() {
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">rihib</h1>
             <p className="text-gray-600 dark:text-gray-400">
-              ソフトウェアエンジニア
+              Software Engineer
             </p>
           </div>
 

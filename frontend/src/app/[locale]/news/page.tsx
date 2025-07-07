@@ -1,36 +1,19 @@
 import { Calendar, ExternalLink } from "lucide-react";
 import { getTranslation } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import { getNewsItems } from "@/lib/db";
 
-const newsItems = [
-  {
-    id: 1,
-    title: "New Website Launch",
-    excerpt:
-      "Launched my personal website built with Next.js 14 and deployed on Cloudflare Pages.",
-    date: "2024-01-20",
-    url: "https://www.notion.so/rihib/new-website-launch",
-  },
-  {
-    id: 2,
-    title: "Speaking at Tech Conference",
-    excerpt:
-      "Presented on 'Building Scalable Web Applications with TypeScript' at Tokyo Tech Conference.",
-    date: "2024-01-18",
-    url: "https://www.notion.so/rihib/tech-conference-2024",
-  },
-  {
-    id: 3,
-    title: "Open Source Contribution",
-    excerpt:
-      "Contributed to the Next.js documentation with improvements to the internationalization guide.",
-    date: "2024-01-12",
-    url: "https://www.notion.so/rihib/nextjs-contribution",
-  },
-];
+export default function NewsPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
 
-export default function EnNewsPage() {
+  if (!["en", "ja"].includes(locale)) {
+    notFound();
+  }
+
   const t = (key: keyof typeof import("@/lib/i18n").translations.en) =>
-    getTranslation("en", key);
+    getTranslation(locale as "en" | "ja", key);
+
+  const newsItems = getNewsItems(locale);
 
   return (
     <main className="container mx-auto px-4 py-8">

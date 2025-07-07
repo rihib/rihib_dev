@@ -11,8 +11,13 @@ export default function ClientLayout({
 }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const isJapanese = pathname.startsWith("/ja");
-  const locale = isJapanese ? "ja" : "en";
+
+  // Extract locale from pathname
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const potentialLocale = pathSegments[0];
+  const isValidLocale =
+    potentialLocale && ["en", "ja"].includes(potentialLocale);
+  const locale = isValidLocale ? (potentialLocale as "en" | "ja") : "en";
 
   useEffect(() => {
     setMounted(true);
