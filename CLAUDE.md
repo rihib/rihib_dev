@@ -82,6 +82,6 @@ Centralized layout pattern with unified routing:
 ### Database Structure
 
 - SQLite database located at `frontend/data/app.db`
-- `blog_posts` table: id, title, excerpt, date, url, locale, created_at
-- `news_items` table: id, title, excerpt, date, url, locale, created_at
-- Data access functions: `getBlogPosts(locale)`, `getNewsItems(locale)`
+- `articles` table: id, title, excerpt, date, url, type, locale, created_at
+  - `type` field distinguishes between 'blog' and 'news' articles
+- Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)`
