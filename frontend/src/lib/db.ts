@@ -4,6 +4,27 @@ import { mkdir } from "fs/promises";
 
 const DB_PATH = join(process.cwd(), "data", "app.db");
 
+// SQL schema definitions
+const CREATE_ARTICLES_TABLE = `
+  CREATE TABLE IF NOT EXISTS articles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    published_at DATETIME NOT NULL,
+    url TEXT NOT NULL,
+    type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
+    locale TEXT NOT NULL DEFAULT 'en',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
+`;
+
+const CREATE_INDEXES = `
+  -- Create indexes for better query performance
+  CREATE INDEX IF NOT EXISTS idx_articles_locale_type ON articles(locale, type);
+  CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at);
+`;
+
+const PRAGMA_WAL_MODE = `PRAGMA journal_mode = WAL;`;
+
 let db: Database.Database | null = null;
 let initPromise: Promise<void> | null = null;
 
@@ -18,24 +39,11 @@ async function initializeDatabase(): Promise<void> {
   db = new Database(DB_PATH);
 
   // Set PRAGMA journal_mode to WAL for better write concurrency
-  db.exec(`PRAGMA journal_mode = WAL;`);
+  db.exec(PRAGMA_WAL_MODE);
 
   // Initialize database schema
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS articles (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      published_at DATETIME NOT NULL,
-      url TEXT NOT NULL,
-      type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
-      locale TEXT NOT NULL DEFAULT 'en',
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-
-    -- Create indexes for better query performance
-    CREATE INDEX IF NOT EXISTS idx_articles_locale_type ON articles(locale, type);
-    CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at);
-  `);
+  db.exec(CREATE_ARTICLES_TABLE);
+  db.exec(CREATE_INDEXES);
 
   // Insert initial data if table is empty
   const articleCount = db
