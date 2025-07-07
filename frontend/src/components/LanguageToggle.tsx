@@ -9,15 +9,9 @@ export default function LanguageToggle() {
 
   const toggleLanguage = () => {
     const isJapanese = pathname.startsWith("/ja");
-    const isEnglish = pathname.startsWith("/en");
-
-    let basePath = pathname;
-    if (isJapanese) {
-      basePath = pathname.slice(3) || "/";
-    } else if (isEnglish) {
-      basePath = pathname.slice(3) || "/";
-    }
-
+    // Normalize path by removing existing locale prefix
+    const basePath = pathname.replace(/^\/(?:ja|en)/, '') || "/";
+    
     const newPathname = isJapanese ? `/en${basePath}` : `/ja${basePath}`;
     router.push(newPathname);
   };

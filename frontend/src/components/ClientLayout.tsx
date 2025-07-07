@@ -12,7 +12,6 @@ export default function ClientLayout({
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const isJapanese = pathname.startsWith("/ja");
-  const isEnglish = pathname.startsWith("/en");
   const locale = isJapanese ? "ja" : "en";
 
   useEffect(() => {
