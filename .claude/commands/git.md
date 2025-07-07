@@ -16,6 +16,8 @@
 
 **前提**: 未コミットの変更が存在しない状態
 
+**必ず最初に `git add -A` で全ての変更をステージングすること。絶対に個別にファイルをステージングしないこと。**
+
 1. **Lint チェック**: Markdown, TypeScript等のファイルはlintチェックを通す
 2. **状態確認**: `git status` で作業ディレクトリがクリーンであることを確認
 3. **フィーチャーブランチ作成**: `git checkout -b feature/description-of-change`
