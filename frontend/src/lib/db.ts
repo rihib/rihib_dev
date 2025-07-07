@@ -135,21 +135,26 @@ export interface Article {
   title: string;
   published_at: string;
   url: string;
-  type: 'blog' | 'news';
+  type: "blog" | "news";
   locale: string;
   created_at: string;
 }
 
-export const getArticles = (locale: string, type: 'blog' | 'news'): Article[] => {
+export const getArticles = (
+  locale: string,
+  type: "blog" | "news",
+): Article[] => {
   return db
-    .prepare("SELECT * FROM articles WHERE locale = ? AND type = ? ORDER BY published_at DESC")
+    .prepare(
+      "SELECT * FROM articles WHERE locale = ? AND type = ? ORDER BY published_at DESC",
+    )
     .all(locale, type) as Article[];
 };
 
 export const getBlogPosts = (locale: string): Article[] => {
-  return getArticles(locale, 'blog');
+  return getArticles(locale, "blog");
 };
 
 export const getNewsItems = (locale: string): Article[] => {
-  return getArticles(locale, 'news');
+  return getArticles(locale, "news");
 };
