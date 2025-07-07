@@ -34,13 +34,9 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
                 </h2>
                 <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                   <Calendar size={16} className="mr-1" />
-                  {post.date}
+                  {post.published_at}
                 </div>
               </div>
-
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                {post.excerpt}
-              </p>
 
               <a
                 href={post.url}
