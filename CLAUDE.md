@@ -108,3 +108,7 @@ Centralized layout pattern with unified routing:
   - Promise-based async API for all data access functions
   - Shared ArticleList component for consistent UI rendering
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)` (all async)
+
+### Claude Commands
+
+- `/clean_branch` - Enhanced branch cleanup command that also syncs main branch with remote after cleaning up feature branches
