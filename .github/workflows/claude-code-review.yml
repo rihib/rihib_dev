@@ -1,22 +1,30 @@
 name: Claude Code Review
 
+# Usage:
+# 1. Manual trigger: Go to Actions tab → Claude Code Review → Run workflow → Enter PR number
+# 2. Comment trigger: Comment "@claude review" on any PR
+
 on:
-  pull_request:
-    types: [opened, synchronize]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
+  # Manual trigger via GitHub UI or CLI
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request number to review'
+        required: true
+        type: string
+  
+  # Optional: Also trigger on PR comments containing specific keywords
+  issue_comment:
+    types: [created]
 
 jobs:
   claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+    # Run on manual trigger or when comment contains '@claude review'
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && 
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '@claude review'))
 
     runs-on: ubuntu-latest
     permissions:
@@ -26,10 +34,28 @@ jobs:
       id-token: write
 
     steps:
+      - name: Get PR number
+        id: pr-number
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "number=${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
+          else
+            echo "number=${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get PR ref
+        id: pr-ref
+        run: |
+          PR_REF=$(gh api repos/${{ github.repository }}/pulls/${{ steps.pr-number.outputs.number }} --jq '.head.ref')
+          echo "ref=$PR_REF" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          ref: ${{ steps.pr-ref.outputs.ref }}
+          fetch-depth: 0
 
       - name: Run Claude Code Review
         id: claude-review
@@ -42,7 +68,7 @@ jobs:
 
           # Direct prompt for automated review (no @claude mention needed)
           direct_prompt: |
-            Please review this pull request and provide feedback on:
+            Please review this pull request (#${{ steps.pr-number.outputs.number }}) and provide feedback on:
             - Code quality and best practices
             - Potential bugs or issues
             - Performance considerations
