@@ -13,7 +13,7 @@ export default function ClientLayout({
   const [mounted, setMounted] = useState(false);
 
   // Extract locale from pathname
-  const pathSegments = pathname.split("/").filter(Boolean);
+  const pathSegments = (pathname ?? "").split("/").filter(Boolean);
   const potentialLocale = pathSegments[0];
   const isValidLocale =
     potentialLocale && ["en", "ja"].includes(potentialLocale);
