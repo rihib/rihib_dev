@@ -1,9 +1,16 @@
 import Database from "better-sqlite3";
-import { join } from "path";
+import { join, dirname } from "path";
+import { mkdirSync } from "fs";
 
 const DB_PATH = join(process.cwd(), "data", "app.db");
 
+// Ensure the data directory exists before initializing the database
+mkdirSync(dirname(DB_PATH), { recursive: true });
+
 export const db = new Database(DB_PATH);
+
+// Set PRAGMA journal_mode to WAL for better write concurrency
+db.exec(`PRAGMA journal_mode = WAL;`);
 
 // Initialize database schema
 db.exec(`
@@ -16,6 +23,10 @@ db.exec(`
     locale TEXT NOT NULL DEFAULT 'en',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
+
+  -- Create indexes for better query performance
+  CREATE INDEX IF NOT EXISTS idx_articles_locale_type ON articles(locale, type);
+  CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at);
 `);
 
 // Insert initial data if table is empty

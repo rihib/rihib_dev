@@ -86,4 +86,11 @@ Centralized layout pattern with unified routing:
 - `articles` table: id, title, published_at, url, type, locale, created_at
   - `type` field distinguishes between 'blog' and 'news' articles
   - `published_at` stores article publication date
+- **Performance optimizations:**
+  - WAL (Write-Ahead Logging) mode for better write concurrency
+  - Composite index on `(locale, type)` for efficient filtering
+  - Index on `published_at` for optimized date-based sorting
+- **Safety features:**
+  - Automatic directory creation to prevent runtime errors
+  - CHECK constraint for type validation
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)`
