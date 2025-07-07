@@ -26,7 +26,7 @@ export default function HomePage({ locale }: HomePageProps) {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Code className="w-12 h-12 text-blue-500 mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2">
-              {locale === "ja" ? "フロントエンド" : "Frontend"}
+              {t("home.frontend")}
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
               React, Next.js, TypeScript
@@ -36,7 +36,7 @@ export default function HomePage({ locale }: HomePageProps) {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Server className="w-12 h-12 text-green-500 mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2">
-              {locale === "ja" ? "バックエンド" : "Backend"}
+              {t("home.backend")}
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
               Node.js, Hono, Cloudflare Workers
@@ -46,7 +46,7 @@ export default function HomePage({ locale }: HomePageProps) {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
             <Palette className="w-12 h-12 text-purple-500 mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2">
-              {locale === "ja" ? "デザイン" : "Design"}
+              {t("home.design")}
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
               TailwindCSS, UI/UX
@@ -60,21 +60,21 @@ export default function HomePage({ locale }: HomePageProps) {
               href={`${basePath}/profile`}
               className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              {locale === "ja" ? "詳しくはこちら" : "Learn More About Me"}
+              {t("home.learnMore")}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
             <Link
               href={`${basePath}/news`}
               className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              {locale === "ja" ? "最新情報" : "Latest News"}
+              {t("home.latestNews")}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
             <Link
               href={`${basePath}/blog`}
               className="inline-flex items-center px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
             >
-              {locale === "ja" ? "ブログを読む" : "Read Blog"}
+              {t("home.readBlog")}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </div>

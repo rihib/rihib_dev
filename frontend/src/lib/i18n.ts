@@ -22,6 +22,12 @@ export const translations = {
     "news.readMore": "Read more",
     "home.title": "Welcome to rihib.dev",
     "home.subtitle": "Personal website and portfolio",
+    "home.frontend": "Frontend",
+    "home.backend": "Backend",
+    "home.design": "Design",
+    "home.learnMore": "Learn More About Me",
+    "home.latestNews": "Latest News",
+    "home.readBlog": "Read Blog",
   },
   ja: {
     "nav.home": "ホーム",
@@ -41,6 +47,12 @@ export const translations = {
     "news.readMore": "続きを読む",
     "home.title": "rihib.dev へようこそ",
     "home.subtitle": "個人ウェブサイトとポートフォリオ",
+    "home.frontend": "フロントエンド",
+    "home.backend": "バックエンド",
+    "home.design": "デザイン",
+    "home.learnMore": "詳しくはこちら",
+    "home.latestNews": "最新情報",
+    "home.readBlog": "ブログを読む",
   },
 } as const;
 
