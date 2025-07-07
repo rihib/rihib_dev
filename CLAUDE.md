@@ -43,8 +43,9 @@ Unified internationalization with dynamic routing:
 **Key files:**
 
 - `frontend/src/lib/i18n.ts` - Translation strings and locale detection logic
-- `frontend/src/components/ClientLayout.tsx` - Centralized layout with pathname-based locale detection
-- `frontend/src/components/LanguageToggle.tsx` - Language switching component (handles locale transitions)
+- `frontend/src/hooks/useLocale.ts` - Shared hook for locale detection and pathname parsing
+- `frontend/src/components/ClientLayout.tsx` - Centralized layout using useLocale hook
+- `frontend/src/components/LanguageToggle.tsx` - Language switching component using useLocale hook
 - `frontend/src/components/HomePage.tsx` - Shared homepage component for both locales
 - `frontend/src/components/Header.tsx` - Navigation header with Profile, News, Blog links
 - `frontend/src/lib/db.ts` - SQLite database configuration and data access functions
