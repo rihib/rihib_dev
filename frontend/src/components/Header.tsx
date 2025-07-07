@@ -10,7 +10,7 @@ interface HeaderProps {
 export default function Header({ locale }: HeaderProps) {
   const t = (key: keyof typeof import("@/lib/i18n").translations.en) =>
     getTranslation(locale, key);
-  const basePath = locale === "ja" ? "/ja" : "";
+  const basePath = locale === "ja" ? "/ja" : "/en";
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
