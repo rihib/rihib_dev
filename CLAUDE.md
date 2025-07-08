@@ -28,12 +28,13 @@ This is a monorepo with the main application in the `frontend/` directory. The p
 The project uses a modern Next.js stack with dependencies configured for future backend integration:
 
 - Next.js 14 with App Router and TypeScript
-- TailwindCSS for styling
+- TailwindCSS with shadcn/ui component library for styling
 - ESLint + Prettier + markdownlint for code quality
 - SQLite database with better-sqlite3 for data storage
 - tRPC for type-safe APIs (configured but not yet implemented)
 - Drizzle ORM with NextAuth for future authentication
 - Lucide React for icons
+- shadcn/ui for consistent UI components with Radix UI primitives
 
 ### Internationalization Strategy
 
@@ -68,7 +69,8 @@ Centralized layout pattern with unified routing:
 
 ### Current Implementation Status
 
-- **Frontend:** Fully implemented with bilingual support and dark mode
+- **Frontend:** Fully implemented with bilingual support and dark mode (uses TailwindCSS design tokens for consistent theming)
+- **shadcn/ui:** Integrated shadcn/ui component library with proper TypeScript types and theming
 - **Backend:** Dependencies installed but not yet implemented (tRPC, Drizzle, NextAuth)
 - **Database:** SQLite database implemented with blog posts and news items storage
 - **Content:** Migrated from hardcoded data to SQLite database with locale-based retrieval
@@ -90,6 +92,9 @@ Centralized layout pattern with unified routing:
 - Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
 - Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
 - UI components use reusable Card component pattern for consistency
+- Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
+- shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
+- UI components implement shadcn/ui design system with Button, Card, and proper theming integration
 
 ### Database Structure
 

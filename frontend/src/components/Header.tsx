@@ -2,6 +2,7 @@ import Link from "next/link";
 import LanguageToggle from "./LanguageToggle";
 import DarkModeToggle from "./DarkModeToggle";
 import { getTranslation, type Locale } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   locale: Locale;
@@ -13,36 +14,27 @@ export default function Header({ locale }: HeaderProps) {
   const basePath = locale === "ja" ? "/ja" : "/en";
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <header className="border-b bg-background border-border">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link
             href={basePath || "/"}
-            className="text-xl font-bold text-gray-900 dark:text-white"
+            className="text-xl font-bold text-foreground hover:text-primary transition-colors"
           >
             rihib.dev
           </Link>
 
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex items-center space-x-6">
-              <Link
-                href={`${basePath}/profile`}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                {t("nav.profile")}
-              </Link>
-              <Link
-                href={`${basePath}/news`}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                {t("nav.news")}
-              </Link>
-              <Link
-                href={`${basePath}/blog`}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                {t("nav.blog")}
-              </Link>
+              <Button variant="ghost" asChild>
+                <Link href={`${basePath}/profile`}>{t("nav.profile")}</Link>
+              </Button>
+              <Button variant="ghost" asChild>
+                <Link href={`${basePath}/news`}>{t("nav.news")}</Link>
+              </Button>
+              <Button variant="ghost" asChild>
+                <Link href={`${basePath}/blog`}>{t("nav.blog")}</Link>
+              </Button>
             </div>
 
             <div className="flex items-center space-x-3">
