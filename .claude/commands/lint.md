@@ -23,13 +23,13 @@
 ### 基本的なリンティング
 
 ```bash
-cd frontend && pnpm run lint
+cd frontend && pnpm run lint && cd .. && pnpm dlx markdownlint-cli2 "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"
 ```
 
 ### 自動修正を含むリンティング
 
 ```bash
-cd frontend && pnpm run lint:fix
+cd frontend && pnpm run lint:fix && cd .. && pnpm dlx markdownlint-cli2 --fix "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"
 ```
 
 ## 注意事項

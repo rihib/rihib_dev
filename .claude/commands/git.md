@@ -4,7 +4,7 @@ NOTE: 変更が存在しないと思った場合も必ず`git add -A`を実行�
 
 1. `git branch` で現在のブランチを確認し、mainブランチでないことを確認
 2. mainブランチの場合は `git checkout -b feature/description-of-change` で新しいフィーチャーブランチを作成
-3. lintチェックを実行するために `pnpm run lint` を実行。もしエラーが出た場合は修正してから次のステップに進むこと。自動修正可能なエラーは `pnpm run lint:fix` を使用して修正すること。
+3. lintチェックを実行するために `cd frontend && pnpm run lint && cd .. && pnpm dlx markdownlint-cli2 "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"` を実行。もしエラーが出た場合は修正してから次のステップに進むこと。自動修正可能なエラーは `cd frontend && pnpm run lint:fix && cd .. && pnpm dlx markdownlint-cli2 --fix "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"` を使用して修正すること。
 4. `git diff` で変更内容を確認
 5. 変更内容を反映するためにCLAUDE.mdを更新すること。CLAUDE.mdはプロジェクトの重要なドキュメントであり、変更内容を正確に記録する必要がある。
 6. `git add -A` で全変更をステージング。必ず`git add -A` で全ての変更をステージングすること。絶対に個別にファイルをステージングしないこと。

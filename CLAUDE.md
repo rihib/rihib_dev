@@ -17,8 +17,8 @@ This is a monorepo with the main application in the `frontend/` directory. The p
 - `cd frontend && pnpm run dev` - Start development server on <http://localhost:3000>
 - `cd frontend && pnpm run build` - Build production application
 - `cd frontend && pnpm run start` - Start production server
-- `cd frontend && pnpm run lint` - Run ESLint, markdownlint, and prettier checks
-- `cd frontend && pnpm run lint:fix` - Run linting with auto-fix (ESLint, markdownlint, prettier)
+- `cd frontend && pnpm run lint && cd .. && pnpm dlx markdownlint-cli2 "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"` - Run ESLint, markdownlint, and prettier checks for frontend + root markdown files
+- `cd frontend && pnpm run lint:fix && cd .. && pnpm dlx markdownlint-cli2 --fix "**/*.md" "!frontend/**/*.md" "!node_modules/**/*.md" "!frontend/node_modules/**/*.md"` - Run linting with auto-fix for frontend + root markdown files
 - `cd frontend && pnpm run type-check` - Run TypeScript type checking
 
 ## Architecture Overview
