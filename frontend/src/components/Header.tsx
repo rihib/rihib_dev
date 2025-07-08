@@ -14,7 +14,7 @@ export default function Header({ locale }: HeaderProps) {
   const basePath = locale === "ja" ? "/ja" : "/en";
 
   return (
-    <header className="border-b bg-background">
+    <header className="border-b bg-background border-border">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link
