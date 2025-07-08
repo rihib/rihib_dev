@@ -130,4 +130,6 @@ Centralized layout pattern with unified routing:
 
 ### Claude Commands
 
-- `/clean_branch` - Enhanced branch cleanup command that also syncs main branch with remote after cleaning up feature branches
+- `/cleanup-after-merge` - Enhanced branch cleanup command that also syncs main branch with remote after cleaning up feature branches
+- `/pr-fix` - Review comment-based PR modification workflow
+- `/pr-push` - Complete PR creation workflow including branch checkout, commit, push, and PR creation
