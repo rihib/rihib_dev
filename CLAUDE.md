@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Requirement: @docs/requirement.md
+Design: @docs/design.md
 Todo: @docs/todo.md
 ADR: @docs/adr/
 
@@ -125,7 +125,7 @@ Centralized layout pattern with unified routing:
 
 - **docs/plan.md** - Comprehensive implementation plan with current status analysis and phased approach
 - **docs/todo.md** - Simplified priority task list for immediate actions
-- **docs/requirement.md** - Updated requirements document
+- **docs/design.md** - Comprehensive design document including requirements, tech stack, and system architecture
 - **docs/adr/** - Architecture Decision Records for technical choices
 
 ### Claude Commands
