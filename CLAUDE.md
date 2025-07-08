@@ -92,6 +92,7 @@ Centralized layout pattern with unified routing:
 - Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
 - UI components use reusable Card component pattern for consistency
 - Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
+- shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
 
 ### Database Structure
 
