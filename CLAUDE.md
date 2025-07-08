@@ -28,12 +28,13 @@ This is a monorepo with the main application in the `frontend/` directory. The p
 The project uses a modern Next.js stack with dependencies configured for future backend integration:
 
 - Next.js 14 with App Router and TypeScript
-- TailwindCSS for styling
+- TailwindCSS with shadcn/ui component library for styling
 - ESLint + Prettier + markdownlint for code quality
 - SQLite database with better-sqlite3 for data storage
 - tRPC for type-safe APIs (configured but not yet implemented)
 - Drizzle ORM with NextAuth for future authentication
 - Lucide React for icons
+- shadcn/ui for consistent UI components with Radix UI primitives
 
 ### Internationalization Strategy
 

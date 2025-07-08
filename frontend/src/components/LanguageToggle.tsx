@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
 import { useLocale } from "@/hooks/useLocale";
+import { Button } from "@/components/ui/button";
 
 export default function LanguageToggle() {
   const router = useRouter();
@@ -20,13 +21,15 @@ export default function LanguageToggle() {
   };
 
   return (
-    <button
+    <Button
       onClick={toggleLanguage}
-      className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      variant="outline"
+      size="sm"
+      className="flex items-center space-x-2"
       aria-label="Toggle language"
     >
       <Globe size={16} />
       <span className="text-sm font-medium">{isJapanese ? "EN" : "JA"}</span>
-    </button>
+    </Button>
   );
 }
