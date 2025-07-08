@@ -120,7 +120,7 @@ Centralized layout pattern with unified routing:
 
 - **docs/plan.md** - Comprehensive implementation plan with current status analysis and phased approach
 - **docs/todo.md** - Simplified priority task list for immediate actions
-- **docs/requirement.md** - Updated requirements document 
+- **docs/requirement.md** - Updated requirements document
 - **docs/adr/** - Architecture Decision Records for technical choices
 
 ### Claude Commands
