@@ -70,6 +70,7 @@ Centralized layout pattern with unified routing:
 ### Current Implementation Status
 
 - **Frontend:** Fully implemented with bilingual support and dark mode (uses TailwindCSS design tokens for consistent theming)
+- **shadcn/ui:** Integrated shadcn/ui component library with proper TypeScript types and theming
 - **Backend:** Dependencies installed but not yet implemented (tRPC, Drizzle, NextAuth)
 - **Database:** SQLite database implemented with blog posts and news items storage
 - **Content:** Migrated from hardcoded data to SQLite database with locale-based retrieval
@@ -93,6 +94,7 @@ Centralized layout pattern with unified routing:
 - UI components use reusable Card component pattern for consistency
 - Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
 - shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
+- UI components implement shadcn/ui design system with Button, Card, and proper theming integration
 
 ### Database Structure
 
