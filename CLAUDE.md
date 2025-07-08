@@ -69,7 +69,7 @@ Centralized layout pattern with unified routing:
 
 ### Current Implementation Status
 
-- **Frontend:** Fully implemented with bilingual support and dark mode
+- **Frontend:** Fully implemented with bilingual support and dark mode (uses TailwindCSS design tokens for consistent theming)
 - **Backend:** Dependencies installed but not yet implemented (tRPC, Drizzle, NextAuth)
 - **Database:** SQLite database implemented with blog posts and news items storage
 - **Content:** Migrated from hardcoded data to SQLite database with locale-based retrieval
@@ -91,6 +91,7 @@ Centralized layout pattern with unified routing:
 - Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
 - Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
 - UI components use reusable Card component pattern for consistency
+- Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
 
 ### Database Structure
 
