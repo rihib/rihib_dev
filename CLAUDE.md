@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+Requirement: @docs/requirement.md
+Todo: @docs/todo.md
+ADR: @docs/adr/
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Structure
