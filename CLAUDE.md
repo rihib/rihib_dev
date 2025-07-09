@@ -149,3 +149,4 @@ Centralized layout pattern with unified routing:
 - **UI/UX Enhancements**: Added external link icons, improved button styling, and implemented proper link anchors for profile sections
 - **Content Width**: Increased max-width from max-w-4xl to max-w-6xl across all pages for better content display
 - **Open Badge Integration**: Added SecHack365 badge image display with external link to verification page
+- **Database Management**: Excluded database files from git tracking by adding `/data/`, `*.db`, `*.db-shm`, `*.db-wal` to .gitignore for proper development workflow
