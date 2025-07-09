@@ -140,6 +140,10 @@ Centralized layout pattern with unified routing:
 - どっちかだけ変えるのではなく、日本語版と英語版の両方を同時に変更すること
 - 句読点は日本語版では「、。」を使用し、英語版では「, .」を使用すること
 
+### Project Maintenance Guidelines
+
+- `@docs/profile.md` の内容とサイトのProfileページの内容は常に同期させること
+
 ### Recent Updates (2025-01-09)
 
 - **Profile Page Enhancement**: Added comprehensive profile sections including education, research, OSS contributions, internships, personal development, freelance work, activities, open badges, speaking, and papers based on docs/profile.md
@@ -152,3 +156,7 @@ Centralized layout pattern with unified routing:
 - **Database Management**: Excluded database files from git tracking by adding `/data/`, `*.db`, `*.db-shm`, `*.db-wal` to .gitignore for proper development workflow
 - **Next.js Font Migration**: Migrated from deprecated `@next/font` package to built-in `next/font` for Next.js 14 compatibility
 - **Claude Commands**: Updated `/pr-cleanup` command to sync main branch with remote before cleaning up feature branches
+
+### Recent Updates (2025-01-09 continued)
+
+- **Profile Content Enhancement**: Updated kube-scheduler terminology to be more specific - changed "kube-schedulerの処理の一部を並列化" to "kube-schedulerのSchedulingCycleの一部を並列化" in both Japanese and English versions for technical accuracy
