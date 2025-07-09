@@ -166,3 +166,4 @@ Centralized layout pattern with unified routing:
   - "Media Streaming Engineer" → "メディア配信エンジニア"
   - "Machine Learning Engineer" → "MLエンジニア"
   - Kept "Software Engineer" as "ソフトウェアエンジニア"
+- **Todo List Reorganization**: Reorganized and clarified todo items in docs/todo.md for better priority management and clearer technical direction
