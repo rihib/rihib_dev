@@ -150,3 +150,4 @@ Centralized layout pattern with unified routing:
 - **Content Width**: Increased max-width from max-w-4xl to max-w-6xl across all pages for better content display
 - **Open Badge Integration**: Added SecHack365 badge image display with external link to verification page
 - **Database Management**: Excluded database files from git tracking by adding `/data/`, `*.db`, `*.db-shm`, `*.db-wal` to .gitignore for proper development workflow
+- **Next.js Font Migration**: Migrated from deprecated `@next/font` package to built-in `next/font` for Next.js 14 compatibility
