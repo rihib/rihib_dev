@@ -131,7 +131,7 @@ Centralized layout pattern with unified routing:
 
 ### Claude Commands
 
-- `/pr-cleanup` - Enhanced branch cleanup command that also syncs main branch with remote after cleaning up feature branches
+- `/pr-cleanup` - Enhanced branch cleanup command that syncs main branch with remote before cleaning up feature branches
 - `/pr-fix` - Review comment-based PR modification workflow
 - `/pr-push` - Complete PR creation workflow including branch checkout, commit, push, and PR creation
 
@@ -151,3 +151,4 @@ Centralized layout pattern with unified routing:
 - **Open Badge Integration**: Added SecHack365 badge image display with external link to verification page
 - **Database Management**: Excluded database files from git tracking by adding `/data/`, `*.db`, `*.db-shm`, `*.db-wal` to .gitignore for proper development workflow
 - **Next.js Font Migration**: Migrated from deprecated `@next/font` package to built-in `next/font` for Next.js 14 compatibility
+- **Claude Commands**: Updated `/pr-cleanup` command to sync main branch with remote before cleaning up feature branches
