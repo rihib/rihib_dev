@@ -4,6 +4,7 @@
 - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
 - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
 - [ ] Denoは使わないようにする
+- [ ] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [ ] Supabase, Verecl, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
 - [ ] Turborepoを使うようにする
