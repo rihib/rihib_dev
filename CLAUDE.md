@@ -168,3 +168,4 @@ Centralized layout pattern with unified routing:
   - Kept "Software Engineer" as "ソフトウェアエンジニア"
 - **Todo List Reorganization**: Reorganized and clarified todo items in docs/todo.md for better priority management and clearer technical direction
 - **Infrastructure Updates**: Added Terraform for infrastructure management and updated storage strategy to use Cloudflare R2 for images and tfstate storage
+- **Content Publishing Strategy**: Added todo item for publishing announcements on LinkedIn and X, and blog posts on external platforms like Qiita, Zenn, note, and Medium
