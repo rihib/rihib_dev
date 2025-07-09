@@ -3,6 +3,7 @@
 - [x] shadcn/uiを使うようにする
 - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
 - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
+- [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
 - [ ] prdブランチを作る（デプロイ用）
 - [ ] Turborepoを使うようにする
 - [ ] ローカルのSupabaseを使うようにする

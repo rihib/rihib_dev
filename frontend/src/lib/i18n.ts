@@ -19,7 +19,7 @@ export const translations = {
     "profile.bio":
       "Over the past five years, I have gained practical experience as an SRE, SWE, and ML engineer through long-term internships and freelance work at more than 10 companies, including PFN, CyberAgent, DMM, LayerX, and GO. At DMM, I led a project to cluster the encoding system for DMM TV. At PFN, LayerX, ACES, and through freelance work, I have experience developing and operating ML/LLM infrastructure using Kubernetes, with particular expertise in ML/LLM x Kubernetes development.",
     "profile.bio2":
-      "I have made multiple continuous OSS contributions to Kubernetes and proposed methods to improve performance by parallelizing parts of the kube-scheduler processing, demonstrating deep implementation-level understanding of Kubernetes.",
+      "I have made multiple continuous OSS contributions to Kubernetes and proposed methods to improve performance by parallelizing parts of the kube-scheduler SchedulingCycle, demonstrating deep implementation-level understanding of Kubernetes.",
     "profile.bio3":
       "Additionally, I have actively engaged in various activities, including leading projects as a development team leader in internships, and participating in SecHack365, 42 Tokyo, Interop STM, and speaking at Wakamonog outside of work.",
     "profile.education": "Education",
@@ -156,7 +156,7 @@ export const translations = {
     "profile.bio":
       "これまで５年間、PFN、CyberAgent、DMM、LayerX、GOなど10社以上で、長期インターンやフリーランスで、SREやSWE、MLエンジニアとして実務経験を積んできました。DMMではDMM TVのエンコーディングシステムをクラスタ化するプロジェクトを主導しました。PFN、LayerX、ACES、フリーランスでは、Kubernetesを用いたML/LLM基盤の開発・運用を行なった経験があり、特にML/LLM x Kubernetesの領域の開発に強みを持っています。",
     "profile.bio2":
-      "また、Kubernetesに対して複数回の継続的なOSSコントリビューションを行なったり、kube-schedulerの処理の一部を並列化することでパフォーマンスを向上させる手法の提案を行うなど、Kubernetesの実装レベルの深い理解を持っています。",
+      "また、Kubernetesに対して複数回の継続的なOSSコントリビューションを行なったり、kube-schedulerのSchedulingCycleの一部を並列化することでパフォーマンスを向上させる手法の提案を行うなど、Kubernetesの実装レベルの深い理解を持っています。",
     "profile.bio3":
       "その他にもインターンで開発チームのリーダーとしてプロジェクトを主導したり、実務以外でもSecHack365、42 Tokyo、Interop STM、Wakamonogでの登壇を行うなど、様々な活動に積極的に取り組んできました。",
     "profile.education": "学歴",

@@ -15,7 +15,7 @@
 
 これまで５年間、PFN、CyberAgent、DMM、LayerX、GOなど10社以上で、長期インターンやフリーランスで、SREやSWE、MLエンジニアとして実務経験を積んできました。DMMではDMM TVのエンコーディングシステムをクラスタ化するプロジェクトを主導しました。PFN、LayerX、ACES、フリーランスでは、Kubernetesを用いたML/LLM基盤の開発・運用を行なった経験があり、特にML/LLM x Kubernetesの領域の開発に強みを持っています。
 
-また、Kubernetesに対して複数回の継続的なOSSコントリビューションを行なったり、kube-schedulerの処理の一部を並列化することでパフォーマンスを向上させる手法の提案を行うなど、Kubernetesの実装レベルの深い理解を持っています。
+また、Kubernetesに対して複数回の継続的なOSSコントリビューションを行なったり、kube-schedulerのSchedulingCycleの一部を並列化することでパフォーマンスを向上させる手法の提案を行うなど、Kubernetesの実装レベルの深い理解を持っています。
 
 その他にもインターンで開発チームのリーダーとしてプロジェクトを主導したり、実務以外でもSecHack365、42 Tokyo、Interop STM、Wakamonogでの登壇を行うなど、様々な活動に積極的に取り組んできました。
 
