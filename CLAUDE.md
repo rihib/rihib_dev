@@ -160,3 +160,9 @@ Centralized layout pattern with unified routing:
 ### Recent Updates (2025-01-09 continued)
 
 - **Profile Content Enhancement**: Updated kube-scheduler terminology to be more specific - changed "kube-schedulerの処理の一部を並列化" to "kube-schedulerのSchedulingCycleの一部を並列化" in both Japanese and English versions for technical accuracy
+- **Japanese Engineer Titles Update**: Updated Japanese translations for internship engineer titles to use more appropriate Japanese expressions:
+  - "Engineer" → "エンジニア"
+  - "Site Reliability Engineer" → "SRE"
+  - "Media Streaming Engineer" → "メディア配信エンジニア"
+  - "Machine Learning Engineer" → "MLエンジニア"
+  - Kept "Software Engineer" as "ソフトウェアエンジニア"
