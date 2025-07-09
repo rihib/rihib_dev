@@ -134,3 +134,18 @@ Centralized layout pattern with unified routing:
 - `/pr-cleanup` - Enhanced branch cleanup command that also syncs main branch with remote after cleaning up feature branches
 - `/pr-fix` - Review comment-based PR modification workflow
 - `/pr-push` - Complete PR creation workflow including branch checkout, commit, push, and PR creation
+
+### Translation Guidelines
+
+- どっちかだけ変えるのではなく、日本語版と英語版の両方を同時に変更すること
+- 句読点は日本語版では「、。」を使用し、英語版では「, .」を使用すること
+
+### Recent Updates (2025-01-09)
+
+- **Profile Page Enhancement**: Added comprehensive profile sections including education, research, OSS contributions, internships, personal development, freelance work, activities, open badges, speaking, and papers based on docs/profile.md
+- **Home Page Improvements**: Updated skill cards to link to specific profile sections with hover animations
+- **Dark Mode Fixes**: Improved card visibility in dark mode by using consistent background colors (bg-white dark:bg-gray-800)
+- **Translation Updates**: Enhanced self-introduction content with detailed professional experience and updated ML/LLM infrastructure terminology
+- **UI/UX Enhancements**: Added external link icons, improved button styling, and implemented proper link anchors for profile sections
+- **Content Width**: Increased max-width from max-w-4xl to max-w-6xl across all pages for better content display
+- **Open Badge Integration**: Added SecHack365 badge image display with external link to verification page
