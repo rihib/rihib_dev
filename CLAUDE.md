@@ -167,3 +167,4 @@ Centralized layout pattern with unified routing:
   - "Machine Learning Engineer" → "MLエンジニア"
   - Kept "Software Engineer" as "ソフトウェアエンジニア"
 - **Todo List Reorganization**: Reorganized and clarified todo items in docs/todo.md for better priority management and clearer technical direction
+- **Infrastructure Updates**: Added Terraform for infrastructure management and updated storage strategy to use Cloudflare R2 for images and tfstate storage
