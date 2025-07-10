@@ -3,9 +3,11 @@
 - [x] shadcn/uiを使うようにする
 - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
 - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
+- [ ] リンクしている記事のタイトルは元記事のタイトルをそのまま使うようにする
+- [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
 - [ ] Denoは使わないようにする
 - [ ] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
-- [ ] Supabase, Verecl, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
+- [ ] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
 - [ ] Turborepoを使うようにする
 - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
@@ -17,6 +19,8 @@
 - [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ
 - [ ] 独自ドメインとLet's EncryptでSSLを設定する
 - [ ] SSL証明書の自動更新をできるようにする
+- [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェックを行う
+- [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
 - [ ] CI/CDを構築
 - [ ] Google Analyticsを導入する
 - [ ] 画像はcloudflare r2から配信するようにする
