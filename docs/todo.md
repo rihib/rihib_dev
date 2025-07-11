@@ -9,6 +9,12 @@
 - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [x] Turborepoを使うようにする
+- [ ] リポジトリのリファクタリング
+  - [ ] Phase1
+  - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
+  - [ ] Phase3
+  - [ ] 再度リファクタリング計画を立てて実行する
+  - [ ] Copilotにレビューしてもらう
 - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
 - [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
 - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
@@ -20,9 +26,10 @@
 - [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
 - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
 - [ ] SSL証明書の自動更新をできるようにする
-- [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェックを行う
+- [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェック、デッドコードや使っていないライブラリの検出などを行う
 - [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
 - [ ] CI/CDを構築
+  - [ ] [pinact](https://dev.classmethod.jp/articles/hardening-github-actions-with-pinact-commit-sha-semver/)
 - [ ] Google Analyticsを導入する
 - [ ] 画像はcloudflare r2から配信するようにする
 - [ ] Supabase + NextAuthでログイン機能を作る
