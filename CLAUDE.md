@@ -1,16 +1,35 @@
 # CLAUDE.md
 
-Design: @docs/design.md
-Todo: @docs/todo.md
-ADR: @docs/adr/
+## Notes
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+### User instructions
 
-## Project Structure
+- @docs/design.md : Comprehensive design document including requirements, tech stack, and system architecture
+- @docs/todo.md : 直近の作業内容が含まれる。ユーザーによって管理されているため、明示的に指示がない限り変更しないこと
+- どっちかだけ変えるのではなく、日本語版と英語版の両方を同時に変更すること
+- @docs/profile.md の内容とサイトのProfileページの内容は常に同期させること
+- 句読点は日本語版では「、。」を使用し、英語版では「, .」を使用すること
 
-This is a monorepo with the main application in the `frontend/` directory. The project is a bilingual (English/Japanese) personal website built with Next.js 14 App Router, TypeScript, and TailwindCSS.
+### Important Notes
 
-## Development Commands
+- All content now uses unified `/[locale]/` dynamic route structure
+- Translations use dot notation keys (e.g., 'nav.profile', 'profile.bio')
+- TypeScript paths use `@/` alias for src directory
+- Language toggle component handles locale transitions seamlessly
+- Homepage uses shared HomePage component with locale prop for consistency
+- Header navigation order: Profile, News, Blog (no Home link - logo serves as home)
+- SQLite database stores all content with locale-specific data
+- Project is designed for static generation and Cloudflare Pages deployment
+- Backend integration planned with Supabase for auth and database, Hono for API layer
+- Technical stack migration planned: SQLite → Supabase, tRPC → Hono RPC
+- Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
+- Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
+- UI components use reusable Card component pattern for consistency
+- Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
+- shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
+- UI components implement shadcn/ui design system with Button, Card, and proper theming integration
+
+### Development Commands
 
 **Working directory:** All commands must be run from the `frontend/` directory.
 
@@ -22,6 +41,10 @@ This is a monorepo with the main application in the `frontend/` directory. The p
 - `cd frontend && pnpm run type-check` - Run TypeScript type checking
 
 ## Architecture Overview
+
+### Project Structure
+
+This is a monorepo with the main application in the `frontend/` directory. The project is a bilingual (English/Japanese) personal website built with Next.js 14 App Router, TypeScript, and TailwindCSS.
 
 ### Tech Stack
 
@@ -35,6 +58,17 @@ The project uses a modern Next.js stack with dependencies configured for future 
 - Drizzle ORM with NextAuth for future authentication
 - Lucide React for icons
 - shadcn/ui for consistent UI components with Radix UI primitives
+
+### Layout Architecture
+
+Centralized layout pattern with unified routing:
+
+- Root layout (`frontend/src/app/layout.tsx`) wraps all content with `ClientLayout`
+- `ClientLayout` uses `usePathname()` to detect locale from URL and renders appropriate Header
+- Individual pages do NOT include their own Header components
+- Unified structure uses `/frontend/src/app/[locale]/` dynamic route for all language-specific content
+- Root page (`/`) redirects to English homepage (`/en`)
+- Unknown paths handled by `not-found.tsx` which redirects to root
 
 ### Internationalization Strategy
 
@@ -55,47 +89,6 @@ Unified internationalization with dynamic routing:
 - `frontend/src/components/Card.tsx` - Reusable card component for consistent UI elements
 - `frontend/src/components/Header.tsx` - Navigation header with Profile, News, Blog links
 - `frontend/src/lib/db.ts` - SQLite database configuration and data access functions
-
-### Layout Architecture
-
-Centralized layout pattern with unified routing:
-
-- Root layout (`frontend/src/app/layout.tsx`) wraps all content with `ClientLayout`
-- `ClientLayout` uses `usePathname()` to detect locale from URL and renders appropriate Header
-- Individual pages do NOT include their own Header components
-- Unified structure uses `/frontend/src/app/[locale]/` dynamic route for all language-specific content
-- Root page (`/`) redirects to English homepage (`/en`)
-- Unknown paths handled by `not-found.tsx` which redirects to root
-
-### Current Implementation Status
-
-- **Frontend:** Fully implemented with bilingual support and dark mode (uses TailwindCSS design tokens for consistent theming)
-- **shadcn/ui:** ✅ Completed - Integrated shadcn/ui component library with proper TypeScript types and theming
-- **Backend:** Dependencies installed but not yet implemented (tRPC, Drizzle, NextAuth)
-- **Database:** SQLite database implemented with blog posts and news items storage
-- **Content:** Migrated from hardcoded data to SQLite database with locale-based retrieval
-- **Testing:** No test setup currently configured
-- **Documentation:** Project documentation reorganized with comprehensive implementation plan
-- **Profile Content:** Profile documentation tasks added to todo list for upcoming content enhancement
-
-### Important Notes
-
-- All content now uses unified `/[locale]/` dynamic route structure
-- Translations use dot notation keys (e.g., 'nav.profile', 'profile.bio')
-- TypeScript paths use `@/` alias for src directory
-- Language toggle component handles locale transitions seamlessly
-- Homepage uses shared HomePage component with locale prop for consistency
-- Header navigation order: Profile, News, Blog (no Home link - logo serves as home)
-- SQLite database stores all content with locale-specific data
-- Project is designed for static generation and Cloudflare Pages deployment
-- Backend integration planned with Supabase for auth and database, Hono for API layer
-- Technical stack migration planned: Node.js → Deno, SQLite → Supabase, tRPC → Hono RPC
-- Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
-- Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
-- UI components use reusable Card component pattern for consistency
-- Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
-- shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
-- UI components implement shadcn/ui design system with Button, Card, and proper theming integration
 
 ### Database Structure
 
@@ -121,51 +114,3 @@ Centralized layout pattern with unified routing:
   - Promise-based async API for all data access functions
   - Shared ArticleList component for consistent UI rendering
 - Data access functions: `getArticles(locale, type)`, `getBlogPosts(locale)`, `getNewsItems(locale)` (all async)
-
-### Project Documentation
-
-- **docs/plan.md** - Comprehensive implementation plan with current status analysis and phased approach
-- **docs/todo.md** - Simplified priority task list for immediate actions
-- **docs/design.md** - Comprehensive design document including requirements, tech stack, and system architecture
-- **docs/adr/** - Architecture Decision Records for technical choices
-
-### Claude Commands
-
-- `/pr-cleanup` - Enhanced branch cleanup command that syncs main branch with remote before cleaning up feature branches
-- `/pr-fix` - Review comment-based PR modification workflow
-- `/pr-push` - Complete PR creation workflow including branch checkout, commit, push, and PR creation
-
-### Translation Guidelines
-
-- どっちかだけ変えるのではなく、日本語版と英語版の両方を同時に変更すること
-- 句読点は日本語版では「、。」を使用し、英語版では「, .」を使用すること
-
-### Project Maintenance Guidelines
-
-- `@docs/profile.md` の内容とサイトのProfileページの内容は常に同期させること
-
-### Recent Updates (2025-01-09)
-
-- **Profile Page Enhancement**: Added comprehensive profile sections including education, research, OSS contributions, internships, personal development, freelance work, activities, open badges, speaking, and papers based on docs/profile.md
-- **Home Page Improvements**: Updated skill cards to link to specific profile sections with hover animations
-- **Dark Mode Fixes**: Improved card visibility in dark mode by using consistent background colors (bg-white dark:bg-gray-800)
-- **Translation Updates**: Enhanced self-introduction content with detailed professional experience and updated ML/LLM infrastructure terminology
-- **UI/UX Enhancements**: Added external link icons, improved button styling, and implemented proper link anchors for profile sections
-- **Content Width**: Increased max-width from max-w-4xl to max-w-6xl across all pages for better content display
-- **Open Badge Integration**: Added SecHack365 badge image display with external link to verification page
-- **Database Management**: Excluded database files from git tracking by adding `/data/`, `*.db`, `*.db-shm`, `*.db-wal` to .gitignore for proper development workflow
-- **Next.js Font Migration**: Migrated from deprecated `@next/font` package to built-in `next/font` for Next.js 14 compatibility
-- **Claude Commands**: Updated `/pr-cleanup` command to sync main branch with remote before cleaning up feature branches
-
-### Recent Updates (2025-01-09 continued)
-
-- **Profile Content Enhancement**: Updated kube-scheduler terminology to be more specific - changed "kube-schedulerの処理の一部を並列化" to "kube-schedulerのSchedulingCycleの一部を並列化" in both Japanese and English versions for technical accuracy
-- **Japanese Engineer Titles Update**: Updated Japanese translations for internship engineer titles to use more appropriate Japanese expressions:
-  - "Engineer" → "エンジニア"
-  - "Site Reliability Engineer" → "SRE"
-  - "Media Streaming Engineer" → "メディア配信エンジニア"
-  - "Machine Learning Engineer" → "MLエンジニア"
-  - Kept "Software Engineer" as "ソフトウェアエンジニア"
-- **Todo List Reorganization**: Reorganized and clarified todo items in docs/todo.md for better priority management and clearer technical direction
-- **Infrastructure Updates**: Added Terraform for infrastructure management and updated storage strategy to use Cloudflare R2 for images and tfstate storage
-- **Content Publishing Strategy**: Added todo item for publishing announcements on LinkedIn and X, and blog posts on external platforms like Qiita, Zenn, note, and Medium

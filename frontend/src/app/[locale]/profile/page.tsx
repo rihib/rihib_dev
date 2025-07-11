@@ -718,22 +718,6 @@ export default function ProfilePage({
             {t("profile.freelanceWork")}
           </h2>
           <div className="space-y-4">
-            <div className="border-l-4 border-blue-500 pl-4">
-              <h3 className="font-semibold text-foreground">
-                <a
-                  href="https://china-lab.sfc.keio.ac.jp/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
-                >
-                  {t("profile.sfcChineseLabWebsite")}
-                  <ExternalLink size={16} />
-                </a>
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {t("profile.sfcChineseLabWebsitePeriod")}
-              </p>
-            </div>
             <div className="border-l-4 border-green-500 pl-4">
               <h3 className="font-semibold text-foreground">
                 <a
@@ -750,6 +734,22 @@ export default function ProfilePage({
                 {t("profile.gpuCloudServicePeriod")}
               </p>
             </div>
+            <div className="border-l-4 border-blue-500 pl-4">
+              <h3 className="font-semibold text-foreground">
+                <a
+                  href="https://china-lab.sfc.keio.ac.jp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
+                >
+                  {t("profile.sfcChineseLabWebsite")}
+                  <ExternalLink size={16} />
+                </a>
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {t("profile.sfcChineseLabWebsitePeriod")}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -759,38 +759,6 @@ export default function ProfilePage({
             {t("profile.activities")}
           </h2>
           <div className="space-y-4">
-            <div className="border-l-4 border-blue-500 pl-4">
-              <h3 className="font-semibold text-foreground">
-                <a
-                  href="https://archive.interop.jp/2023/shownet/noc/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
-                >
-                  {t("profile.interopTokyo")}
-                  <ExternalLink size={16} />
-                </a>
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {t("profile.interopTokyoPeriod")}
-              </p>
-            </div>
-            <div className="border-l-4 border-green-500 pl-4">
-              <h3 className="font-semibold text-foreground">
-                <a
-                  href="https://klab-hr.snar.jp/jobboard/detail.aspx?id=ceG7Rw98wQU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
-                >
-                  {t("profile.klabExpertCamp")}
-                  <ExternalLink size={16} />
-                </a>
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {t("profile.klabExpertCampPeriod")}
-              </p>
-            </div>
             <div className="border-l-4 border-purple-500 pl-4">
               <h3 className="font-semibold text-foreground">
                 <a
@@ -821,6 +789,38 @@ export default function ProfilePage({
               </h3>
               <p className="text-sm text-muted-foreground">
                 {t("profile.tokyo42Period")}
+              </p>
+            </div>
+            <div className="border-l-4 border-green-500 pl-4">
+              <h3 className="font-semibold text-foreground">
+                <a
+                  href="https://klab-hr.snar.jp/jobboard/detail.aspx?id=ceG7Rw98wQU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
+                >
+                  {t("profile.klabExpertCamp")}
+                  <ExternalLink size={16} />
+                </a>
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {t("profile.klabExpertCampPeriod")}
+              </p>
+            </div>
+            <div className="border-l-4 border-blue-500 pl-4">
+              <h3 className="font-semibold text-foreground">
+                <a
+                  href="https://archive.interop.jp/2023/shownet/noc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-500 transition-colors inline-flex items-center gap-1"
+                >
+                  {t("profile.interopTokyo")}
+                  <ExternalLink size={16} />
+                </a>
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {t("profile.interopTokyoPeriod")}
               </p>
             </div>
           </div>

@@ -35,7 +35,9 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
     - 管理者認証
     - Googleアカウントでのログインのみ
   - お知らせ/ブログ記事メタデータ管理
-    - ページのコンテンツ自体は外部リンク（NotionやQiita）に飛ぶ
+    - ページのコンテンツ自体は外部リンクに飛ぶ
+      - お知らせはLinkedInの投稿やXを使う
+      - ブログはQiita, Zenn, note, Mediumなどに投稿
     - メタデータのみDBで管理
       - メタデータ内容:
         - タイトル
@@ -57,7 +59,7 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
 ## 技術スタック
 
 - モノレポを採用し、GitHub ActionsでCI/CDを実行する。
-- TypeScriptを使用し、Denoランタイムで実行する。
+- TypeScriptを使用し、Node.jsランタイムで実行する。
 - フロントエンドはNext.js(App Router)を使用し、Vercelでホスティングする。基本的なデザインはshadcn/ui（TailwindCSS）を使用する。
 - バックエンドはHonoフレームワークを使用し、Cloudflare Workersでホスティングする。
 - 認証とデータベースはSupabaseを使用する。ORMはDrizzleを使用する。
@@ -70,19 +72,21 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
   - Copilot
   - Claude Code
   - Claude Code Actions
+- 開発環境管理
+  - mise
 - モノレポ
   - Turborepo
 - CI/CD
   - GitHub Actions
-- 開発環境管理
-  - mise
+- IaC
+  - Terraform
 
 ### 言語
 
 - 言語
   - TypeScript
 - ランタイム
-  - Deno
+  - Node.js
 - バージョン管理
   - Volta
 - パッケージマネージャー
