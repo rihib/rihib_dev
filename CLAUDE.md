@@ -56,7 +56,7 @@
 This is a Turborepo monorepo with the following structure:
 
 ```text
-rihib_dev/
+rihib-dev/
 ├── apps/
 │   └── frontend/         # Next.js application
 ├── packages/

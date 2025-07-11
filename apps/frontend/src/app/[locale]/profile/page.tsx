@@ -1,8 +1,8 @@
-import { Github, Linkedin, ExternalLink } from 'lucide-react';
-import { getTranslation, isValidLocale } from '@/lib/i18n';
 import XIcon from '@/components/XIcon';
-import { notFound } from 'next/navigation';
+import { getTranslation, isValidLocale } from '@/lib/i18n';
+import { ExternalLink, Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 export default function ProfilePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -556,7 +556,7 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
             </div>
             <div className="border-l-4 border-orange-400 pl-4">
               <a
-                href="https://github.com/rihib/rihib_dev"
+                href="https://github.com/rihib/rihib-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-blue-500 transition-colors inline-flex items-center gap-1"

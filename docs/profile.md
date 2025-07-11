@@ -67,7 +67,7 @@
 - [parallel-kube-scheduler](https://github.com/rihib/kubernetes/pull/1)
 - [tiny-kube-scheduler](https://github.com/rihib/tiny-kube-scheduler)
 - [enhanced-xv6-riscv](https://github.com/rihib/enhanced-xv6-riscv)
-- [rihib_dev](https://github.com/rihib/rihib_dev)
+- [rihib-dev](https://github.com/rihib/rihib-dev)
 - [http-server](https://github.com/rihib/http-server)
 - [lamport-clock-simulator](https://github.com/rihib/lamport-clock-simulator)
 - [querychat](https://github.com/rihib/querychat)

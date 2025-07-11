@@ -46,7 +46,7 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
 ## 🏗️ プロジェクト構造
 
 ```text
-rihib_dev/
+rihib-dev/
 ├── apps/
 │   └── frontend/         # Next.js アプリケーション
 ├── packages/
@@ -69,8 +69,8 @@ rihib_dev/
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/rihib/rihib_dev.git
-cd rihib_dev
+git clone https://github.com/rihib/rihib-dev.git
+cd rihib-dev
 
 # 依存関係をインストール
 pnpm install
