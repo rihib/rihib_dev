@@ -1,0 +1,22 @@
+{
+  "name": "rihib-dev",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint && markdownlint-cli2 \"**/*.md\" \"!apps/**/*.md\" \"!node_modules/**/*.md\" \"!packages/**/node_modules/**/*.md\"",
+    "lint:fix": "turbo lint:fix && markdownlint-cli2 --fix \"**/*.md\" \"!apps/**/*.md\" \"!node_modules/**/*.md\" \"!packages/**/node_modules/**/*.md\"",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.18.1",
+    "turbo": "^2.2.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

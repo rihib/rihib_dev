@@ -61,7 +61,7 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
 - モノレポを採用し、GitHub ActionsでCI/CDを実行する。
 - TypeScriptを使用し、Node.jsランタイムで実行する。
 - フロントエンドはNext.js(App Router)を使用し、Vercelでホスティングする。基本的なデザインはshadcn/ui（TailwindCSS）を使用する。
-- バックエンドはHonoフレームワークを使用し、Cloudflare Workersでホスティングする。
+- APIはHono RPCを使用して作成し、Cloudflare Workersでホスティングする。
 - 認証とデータベースはSupabaseを使用する。ORMはDrizzleを使用する。
 
 ### 開発ツール
@@ -113,9 +113,7 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
 
 - ホスティング
   - Cloudflare Workers
-- フレームワーク
-  - Hono
-- RPC
+- API
   - Hono RPC
 - API仕様
   - OpenAPI 3.0

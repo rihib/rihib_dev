@@ -8,9 +8,7 @@
 - [x] Denoは使わないようにする
 - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
-- [ ] Turborepoを使うようにする
-- [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
-- [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
+- [x] Turborepoを使うようにする
 - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
 - [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
 - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
@@ -19,6 +17,8 @@
 - [ ] ローカルのSupabaseを、リモートのSupabaseにマイグレートする
 - [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ（Terraformを使って構築）
 - [ ] 独自ドメインとLet's EncryptでSSLを設定する
+- [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
+- [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
 - [ ] SSL証明書の自動更新をできるようにする
 - [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェックを行う
 - [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
