@@ -1,41 +1,31 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function DarkModeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, mounted, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    const isDarkMode =
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    setIsDark(isDarkMode);
-
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-
-    if (newIsDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-    }
-  };
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <Button
+        variant="outline"
+        size="sm"
+        className="flex items-center space-x-2"
+        disabled
+        aria-label="Loading theme toggle"
+      >
+        <Moon size={16} />
+        <span className="text-sm font-medium">Theme</span>
+      </Button>
+    );
+  }
 
   return (
     <Button
-      onClick={toggleDarkMode}
+      onClick={toggleTheme}
       variant="outline"
       size="sm"
       className="flex items-center space-x-2"

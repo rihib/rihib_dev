@@ -32,6 +32,10 @@
 - ESLint configuration enhanced with strict TypeScript rules and accessibility checks
 - Dependencies optimized: removed unused tRPC, Drizzle, NextAuth packages
 - Image optimization: Next.js Image component used for better performance
+- Error handling: Global ErrorBoundary component wraps entire app for error catching
+- Custom hooks: useTranslation, useTheme, useErrorHandler for centralized logic
+- Hydration-safe: Components properly handle SSR/client hydration mismatches
+- Profile page: Modular component structure with separate ProfileHeader, ConnectSection, AboutSection, EducationSection components
 
 ### Development Commands
 
