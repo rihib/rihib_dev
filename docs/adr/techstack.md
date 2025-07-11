@@ -57,11 +57,11 @@
 - ホスティング
   - Cloudflare Workers（採用、Honoとの相性が良い）
   - Vercel Functions（不採用）
-- フレームワーク
-  - Hono
-- RPC
+- APIフレームワーク
   - Hono RPC（採用、Honoとの相性が良い）
   - tRPC（不採用、RESTじゃない）
+- バックエンドフレームワーク
+  - Hono
 
 ## 認証
 
