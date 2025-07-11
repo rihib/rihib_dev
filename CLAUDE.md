@@ -24,11 +24,14 @@
 - Technical stack migration planned: SQLite → Supabase, tRPC → Hono RPC
 - Turborepo monorepo structure with shared configuration packages
 - Implementation priorities defined with shadcn/ui adoption and monorepo structure (Turborepo)
-- Locale validation uses centralized `locales` constant from i18n.ts instead of hardcoded arrays
+- Locale validation uses centralized `isValidLocale` type guard from i18n.ts for type safety
 - UI components use reusable Card component pattern for consistency
 - Dark mode styling uses TailwindCSS design tokens (bg-background, text-foreground) for proper theme consistency
 - shadcn/ui components use proper TypeScript types (CardTitle uses HTMLHeadingElement for h3 element)
 - UI components implement shadcn/ui design system with Button, Card, and proper theming integration
+- ESLint configuration enhanced with strict TypeScript rules and accessibility checks
+- Dependencies optimized: removed unused tRPC, Drizzle, NextAuth packages
+- Image optimization: Next.js Image component used for better performance
 
 ### Development Commands
 
@@ -67,9 +70,7 @@ The project uses a modern Turborepo monorepo stack with shared configurations:
 - **TailwindCSS + shadcn/ui**: Component library and styling system
 - **Shared Config Package**: Centralized ESLint, Prettier, TypeScript, and Tailwind configurations
 - **SQLite**: Local database with better-sqlite3 (migrating to Supabase)
-- **Hono RPC**: Type-safe API framework (configured but not yet implemented)
-- **Drizzle ORM**: Database toolkit with NextAuth for future authentication
-- **Development Tools**: ESLint, Prettier, markdownlint for code quality
+- **Development Tools**: ESLint with strict TypeScript rules, Prettier, markdownlint for code quality
 
 ### Layout Architecture
 

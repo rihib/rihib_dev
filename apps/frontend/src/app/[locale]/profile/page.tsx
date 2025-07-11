@@ -1,17 +1,17 @@
 import { Github, Linkedin, ExternalLink } from 'lucide-react';
-import { getTranslation, locales } from '@/lib/i18n';
+import { getTranslation, isValidLocale } from '@/lib/i18n';
 import XIcon from '@/components/XIcon';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 export default function ProfilePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
 
-  if (!locales.includes(locale as any)) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
-  const t = (key: keyof typeof import('@/lib/i18n').translations.en) =>
-    getTranslation(locale as 'en' | 'ja', key);
+  const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation(locale, key);
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -760,9 +760,11 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
                   rel="noopener noreferrer"
                   className="transition-transform hover:scale-105"
                 >
-                  <img
+                  <Image
                     src="/img/seckhack365-badge.png"
                     alt="SecHack365修了認定"
+                    width={128}
+                    height={128}
                     className="w-32 h-auto"
                   />
                 </a>

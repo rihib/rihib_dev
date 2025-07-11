@@ -1,10 +1,20 @@
 {
   "markdownlint.config": {
-    "MD013": {
-      "line_length": 400,
-      "code_blocks": false,
-      "tables": false,
-      "headings": false
-    }
+  "MD013": {
+    "line_length": 400,
+    "code_blocks": false,
+    "tables": false,
+    "headings": false
+  }
+  },
+  "typescript.suggest.autoImports": true,
+  "eslint.workingDirectories": [
+    "apps/frontend",
+    "packages/config"
+  ],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.turbo": true,
+    "**/.next": true
   }
 }

@@ -1,4 +1,4 @@
-import { getTranslation, locales } from '@/lib/i18n';
+import { getTranslation, isValidLocale } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import { getNewsItems } from '@/lib/db';
 import ArticleList from '@/components/ArticleList';
@@ -6,12 +6,11 @@ import ArticleList from '@/components/ArticleList';
 export default async function NewsPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
 
-  if (!locales.includes(locale as any)) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
-  const t = (key: keyof typeof import('@/lib/i18n').translations.en) =>
-    getTranslation(locale as 'en' | 'ja', key);
+  const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation(locale, key);
 
   const newsItems = await getNewsItems(locale);
 
