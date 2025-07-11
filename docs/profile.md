@@ -78,15 +78,15 @@
 
 ## フリーランス実績
 
-- [SFC中国語研究室Webサイト作成](https://china-lab.sfc.keio.ac.jp/) 2022/06~2024/01
 - [K8sを用いたGPUクラウドサービスの開発](https://gpu.cloud.zebra-ai.net/) 2024/12~2025/03
+- [SFC中国語研究室Webサイト作成](https://china-lab.sfc.keio.ac.jp/) 2022/06~2024/01
 
 ## 活動
 
-- [Interop Tokyo 2023 ShowNet STM](https://archive.interop.jp/2023/shownet/noc/) 2023/06
-- [KLab Expert Camp TCP/IPプロトコルスタック自作開発](https://klab-hr.snar.jp/jobboard/detail.aspx?id=ceG7Rw98wQU) 2023/08
 - [SecHack365](https://sechack365.nict.go.jp/achievement/2023/pdf/28Ss.pdf) 2023/06~2024/03
 - [42 Tokyo](https://42tokyo.jp/) 2023/03~2024/03
+- [KLab Expert Camp TCP/IPプロトコルスタック自作開発](https://klab-hr.snar.jp/jobboard/detail.aspx?id=ceG7Rw98wQU) 2023/08
+- [Interop Tokyo 2023 ShowNet STM](https://archive.interop.jp/2023/shownet/noc/) 2023/06
 
 ## オープンバッジ
 

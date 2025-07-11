@@ -10,19 +10,22 @@
   - Copilot
   - Claude Code
   - Claude Code Actions
+- 開発環境管理
+  - mise
 - モノレポ
   - Turborepo
 - CI/CD
   - GitHub Actions
-- 開発環境管理
-  - mise
+- IaC
+  - Terraform
 
 ## 言語
 
 - 言語
   - TypeScript
 - ランタイム
-  - Deno（採用、より成熟してる）
+  - Node.js（採用、エコシステムが最も成熟している）
+  - Deno（不採用、エコシステムがまだ十分に成熟していない）
   - Bun（不採用、未成熟）
 - バージョン管理
   - Volta
@@ -75,6 +78,9 @@
 - RDB
   - Supabase（採用、PostgreSQLベース、認証と統合、無料枠が充実）
   - Cloudflare D1（不採用、認証プラットフォームとの統合を優先）
+- オブジェクトストレージ
+  - Cloudflare R2（採用、Supabase Storageよりも事例が多い）
+  - Supabase Storage（不採用、事例が少ない）
 
 ## その他
 
