@@ -6,6 +6,7 @@
 
 - @docs/design.md : Comprehensive design document including requirements, tech stack, and system architecture
 - @docs/todo.md : 直近の作業内容が含まれる。ユーザーによって管理されているため、明示的に指示がない限り変更しないこと
+- @README.md : Project overview, setup instructions, and development guide for new contributors
 - どっちかだけ変えるのではなく、日本語版と英語版の両方を同時に変更すること
 - @docs/profile.md の内容とサイトのProfileページの内容は常に同期させること
 - 句読点は日本語版では「、。」を使用し、英語版では「, .」を使用すること
