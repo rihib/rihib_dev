@@ -332,4 +332,4 @@
 1. 認証・管理機能実装
 2. デプロイ環境構築
 
-この計画により、基本設計の要件を満たしながら、現在の実装を活かした効率的な開発が可能になります。
+This roadmap ensures efficient development while meeting design requirements and leveraging current implementation.

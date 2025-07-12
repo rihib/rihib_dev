@@ -152,4 +152,10 @@ rihibの個人Webサイト。自分についての情報を集約し、発信す
   - type（記事タイプ）: 'blog' | 'news'
   - locale（記事の言語）: 'en' | 'ja'
 
-### API
+### Architecture Patterns
+
+- **Separation of Concerns**: Frontend (Next.js) and Backend (Hono) separation
+- **Type Safety**: End-to-end TypeScript with Hono RPC
+- **Static Generation**: Next.js for optimal performance
+- **External Content**: Metadata-only approach for blog/news content
+- **Internationalization**: URL-based routing with shared components
