@@ -1,16 +1,16 @@
 # Checkout & Commit & Push & Create PR
 
-NOTE: 変更が存在しないと思った場合も必ず`git add -A`を実行すること。そもそも変更があるからこの指示が出されているわけなので、変更はあるはずなのでどんな場合も必ず`git add -A`を実行すること。
+NOTE: Even if you think no changes exist, always run `git add -A`. Since these instructions are given because changes exist, there must be changes, so always run `git add -A` in any case.
 
-1. `git branch` で現在のブランチを確認し、mainブランチでないことを確認
-2. mainブランチの場合は `git checkout -b feature/description-of-change` で新しいフィーチャーブランチを作成
-3. `git diff` で変更内容を確認
-4. 重要な変更があれば @CLAUDE.md の内容を変更すること。@CLAUDE.md はClaudeが作業するのに必要な重要な情報のみを含むドキュメントで、常に最新かつ正確な状態に保つとともに、不必要な情報は含めずに簡潔に保つこと
-5. lintチェックを実行。もしエラーが出た場合は修正してから次のステップに進むこと。
-6. `git add -A` で全変更をステージング。必ず`git add -A` で全ての変更をステージングすること。絶対に個別にファイルをステージングしないこと。
-7. `git commit -m "type: description"` でコミット。Conventional Commits形式を使用すること。
-8. `git push -u origin feature/description-of-change` でリモートにプッシュ。必ずプッシュすること。
-9. PRがまだ作成されていない場合は`gh pr create` で下記の構造のプルリクエストを作成
-   - **Why**: 変更の目的と動機
-   - **What&How**: 何を変更し、どのように実装したか
-   - **Note**: 重要な考慮事項、懸念事項、追加のコンテキスト
+1. Check current branch with `git branch` and confirm it's not the main branch
+2. If on main branch, create a new feature branch with `git checkout -b feature/description-of-change`
+3. Review changes with `git diff`
+4. If there are important changes, update @CLAUDE.md content. @CLAUDE.md is a document containing only essential information needed for Claude to work, and should be kept up-to-date, accurate, and concise without unnecessary information
+5. Run lint checks. If errors occur, fix them before proceeding to the next step
+6. Stage all changes with `git add -A`. Always use `git add -A` to stage all changes. Never stage files individually
+7. Commit with `git commit -m "type: description"` using Conventional Commits format
+8. Push to remote with `git push -u origin feature/description-of-change`. Always push
+9. If PR hasn't been created yet, create a pull request with `gh pr create` using the following structure:
+   - **Why**: Purpose and motivation for the changes
+   - **What&How**: What was changed and how it was implemented
+   - **Note**: Important considerations, concerns, and additional context

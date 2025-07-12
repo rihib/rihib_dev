@@ -1,30 +1,23 @@
 # Refactor Documentations
 
 - @CLAUDE.md:
-  - モチベーション：Claudeが作業をする際のガイドラインを提供するため、常に最新かつ正確な状態に保ち、重要な情報のみを含めるようにして簡潔に保つ必要がある。
+  - Motivation: To provide guidelines for Claude's work, it must be kept up-to-date, accurate, and concise, containing only essential information.
   - TODO
-    - [ ] 内容が最新かつ正確であることを確認する
-    - [ ] Claudeが作業をするにあたって必要な情報のみを含め、重要度の低い情報は削除し、簡潔に保つ
-    - [ ] 曖昧な表現や冗長な表現があれば明確かつ簡潔にする
-    - [ ] ドキュメント全体の構成を見直し、必要に応じてセクションを追加・更新・削除・移動する
+    - [ ] Verify content is current and accurate
+    - [ ] Include only information necessary for Claude's work, remove low-priority information, and keep it concise
+    - [ ] Make ambiguous or verbose expressions clear and concise
+    - [ ] Review overall document structure and add/update/delete/move sections as needed
 - @README.md
-  - モチベーション：このリポジトリを初めて見る人がプロジェクトの目的や使い方、技術構成を理解できるようにする。
+  - Motivation: To help first-time visitors understand the project's purpose, usage, and technical architecture.
   - TODO
-    - [ ] 内容が最新かつ正確であることを確認する
-    - [ ] このリポジトリの概要を把握するのに最低限必要な重要な情報のみを含め、具体的すぎたり重要度の低い情報は削除し、簡潔に保つ
-    - [ ] 曖昧な表現や冗長な表現があれば明確かつ簡潔にする
-    - [ ] ドキュメント全体の構成を見直し、必要に応じてセクションを追加・更新・削除・移動する
-- @docs/design.md
-  - モチベーション：このリポジトリの開発をする際の設計方針や技術スタックを包括的かつ詳細に記載し、開発者がプロジェクトの全体像を把握できるようにする。
-  - TODO
-    - [ ] 内容が最新かつ正確であることを確認する
-    - [ ] このリポジトリの設計方針や技術スタックが包括的かつ詳細に記載されていることを確認する
-    - [ ] 曖昧な表現や冗長な表現があれば明確かつ簡潔にする
-    - [ ] ドキュメント全体の構成を見直し、必要に応じてセクションを追加・更新・削除・移動する
+    - [ ] Verify content is current and accurate
+    - [ ] Include only essential information needed to understand this repository overview, remove overly specific or low-priority information, and keep it concise
+    - [ ] Make ambiguous or verbose expressions clear and concise
+    - [ ] Review overall document structure and add/update/delete/move sections as needed
 - @docs/plan.md
-  - モチベーション：このリポジトリの開発を進めるにあたり、具体的な実装計画やスケジュールを明確にすることで、開発者が効率的に作業できるようにする。
+  - Motivation: To clarify specific implementation plans and schedules for this repository's development, enabling developers to work efficiently.
   - TODO
-    - [ ] 内容が最新かつ正確であることを確認する
-    - [ ] このリポジトリの実装計画やスケジュールが明確に記載されていることを確認する
-    - [ ] 曖昧な表現や冗長な表現があれば明確かつ簡潔にする
-    - [ ] ドキュメント全体の構成を見直し、必要に応じてセクションを追加・更新・削除・移動する
+    - [ ] Verify content is current and accurate
+    - [ ] Ensure implementation plans and schedules for this repository are clearly documented
+    - [ ] Make ambiguous or verbose expressions clear and concise
+    - [ ] Review overall document structure and add/update/delete/move sections as needed
