@@ -16,6 +16,7 @@ module.exports = {
     "@typescript-eslint/prefer-optional-chain": "error",
     "jsx-a11y/alt-text": "error",
     "jsx-a11y/aria-props": "error",
-    "@next/next/no-img-element": "error"
+    "@next/next/no-img-element": "error",
+    "no-trailing-spaces": "error"
   },
 };

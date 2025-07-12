@@ -8,7 +8,7 @@
 
 ### 1. 未使用依存関係の削除
 
-**影響**: バンドルサイズ増大、セキュリティリスク  
+**影響**: バンドルサイズ増大、セキュリティリスク
 **期待効果**: ~50MB以上のnode_modules削減
 
 **削除対象の依存関係**:
@@ -47,7 +47,7 @@
 
 ### 2. Hydration問題の修正 ✅
 
-**場所**: `apps/frontend/src/components/DarkModeToggle.tsx`  
+**場所**: `apps/frontend/src/components/DarkModeToggle.tsx`
 **問題**: サーバー・クライアント間の状態不一致によるhydration警告
 
 **修正済み**:
@@ -59,7 +59,7 @@
 
 ### 3. 型安全性の強化
 
-**場所**: 全ページコンポーネント  
+**場所**: 全ページコンポーネント
 **問題**: `locale as any`による unsafe なキャスト
 
 **現在のコード**:
@@ -75,7 +75,7 @@ if (!locales.includes(locale as any)) { // 危険なanyキャスト
 
 ### 4. ESLint設定の強化
 
-**現状**: 基本設定のみ（next/core-web-vitals）  
+**現状**: 基本設定のみ（next/core-web-vitals）
 **問題**: 1つの警告（img要素使用）が検出済み
 
 **追加すべき設定**:
@@ -100,7 +100,7 @@ if (!locales.includes(locale as any)) { // 危険なanyキャスト
 
 ### 5. 大規模コンポーネントの分割 🔄
 
-**場所**: `apps/frontend/src/app/[locale]/profile/page.tsx`（821行）  
+**場所**: `apps/frontend/src/app/[locale]/profile/page.tsx`（821行）
 **問題**: 単一コンポーネントが巨大すぎる
 
 **分割進捗**:
@@ -188,8 +188,8 @@ const { error, isError, handleError, clearError, executeAsync } = useErrorHandle
 
 #### 画像最適化
 
-**場所**: `apps/frontend/src/app/[locale]/profile/page.tsx:763`  
-**現在**: `<img>`タグ使用  
+**場所**: `apps/frontend/src/app/[locale]/profile/page.tsx:763`
+**現在**: `<img>`タグ使用
 **修正**: Next.js `<Image />`コンポーネントに変更
 
 ## 🔧 低優先度（品質向上）

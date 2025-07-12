@@ -75,7 +75,7 @@ The project uses a modern Turborepo monorepo stack with shared configurations:
 - **TailwindCSS + shadcn/ui**: Component library and styling system
 - **Shared Config Package**: Centralized ESLint, Prettier, TypeScript, and Tailwind configurations
 - **SQLite**: Local database with better-sqlite3 (migrating to Supabase)
-- **Development Tools**: ESLint with strict TypeScript rules, Prettier, markdownlint for code quality
+- **Development Tools**: ESLint with strict TypeScript rules and trailing spaces check, Prettier, markdownlint with trailing spaces validation for code quality
 
 ### Layout Architecture
 
