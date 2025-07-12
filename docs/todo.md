@@ -1,5 +1,6 @@
 # TODO
 
+- [ハンズオン！Next.js+Hono+RPC+Supabase+Drizzle+pnpm+Turborepoで作るモノレポ構成のアプリ開発](https://zenn.dev/ippe/articles/7782e701f8df26)
 - [x] shadcn/uiを使うようにする
 - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
 - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
@@ -9,6 +10,16 @@
 - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [x] Turborepoを使うようにする
+- [ ] Claude Code Setup
+  - [ ] [MCP Server](https://docs.anthropic.com/ja/docs/claude-code/mcp)
+    - [開発でおすすめのMCP Server 一覧](https://zenn.dev/yareyare/articles/c5c07b64e7107f)
+    - [ ] [context7](https://github.com/upstash/context7)
+    - [ ] [github-mcp-server](https://github.com/github/github-mcp-server)
+    - [ ] [playwright-mcp](https://github.com/microsoft/playwright-mcp)
+    - [ ] [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
+    - [ ] [Browser MCP](https://github.com/browsermcp/mcp)
+    - [ ] [supabase-mcp](http://github.com/supabase-community/supabase-mcp)
+  - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
 - [ ] リポジトリのリファクタリング
   - [ ] Phase1
   - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
