@@ -1,6 +1,6 @@
-# フィーチャーブランチの削除とmainブランチの同期
+# Feature Branch Cleanup and Main Branch Sync
 
-1. `git branch`で現在のブランチを確認
-2. 現在のブランチがmainブランチでない場合はmainブランチに切り替える
-3. `git pull`を実行してmainブランチを最新の状態にする
-4. `git branch -d feature/description-of-change`でmainブランチ以外のブランチを削除する。エラーが出た場合はそのブランチはマージされていない可能性があるので削除しなくて良い。
+1. Check current branch with `git branch`
+2. Switch to main branch if not already on main
+3. Run `git pull` to update main branch to latest state
+4. Delete non-main branches with `git branch -d feature/description-of-change`. If errors occur, the branch may not be merged so it's fine to leave it.

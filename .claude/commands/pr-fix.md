@@ -1,5 +1,5 @@
-# レビューコメントをもとにPRを修正
+# Fix PR Based on Review Comments
 
-1. レビューコメントを把握
-2. レビューコメントをもとに修正すべきか判断
-3. 修正すべきと判断したら修正する
+1. Understand the review comments
+2. Determine if fixes are needed based on review comments
+3. If fixes are needed, make the necessary changes
