@@ -9,7 +9,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <Header locale={locale} />
-      <main className="pt-16">{children}</main>
+      <main style={{ paddingTop: 'var(--header-height)' }}>{children}</main>
     </>
   );
 }
