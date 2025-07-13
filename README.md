@@ -43,7 +43,7 @@ A modern personal website built with Next.js 14 and TypeScript, supporting both 
 ## Project Structure
 
 ```text
-rihib-dev/
+www-rihib-dev/
 ├── apps/frontend/        # Next.js application
 ├── packages/config/      # Shared configurations
 └── docs/                 # Documentation
@@ -55,8 +55,8 @@ rihib-dev/
 
 ```bash
 # Clone and install
-git clone https://github.com/rihib/rihib-dev.git
-cd rihib-dev
+git clone https://github.com/rihib/www-rihib-dev.git
+cd www-rihib-dev
 pnpm install
 
 # Start development server

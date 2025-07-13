@@ -556,7 +556,7 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
             </div>
             <div className="border-l-4 border-orange-400 pl-4">
               <a
-                href="https://github.com/rihib/rihib-dev"
+                href="https://github.com/rihib/www-rihib-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-blue-500 transition-colors inline-flex items-center gap-1"

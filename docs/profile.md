@@ -67,7 +67,7 @@
 - [parallel-kube-scheduler](https://github.com/rihib/kubernetes/pull/1)
 - [tiny-kube-scheduler](https://github.com/rihib/tiny-kube-scheduler)
 - [enhanced-xv6-riscv](https://github.com/rihib/enhanced-xv6-riscv)
-- [rihib-dev](https://github.com/rihib/rihib-dev)
+- [www-rihib-dev](https://github.com/rihib/www-rihib-dev)
 - [http-server](https://github.com/rihib/http-server)
 - [lamport-clock-simulator](https://github.com/rihib/lamport-clock-simulator)
 - [querychat](https://github.com/rihib/querychat)
@@ -98,4 +98,4 @@
 
 ## 論文
 
-坂内理人, 別宮広朗, 河崎隆文, 檀上誠, & 中澤仁. (2021). 物体検出を用いた道路陥没箇所検出モデルにおける合成画像を使用した学習の有効性の検討. 研究報告ユビキタスコンピューティングシステム (UBI), 2021(8), 1-8.（[リンク](https://ipsj.ixsq.nii.ac.jp/records/213965)）
+坂内, 理人, 別宮, 広朗, 河崎, 隆文, 檀上, 誠, 中澤, 仁, 2021, 物体検出を用いた道路陥没箇所検出モデルにおける合成画像を使用した学習の有効性の検討: 情報処理学会, 1–8 p.（[リンク](https://ipsj.ixsq.nii.ac.jp/records/213965)）
