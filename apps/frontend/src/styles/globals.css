@@ -33,6 +33,7 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    --header-height: 4rem;
   }
 
   .dark {
@@ -72,5 +73,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Scroll offset for fixed header */
+  html {
+    scroll-padding-top: var(--header-height);
   }
 }
