@@ -9,7 +9,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <Header locale={locale} />
-      {children}
+      <main className="pt-16">{children}</main>
     </>
   );
 }
