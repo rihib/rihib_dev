@@ -49,7 +49,7 @@
 
 - [株式会社Preferred Networks](https://www.preferred.jp/) Engineer 2025/08~2025/09
 - [株式会社LayerX](https://layerx.co.jp/) Site Reliability Engineer 2025/04~2025/07
-- [合同会社DMM.com](https://dmm-corp.com/) Media Streaming Engineer 2025/01~2024/07
+- [合同会社DMM.com](https://dmm-corp.com/) Media Streaming Engineer 2025/01~2025/07
 - [株式会社サイバーエージェント](https://www.cyberagent.co.jp/)、[株式会社AbemaTV](https://abematv.co.jp/) Software Engineer 2024/11
   - [インターンでABEMAのスパイク時の累計メモリ割当量を2TiB削減した話](https://developers.cyberagent.co.jp/blog/archives/54054/)
 - [合同会社DMM.com](https://dmm-corp.com/) Media Streaming Engineer 2024/10
@@ -57,7 +57,7 @@
   - [GO株式会社 26新卒エンジニアサマーインターン開催レポート](https://go-on.goinc.jp/n/n1762aeb8a329)
 - [THECOO株式会社](https://thecoo.co.jp/) Software Engineer 2023/10~2024/08
 - [株式会社ACES](https://acesinc.co.jp/) Machine Learning Engineer 2023/07~2023/10
-- [DMG森精機株式会社](https://www.dmgmori.co.jp/) Machine Learning Engineer 2022/10~2023/06
+- [DMG森精機株式会社](https://www.dmgmori.co.jp/)、[株式会社WALC](https://www.etl-dmgmori.com/) Machine Learning Engineer 2022/10~2023/06
 - [ダイアモンドヘッド株式会社](https://diamondhead.jp/) Software Engineer 2022/09
 - [合同会社カフェラテ](https://cafelatte.jp/) Software Engineer 2022/02~2022/08
 - [ランク王株式会社](https://rank-king.co.jp/) Marketer 2020/06~2020/11
