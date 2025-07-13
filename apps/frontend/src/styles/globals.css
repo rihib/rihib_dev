@@ -75,3 +75,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Scroll offset for fixed header */
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+}
