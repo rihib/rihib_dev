@@ -26,6 +26,18 @@ export const translations = {
       'I have made multiple continuous OSS contributions to Kubernetes and proposed methods to improve performance by parallelizing parts of the kube-scheduler SchedulingCycle, demonstrating deep implementation-level understanding of Kubernetes.',
     'profile.bio3':
       'Additionally, I have actively engaged in various activities, including leading projects as a development team leader in internships, and participating in SecHack365, 42 Tokyo, Interop STM, and speaking at Wakamonog outside of work.',
+    'profile.value': 'Value',
+    'profile.valueTitle': 'Three Core Values I Cherish in Life',
+    'profile.valuePara1':
+      'The three pillars I value in life are "enjoyable things," "things that lead to growth," and "things that contribute to society." These complement each other, and I believe that without any one of them, I cannot live with satisfaction.',
+    'profile.valuePara2':
+      "First, the pursuit of enjoyable things is my driving force. No matter how valuable an activity may be, I cannot sustain it if I don't genuinely enjoy it. That's why I want to continue choosing to actively engage with new knowledge and technologies while cherishing my curiosity and interests.",
+    'profile.valuePara3':
+      'Growth-oriented activities are also essential. I want to maintain an attitude of never being satisfied with the status quo, always finding challenges and goals, and continuously updating myself. Even if I fail, I believe that by continuing to challenge myself using those failures as stepping stones, I can achieve greater results and fulfillment.',
+    'profile.valuePara4':
+      'Finally, I want to be someone who can return my growth and enjoyment as value to others and society as a whole. By being conscious of contributing to society, I believe my activities become truly sustainable rather than remaining merely self-satisfying.',
+    'profile.valuePara5':
+      'I have lived my life cherishing these three pillars up until now. I will continue to choose a way of life that fulfills these three pillars, maintaining my authenticity in any environment while positively embracing change and becoming someone who can contribute to society.',
     'profile.education': 'Education',
     'profile.graduateSchool':
       'Keio University Graduate School of Media and Governance (Cyber Informatics)',
@@ -160,6 +172,17 @@ export const translations = {
       'また、Kubernetesに対して複数回の継続的なOSSコントリビューションを行なったり、kube-schedulerのSchedulingCycleの一部を並列化することでパフォーマンスを向上させる手法の提案を行うなど、Kubernetesの実装レベルの深い理解を持っています。',
     'profile.bio3':
       'その他にもインターンで開発チームのリーダーとしてプロジェクトを主導したり、実務以外でもSecHack365、42 Tokyo、Interop STM、Wakamonogでの登壇を行うなど、様々な活動に積極的に取り組んできました。',
+    'profile.value': '価値観',
+    'profile.valuePara1':
+      '私が人生で大切にしたい軸は、「楽しいこと」「成長につながること」「社会の役に立つこと」の3つです。これらは互いに補完し合うもので、どれか一つでも欠けると満足感を持って生きることができないと考えています。',
+    'profile.valuePara2':
+      'まず、楽しいことを追求する姿勢は、私の原動力です。どんなに価値ある活動でも、自分自身が心から楽しめなければ継続できません。だからこそ、自分の好奇心や興味を大切にしながら、新しい知識や技術に触れることを積極的に選び続けたいと思っています。',
+    'profile.valuePara3':
+      'また、成長につながることも不可欠です。現状に満足せず、常に課題や目標を見つけ、自分をアップデートする姿勢を持ち続けたいと考えています。たとえ失敗しても、それを糧にして挑戦を続けることで、より大きな成果や達成感に繋がると信じています。',
+    'profile.valuePara4':
+      '最後に、自分の成長や楽しさを、他者や社会全体に価値として還元できる人間でありたいと思っています。社会の役に立つことを意識することで、自己満足に留まらず、真に自分の活動が社会的に持続可能になると考えています。',
+    'profile.valuePara5':
+      'これまでこれら３つの軸を大切にしながら生きてきました。これからもこの3つの軸を満たす生き方を選択し、どんな環境でも自分らしさを持ちながら、変化を前向きに受け入れ、社会に貢献できる人間でありたいと思っています。',
     'profile.education': '学歴',
     'profile.graduateSchool': '慶應義塾大学 政策・メディア研究科（サイバーインフォマティクス）',
     'profile.graduateSchoolPeriod': '2025/04 - 2027/03 (予定)',

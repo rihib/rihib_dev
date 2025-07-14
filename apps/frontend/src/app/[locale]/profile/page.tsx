@@ -69,6 +69,18 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
           </div>
         </div>
 
+        {/* Value Section */}
+        <div id="value" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+          <h2 className="text-2xl font-semibold mb-6 text-foreground">{t('profile.value')}</h2>
+          <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
+            <p>{t('profile.valuePara1')}</p>
+            <p>{t('profile.valuePara2')}</p>
+            <p>{t('profile.valuePara3')}</p>
+            <p>{t('profile.valuePara4')}</p>
+            <p>{t('profile.valuePara5')}</p>
+          </div>
+        </div>
+
         {/* Education & Experience */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
