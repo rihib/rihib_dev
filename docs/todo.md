@@ -10,6 +10,14 @@
 - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [x] Turborepoを使うようにする
+- [ ] ローカルのSupabase + Drizzle ORMを使うようにする
+- [ ] リポジトリのリファクタリング
+  - [ ] Phase1
+  - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
+  - [ ] Phase3
+  - [ ] 再度リファクタリング計画を立てて実行する
+  - [ ] Copilotにレビューしてもらう
+  - [ ] DBへのアクセスについて、依存関係の逆転が適切に行われているか
 - [ ] Claude Code Setup
   - [ ] [MCP Server](https://docs.anthropic.com/ja/docs/claude-code/mcp)
     - [開発でおすすめのMCP Server 一覧](https://zenn.dev/yareyare/articles/c5c07b64e7107f)
@@ -20,17 +28,10 @@
     - [ ] [Browser MCP](https://github.com/browsermcp/mcp)
     - [ ] [supabase-mcp](http://github.com/supabase-community/supabase-mcp)
   - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
-- [ ] リポジトリのリファクタリング
-  - [ ] Phase1
-  - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
-  - [ ] Phase3
-  - [ ] 再度リファクタリング計画を立てて実行する
-  - [ ] Copilotにレビューしてもらう
-- [ ] ローカルのSupabase + Drizzle ORMを使うようにする
 - [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
 - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
-- [ ] prdブランチを作る（デプロイ用）
-- [ ] 環境変数で、dev, prdの切り替えを行えるようにする
+  - [ ] まずはHono RPCを介してSupabaseのデータを取得するAPIを作り、フロントエンドからそのAPIを呼び出してデータを表示できるようにする
+  - [ ] その他のAPIも順次実装していく
 - [ ] ローカルのSupabaseを、リモートのSupabaseにマイグレートする
 - [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ（Terraformを使って構築）
 - [ ] 独自ドメインとLet's EncryptでSSLを設定する
@@ -41,6 +42,8 @@
 - [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
 - [ ] CI/CDを構築
   - [ ] [pinact](https://dev.classmethod.jp/articles/hardening-github-actions-with-pinact-commit-sha-semver/)
+  - [ ] mainブランチにマージされたら、自動で本番環境にデプロイされるようにする
+  - [ ] 環境変数で、dev, prdの切り替えを行えるようにする
 - [ ] Google Analyticsを導入する
 - [ ] 画像はcloudflare r2から配信するようにする
 - [ ] Supabase + NextAuthでログイン機能を作る
