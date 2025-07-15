@@ -27,7 +27,6 @@ export const translations = {
     'profile.bio3':
       'Additionally, I have actively engaged in various activities, including leading projects as a development team leader in internships, and participating in SecHack365, 42 Tokyo, Interop STM, and speaking at Wakamonog outside of work.',
     'profile.value': 'Value',
-    'profile.valueTitle': 'Three Core Values I Cherish in Life',
     'profile.valuePara1':
       'The three pillars I value in life are "enjoyable things," "things that lead to growth," and "things that contribute to society." These complement each other, and I believe that without any one of them, I cannot live with satisfaction.',
     'profile.valuePara2':
@@ -42,9 +41,11 @@ export const translations = {
     'profile.graduateSchool':
       'Keio University Graduate School of Media and Governance (Cyber Informatics)',
     'profile.graduateSchoolPeriod': '2025/04 - 2027/03 (Expected)',
+    'profile.graduateSchoolDegree': 'Master of Media and Governance',
     'profile.undergraduateSchool':
       'Keio University Faculty of Environment and Information Studies (SFC)',
     'profile.undergraduateSchoolPeriod': '2022/04 - 2025/03',
+    'profile.undergraduateSchoolDegree': 'Bachelor of Arts in Environment and Information Studies',
     'profile.lawSchool': 'Keio University Faculty of Law',
     'profile.lawSchoolPeriod': '2020/04 - 2022/03',
     'profile.highSchool': 'Sakaehigashi High School',
@@ -186,8 +187,10 @@ export const translations = {
     'profile.education': '学歴',
     'profile.graduateSchool': '慶應義塾大学 政策・メディア研究科（サイバーインフォマティクス）',
     'profile.graduateSchoolPeriod': '2025/04 - 2027/03 (予定)',
+    'profile.graduateSchoolDegree': '修士（政策・メディア）',
     'profile.undergraduateSchool': '慶應義塾大学 環境情報学部（SFC）',
     'profile.undergraduateSchoolPeriod': '2022/04 - 2025/03',
+    'profile.undergraduateSchoolDegree': '学士（環境情報学）',
     'profile.lawSchool': '慶應義塾大学 法学部法律学科',
     'profile.lawSchoolPeriod': '2020/04 - 2022/03',
     'profile.highSchool': '栄東高等学校',

@@ -101,6 +101,7 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
                   </a>
                 </h3>
                 <p className="text-sm text-muted-foreground">{t('profile.graduateSchoolPeriod')}</p>
+                <p className="text-xs text-muted-foreground">{t('profile.graduateSchoolDegree')}</p>
               </div>
               <div className="border-l-4 border-green-500 pl-4">
                 <h3 className="font-semibold text-foreground">
@@ -116,6 +117,9 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   {t('profile.undergraduateSchoolPeriod')}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {t('profile.undergraduateSchoolDegree')}
                 </p>
               </div>
               <div className="border-l-4 border-purple-500 pl-4">
