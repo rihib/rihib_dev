@@ -34,7 +34,9 @@
 ## 学歴
 
 - 慶應義塾大学 政策・メディア研究科 [サイバーインフォマティクス](https://www.sfc.keio.ac.jp/academics/gsmg/program/ci.html) 2025/04~2027/03
+  - 修士（政策・メディア）Master of Media and Governance
 - 慶應義塾大学 環境情報学部（通称[SFC](https://www.sfc.keio.ac.jp/)） 2022/04~2025/03
+  - 学士（環境情報学）Bachelor of Arts in Environment and Information Studies
 - [慶應義塾大学](https://www.keio.ac.jp/) 法学部法律学科 2020/04~2022/03
 - [栄東高等学校](https://www.sakaehigashi.ed.jp/) 2016/04~2020/03
 - [Rangitoto College](https://www.rangitoto.school.nz/) 2017/04~2018/03
