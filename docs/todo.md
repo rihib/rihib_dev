@@ -1,26 +1,41 @@
 # TODO
 
 - [ハンズオン！Next.js+Hono+RPC+Supabase+Drizzle+pnpm+Turborepoで作るモノレポ構成のアプリ開発](https://zenn.dev/ippe/articles/7782e701f8df26)
-- [x] shadcn/uiを使うようにする
-- [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
-- [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
-- [x] リンクしている記事のタイトルは元記事のタイトルをそのまま使うようにする
-- [x] フリーランス実績や活動の項目が時系列順に並んでいないので直す（最近のものから上に来るようにする）
-- [x] Denoは使わないようにする
-- [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
-- [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
-- [x] Turborepoを使うようにする
-- [x] VScodeの拡張機能やMCPの整備
-- [ ] ローカルのSupabase + Drizzle ORMを使うようにする
-- [ ] リポジトリのリファクタリング
-  - [ ] Phase1
-  - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
-  - [ ] Phase3
-  - [ ] 再度リファクタリング計画を立てて実行する
-  - [ ] Copilotにレビューしてもらう
-  - [ ] DBへのアクセスについて、依存関係の逆転が適切に行われているか
-- [ ] Claude Code Setup
-  - [ ] [MCP Server](https://docs.anthropic.com/ja/docs/claude-code/mcp)
+- [ ] 機能開発
+  - [ ] フロントエンド
+    - [x] shadcn/uiを使うようにする
+    - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
+    - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
+    - [x] リンクしている記事のタイトルは元記事のタイトルをそのまま使うようにする
+    - [x] フリーランス実績や活動の項目が時系列順に並んでいないので直す（最近のものから上に来るようにする）
+    - [x] Denoは使わないようにする
+    - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
+    - [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
+    - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
+  - [ ] バックエンド
+    - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
+    - [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
+    - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
+      - [ ] まずはHono RPCを介してSupabaseのデータを取得するAPIを作り、フロントエンドからそのAPIを呼び出してデータを表示できるようにする
+      - [ ] その他のAPIも順次実装していく
+- [ ] リファクタリング
+  - [x] Turborepoを使うようにする
+  - [ ] リポジトリのリファクタリング
+    - [ ] Phase1
+    - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
+    - [ ] Phase3
+    - [ ] 再度リファクタリング計画を立てて実行する
+    - [ ] Copilotにレビューしてもらう
+    - [ ] DBへのアクセスについて、依存関係の逆転が適切に行われているか
+- [ ] デプロイ
+  - [ ] ローカルのSupabaseを、リモートのSupabaseにマイグレートする
+  - [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ（Terraformを使って構築）
+  - [ ] 独自ドメインとLet's EncryptでSSLを設定する
+  - [ ] SSL証明書の自動更新をできるようにする
+  - [ ] 画像はcloudflare r2から配信するようにする（Terraformを使って構築）
+- [ ] 開発環境整備
+  - [x] VScodeの拡張機能やMCPの整備
+  - [ ] [Claude Code MCP Server](https://docs.anthropic.com/ja/docs/claude-code/mcp)
     - [開発でおすすめのMCP Server 一覧](https://zenn.dev/yareyare/articles/c5c07b64e7107f)
     - [ ] [context7](https://github.com/upstash/context7)
     - [ ] [github-mcp-server](https://github.com/github/github-mcp-server)
@@ -29,34 +44,27 @@
     - [ ] [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
     - [ ] [Browser MCP](https://github.com/browsermcp/mcp)
     - [ ] [supabase-mcp](http://github.com/supabase-community/supabase-mcp)
+    - [ ] [markitdown](https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp)
     - [ ] [memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
     - [ ] [terraform-mcp-server](https://github.com/hashicorp/terraform-mcp-server)
     - [ ] [imagesorcery-mcp](https://github.com/sunriseapps/imagesorcery-mcp)
     - [ ] [console-ninja](https://github.com/wallabyjs/console-ninja#mcp-server)
     - [ ] [Figma](https://help.figma.com/hc/ja/articles/32132100833559-Dev-Mode-MCPサーバー利用ガイド)
   - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
-- [ ] フロントエンドの単体テストを作成
-  - [ ] [Storybookとは？Storybookを用いたフロント開発](https://zenn.dev/fullyou/articles/853b77a3ce9144)
-  - [ ] [【入門】フロントエンドのテスト手法まとめ](https://qiita.com/KNR109/items/7cf6b24bed318dab5715)
-  - [ ] Vitest
-- [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
-- [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
-  - [ ] まずはHono RPCを介してSupabaseのデータを取得するAPIを作り、フロントエンドからそのAPIを呼び出してデータを表示できるようにする
-  - [ ] その他のAPIも順次実装していく
-- [ ] ローカルのSupabaseを、リモートのSupabaseにマイグレートする
-- [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ（Terraformを使って構築）
-- [ ] 独自ドメインとLet's EncryptでSSLを設定する
-- [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
-- [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
-- [ ] SSL証明書の自動更新をできるようにする
-- [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェック、デッドコードや使っていないライブラリの検出などを行う
-- [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
-- [ ] CI/CDを構築
-  - [ ] [pinact](https://dev.classmethod.jp/articles/hardening-github-actions-with-pinact-commit-sha-semver/)
-  - [ ] mainブランチにマージされたら、自動で本番環境にデプロイされるようにする
-  - [ ] 環境変数で、dev, prdの切り替えを行えるようにする
-  - [ ] [claude-code-base-action](https://github.com/anthropics/claude-code-base-action)
-- [ ] Google Analyticsを導入する
-- [ ] 画像はcloudflare r2から配信するようにする
-- [ ] Supabase + NextAuthでログイン機能を作る
-- [ ] adminダッシュボードで記事のメタデータを管理できるようにする
+- [ ] テスト、CI/CD
+  - [ ] フロントエンドの単体テストを作成
+    - [ ] [Storybookとは？Storybookを用いたフロント開発](https://zenn.dev/fullyou/articles/853b77a3ce9144)
+    - [ ] [【入門】フロントエンドのテスト手法まとめ](https://qiita.com/KNR109/items/7cf6b24bed318dab5715)
+    - [ ] Vitest
+  - [ ] pre-commit hookでコミット前にリントや静的解析、ユニットテスト、セキュリティチェック、デッドコードや使っていないライブラリの検出などを行う
+  - [ ] terraformを変更したPRをマージしたら、自動でterraform applyが実行されるようにする
+  - [ ] CI/CDを構築
+    - [ ] [pinact](https://dev.classmethod.jp/articles/hardening-github-actions-with-pinact-commit-sha-semver/)
+    - [ ] mainブランチにマージされたら、自動で本番環境にデプロイされるようにする
+    - [ ] 環境変数で、dev, prdの切り替えを行えるようにする
+    - [ ] [claude-code-base-action](https://github.com/anthropics/claude-code-base-action)
+- [ ] 追加ステップ
+  - [ ] Google Analyticsを導入する
+  - [ ] Supabase + NextAuthでログイン機能を作る
+  - [ ] adminダッシュボードで記事のメタデータを管理できるようにする
+  - [ ] ESLint, PrettierからBiomeに移行
