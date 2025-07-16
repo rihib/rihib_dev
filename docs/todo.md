@@ -24,11 +24,21 @@
     - [開発でおすすめのMCP Server 一覧](https://zenn.dev/yareyare/articles/c5c07b64e7107f)
     - [ ] [context7](https://github.com/upstash/context7)
     - [ ] [github-mcp-server](https://github.com/github/github-mcp-server)
+    - [ ] [sequentialthinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
     - [ ] [playwright-mcp](https://github.com/microsoft/playwright-mcp)
     - [ ] [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
     - [ ] [Browser MCP](https://github.com/browsermcp/mcp)
     - [ ] [supabase-mcp](http://github.com/supabase-community/supabase-mcp)
+    - [ ] [memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
+    - [ ] [terraform-mcp-server](https://github.com/hashicorp/terraform-mcp-server)
+    - [ ] [imagesorcery-mcp](https://github.com/sunriseapps/imagesorcery-mcp)
+    - [ ] [console-ninja](https://github.com/wallabyjs/console-ninja#mcp-server)
+    - [ ] [Figma](https://help.figma.com/hc/ja/articles/32132100833559-Dev-Mode-MCPサーバー利用ガイド)
   - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
+- [ ] フロントエンドの単体テストを作成
+  - [ ] [Storybookとは？Storybookを用いたフロント開発](https://zenn.dev/fullyou/articles/853b77a3ce9144)
+  - [ ] [【入門】フロントエンドのテスト手法まとめ](https://qiita.com/KNR109/items/7cf6b24bed318dab5715)
+  - [ ] Vitest
 - [ ] 必要なAPIを洗い出し、plan.mdに記載し、OpenAPIで仕様を定義する
 - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
   - [ ] まずはHono RPCを介してSupabaseのデータを取得するAPIを作り、フロントエンドからそのAPIを呼び出してデータを表示できるようにする
