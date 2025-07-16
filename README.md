@@ -1,104 +1,46 @@
 # rihib.dev
 
-Bilingual personal website for Rihito Bannai, featuring profile, blog, and news content.
+Bilingual personal website for Rihito Bannai with profile, blog, and news content.
 
 ## Overview
 
-A modern personal website built with Next.js 14 and TypeScript, supporting both Japanese and English languages.
+Modern personal website built with Next.js 14, TypeScript, and bilingual support (Japanese/English).
 
-**Key Features:**
+**Features**: URL-based language switching, dark mode, responsive design, external content management
 
-- Bilingual support (Japanese/English) with URL-based language switching
-- Dark mode with automatic OS detection
-- Responsive design for mobile and desktop
-- External content management for blog posts and news
-
-**Pages:**
-
-- **Home**: Profile overview and latest news
-- **Profile**: Detailed bio, experience, and social links
-- **Blog**: External blog post listings
-- **News**: External news and announcements
+**Pages**: Home (profile + news), Profile (bio/experience), Blog/News (external listings)
 
 ## Tech Stack
 
-**Frontend:**
+**Current**: Turborepo + Next.js 14 + TypeScript + TailwindCSS + shadcn/ui + SQLite
 
-- Next.js 14 (App Router) + TypeScript
-- TailwindCSS + shadcn/ui
-- SQLite database (migrating to Supabase)
+**Development**: pnpm, ESLint, Prettier, markdownlint
 
-**Development:**
-
-- Turborepo monorepo
-- pnpm package manager
-- ESLint, Prettier, markdownlint
-
-**Planned Backend:**
-
-- Hono RPC API on Cloudflare Workers
-- Supabase authentication and database
-- Vercel deployment
-
-## Project Structure
-
-```text
-www-rihib-dev/
-├── apps/frontend/        # Next.js application
-├── packages/config/      # Shared configurations
-└── docs/                 # Documentation
-```
+**Planned**: Hono RPC API + Supabase + Vercel/Cloudflare Workers
 
 ## Quick Start
 
-**Prerequisites:** Node.js 18+ and pnpm
+Prerequisites: Node.js 18+ and pnpm
 
 ```bash
-# Clone and install
 git clone https://github.com/rihib/www-rihib-dev.git
 cd www-rihib-dev
 pnpm install
-
-# Start development server
-pnpm run dev
+pnpm dev
 ```
 
-Access at <http://localhost:3000>
+Access: <http://localhost:3000>
 
-**Available Commands:**
+**Commands**: `pnpm build|lint|type-check|clean`
 
-- `pnpm run build` - Build all packages
-- `pnpm run lint` - Run linting
-- `pnpm run type-check` - Type checking
-- `pnpm run clean` - Clean build artifacts
+## Structure
 
-## Internationalization
-
-**URL Structure:**
-
-- English: `/en` (default)
-- Japanese: `/ja`
-- Root `/` redirects to `/en`
-
-## Database
-
-Currently using SQLite (`apps/frontend/data/app.db`), migrating to Supabase.
-
-**Articles Table:**
-
-- id, title, published_at, url, type ('blog'|'news'), locale ('en'|'ja')
-
-## Development Guidelines
-
-- TypeScript with strict linting
-- Simultaneous Japanese/English updates
-- shadcn/ui component patterns
-- Dark mode with TailwindCSS tokens
+- **Routing**: `/[locale]` (en/ja), root → `/en`
+- **Database**: SQLite articles table (id, title, url, type, locale)
+- **Components**: shadcn/ui design system
 
 ## Author
 
 ### Rihito Bannai
 
-- GitHub: [@rihib](https://github.com/rihib)
-- LinkedIn: [@rihito-bannai](https://www.linkedin.com/in/rihito-bannai/)
-- X: [@rihib_dev](https://x.com/rihib_dev)
+GitHub: [@rihib](https://github.com/rihib) | LinkedIn: [@rihito-bannai](https://www.linkedin.com/in/rihito-bannai/) | X: [@rihib_dev](https://x.com/rihib_dev)
