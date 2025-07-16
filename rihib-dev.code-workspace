@@ -19,10 +19,11 @@
   },
   "extensions": {
     "recommendations": [
-      "ms-vscode.vscode-typescript-next",
-      "bradlc.vscode-tailwindcss",
+      "davidanson.vscode-markdownlint",
+      "shardulm94.trailing-spaces",
       "esbenp.prettier-vscode",
-      "ms-vscode.vscode-eslint"
+      "ms-vscode.vscode-eslint",
+      "bradlc.vscode-tailwindcss"
     ]
   }
 }

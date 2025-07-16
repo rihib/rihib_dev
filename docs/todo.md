@@ -10,6 +10,7 @@
 - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
 - [x] Supabase, Vercel, Cloudflare WorkersはTerraformで構築できるみたいなので、Terraformを使うようにする。tfstateはcloudflare r2とかに保存する
 - [x] Turborepoを使うようにする
+- [x] VScodeの拡張機能やMCPの整備
 - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
 - [ ] リポジトリのリファクタリング
   - [ ] Phase1
@@ -44,6 +45,7 @@
   - [ ] [pinact](https://dev.classmethod.jp/articles/hardening-github-actions-with-pinact-commit-sha-semver/)
   - [ ] mainブランチにマージされたら、自動で本番環境にデプロイされるようにする
   - [ ] 環境変数で、dev, prdの切り替えを行えるようにする
+  - [ ] [claude-code-base-action](https://github.com/anthropics/claude-code-base-action)
 - [ ] Google Analyticsを導入する
 - [ ] 画像はcloudflare r2から配信するようにする
 - [ ] Supabase + NextAuthでログイン機能を作る
