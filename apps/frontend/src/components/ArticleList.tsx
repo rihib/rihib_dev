@@ -1,5 +1,5 @@
 import { Calendar, ExternalLink } from 'lucide-react';
-import type { Article } from '@/lib/db';
+import type { Article } from '@/lib/api';
 
 interface ArticleListProps {
   articles: Article[];

@@ -1,8 +1,9 @@
 # TODO
 
-- [ハンズオン！Next.js+Hono+RPC+Supabase+Drizzle+pnpm+Turborepoで作るモノレポ構成のアプリ開発](https://zenn.dev/ippe/articles/7782e701f8df26)
-- [ ] 機能開発
-  - [ ] フロントエンド
+- [x] 機能開発
+  - [ハンズオン！Next.js+Hono+RPC+Supabase+Drizzle+pnpm+Turborepoで作るモノレポ構成のアプリ開発](https://zenn.dev/ippe/articles/7782e701f8df26)
+  - [x] フロントエンド
+    - [x] Turborepoを使うようにする
     - [x] shadcn/uiを使うようにする
     - [x] docs/profile.mdを作成し、自分のプロフィール情報を記載する
     - [x] docs/profile.mdをもとにHomeやProfileページの内容を更新する
@@ -10,23 +11,22 @@
     - [x] フリーランス実績や活動の項目が時系列順に並んでいないので直す（最近のものから上に来るようにする）
     - [x] Denoは使わないようにする
     - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
-    - [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
-    - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
-  - [ ] バックエンド
-    - [ ] ローカルのSupabase + Drizzle ORMを使うようにする
-    - [ ] 必要なAPIを洗い出し、OpenAPIで仕様を定義する
-    - [ ] Hono RPCを使ってAPIを実装する（テスト駆動開発）
-      - [ ] まずはHono RPCを介してSupabaseのデータを取得するAPIを作り、フロントエンドからそのAPIを呼び出してデータを表示できるようにする
-      - [ ] その他のAPIも順次実装していく
+  - [] バックエンド
+    - [x] Hono RPC + Zodスキーマを使用してAPIを実装
+    - [x] ローカルのSupabase + Drizzle ORMを使うようにする
+    - [x] 必要なAPIを洗い出し、OpenAPIで仕様を定義する
+    - [ ] Supabase Studioで記事のメタデータを編集する
+    - [ ] 価値観のセクションはより視覚的に３本軸を表現してわかりやすくする
 - [ ] リファクタリング
-  - [x] Turborepoを使うようにする
   - [ ] リポジトリのリファクタリング
+    - [ ] claudeのカスタムコマンドを作る
     - [ ] Phase1
     - [ ] Phase2（大規模コンポーネントの分割が完全には完了していないので続きをやる）
     - [ ] Phase3
     - [ ] 再度リファクタリング計画を立てて実行する
     - [ ] Copilotにレビューしてもらう
     - [ ] DBへのアクセスについて、依存関係の逆転が適切に行われているか
+    - [ ] 型安全性や防御的プログラミング
 - [ ] デプロイ
   - [ ] ローカルのSupabaseを、リモートのSupabaseにマイグレートする
   - [ ] フロントエンドをVercel、APIをCloudflare Workersにデプロイ（Terraformを使って構築）
@@ -64,7 +64,9 @@
     - [ ] 環境変数で、dev, prdの切り替えを行えるようにする
     - [ ] [claude-code-base-action](https://github.com/anthropics/claude-code-base-action)
 - [ ] 追加ステップ
+  - [ ] それぞれの項目はアコーディオンで詳細を開閉できるようにする
+  - [ ] ユーザーの環境に合わせて、言語やダークモードを自動で切り替えるようにする
   - [ ] Google Analyticsを導入する
-  - [ ] Supabase + NextAuthでログイン機能を作る
-  - [ ] adminダッシュボードで記事のメタデータを管理できるようにする
+  - [ ] Supabase + NextAuthでログイン機能を作り、adminページを作成する
   - [ ] ESLint, PrettierからBiomeに移行
+  - [ ] [フレームワーク「Svelte」「Solid」が話題。画期的だった仮想DOMと脱仮想DOMへの流れ](https://levtech.jp/media/article/column/detail_411/)

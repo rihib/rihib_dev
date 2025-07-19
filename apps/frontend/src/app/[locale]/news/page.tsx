@@ -1,10 +1,10 @@
 import { getTranslation, isValidLocale } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
-import { getNewsItems } from '@/lib/db';
+import { getNewsItems } from '@/lib/api';
 import ArticleList from '@/components/ArticleList';
 
-export default async function NewsPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
   if (!isValidLocale(locale)) {
     notFound();

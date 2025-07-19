@@ -4,8 +4,8 @@ import { ExternalLink, Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-export default function ProfilePage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
   if (!isValidLocale(locale)) {
     notFound();

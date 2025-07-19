@@ -4,40 +4,46 @@ Bilingual personal website for Rihito Bannai with profile, blog, and news conten
 
 ## Overview
 
-Modern personal website built with Next.js 14, TypeScript, and bilingual support (Japanese/English).
+Modern personal website built with Next.js 15, React 19, TypeScript, and bilingual support (Japanese/English).
 
-**Features**: URL-based language switching, dark mode, responsive design, external content management
+**Features**: URL-based language switching, dark mode, responsive design, API-driven content management
 
 **Pages**: Home (profile + news), Profile (bio/experience), Blog/News (external listings)
 
 ## Tech Stack
 
-**Current**: Turborepo + Next.js 14 + TypeScript + TailwindCSS + shadcn/ui + SQLite
+**Frontend**: Turborepo + Next.js 15 + React 19 + TypeScript + TailwindCSS + shadcn/ui
 
-**Development**: pnpm, ESLint, Prettier, markdownlint
+**Backend**: Hono RPC + Zod validation + Supabase (PostgreSQL)
 
-**Planned**: Hono RPC API + Supabase + Vercel/Cloudflare Workers
+**Development**: pnpm, ESLint, Prettier, markdownlint, Docker (Supabase)
 
 ## Quick Start
 
-Prerequisites: Node.js 18+ and pnpm
+**Prerequisites**: Node.js 18+, pnpm, Docker, Supabase CLI
 
 ```bash
 git clone https://github.com/rihib/www-rihib-dev.git
 cd www-rihib-dev
 pnpm install
-pnpm dev
+supabase start    # Start local Supabase
+pnpm dev         # Start frontend + API
 ```
 
-Access: <http://localhost:3000>
+**Access**:
+- Frontend: <http://localhost:3000>
+- API: <http://localhost:8787>
+- Supabase Studio: <http://localhost:54323>
 
-**Commands**: `pnpm build|lint|type-check|clean`
+**Commands**: `pnpm build|lint|type-check|clean` + `supabase start|stop|status`
 
-## Structure
+## Architecture
 
 - **Routing**: `/[locale]` (en/ja), root → `/en`
-- **Database**: SQLite articles table (id, title, url, type, locale)
+- **Database**: Supabase PostgreSQL with articles table (id, title, url, type, locale)
+- **API**: Hono server with CORS, environment-based configuration
 - **Components**: shadcn/ui design system
+- **Environment**: `dev` (local Supabase) | `prd` (remote Supabase)
 
 ## Author
 
