@@ -1,10 +1,10 @@
 import { getTranslation, isValidLocale } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
-import { getBlogPosts } from '@/lib/db';
+import { getBlogPosts } from '@/lib/api';
 import ArticleList from '@/components/ArticleList';
 
-export default async function BlogPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
   if (!isValidLocale(locale)) {
     notFound();

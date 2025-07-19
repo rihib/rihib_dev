@@ -3,11 +3,8 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
     typedRoutes: false,
-    // Fix webpack cache issues in monorepo
-    webpackBuildWorker: false,
   },
   // Configure webpack for better monorepo support
   webpack: (config, { dev, isServer }) => {
