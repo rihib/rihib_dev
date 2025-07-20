@@ -50,7 +50,10 @@ const errorHandler = async (c, next) => {
             method: c.req.method,
             statusCode,
         }, error instanceof Error ? error : undefined);
-        return c.json({ error: message }, statusCode);
+        return new Response(JSON.stringify({ error: message }), {
+            status: statusCode,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 };
 // Apply error handling middleware

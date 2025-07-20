@@ -81,7 +81,10 @@ const errorHandler = async (c: Context<{ Variables: ContextVariables }>, next: (
       statusCode,
     }, error instanceof Error ? error : undefined);
     
-    return c.json({ error: message }, statusCode as any);
+    return new Response(JSON.stringify({ error: message }), {
+      status: statusCode,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 };
 
