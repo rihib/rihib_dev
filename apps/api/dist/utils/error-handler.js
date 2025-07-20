@@ -13,7 +13,10 @@ export class AppError extends Error {
         this.statusCode = statusCode;
         this.isOperational = isOperational;
         this.context = context;
-        Error.captureStackTrace(this, this.constructor);
+        // Capture stack trace if available (Node.js specific)
+        if ('captureStackTrace' in Error && typeof Error.captureStackTrace === 'function') {
+            Error.captureStackTrace(this, this.constructor);
+        }
     }
 }
 export class ValidationError extends AppError {
