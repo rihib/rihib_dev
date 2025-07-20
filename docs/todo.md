@@ -22,6 +22,10 @@
   - [x] ある程度のリファクタリングをする
   - [x] copilotのレビューを修正
   - [ ] claudeのカスタムコマンド(refactor-codes)を作って、コードのリファクタリングを行う
+    - [x] refactor-api
+    - [ ] refactor-frontend
+    - [ ] refactor-root
+    - [ ] refactor-docs
   - [ ] [similarity](https://github.com/mizchi/similarity)を使って、コードの重複を検出する
   - [ ] Copilotにレビューしてもらう
   - [ ] Lighthouseでレポートを取得し、パフォーマンスやアクセシビリティ、SEOなどのスコアを確認する

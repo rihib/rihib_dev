@@ -2,7 +2,7 @@
  * Request ID generation and middleware utilities
  */
 /**
- * Generates a unique request ID
+ * Generates a unique request ID using cryptographically secure UUID
  */
 export declare function generateRequestId(): string;
 /**

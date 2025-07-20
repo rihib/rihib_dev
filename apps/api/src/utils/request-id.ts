@@ -2,14 +2,15 @@
  * Request ID generation and middleware utilities
  */
 
+import { randomUUID } from 'crypto';
 import { createMiddleware } from 'hono/factory';
 import { logger } from './logger.js';
 
 /**
- * Generates a unique request ID
+ * Generates a unique request ID using cryptographically secure UUID
  */
 export function generateRequestId(): string {
-  return `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  return `req_${randomUUID()}`;
 }
 
 /**

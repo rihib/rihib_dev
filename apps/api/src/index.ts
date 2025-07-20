@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { Hono } from 'hono';
+import type { Context } from 'hono';
 import { cors } from 'hono/cors';
 import { logger as honoLogger } from 'hono/logger';
 import { serve } from '@hono/node-server';
@@ -65,13 +66,13 @@ app.use('*', cors({
 /**
  * Error handling middleware
  */
-const errorHandler = async (c: any, next: () => Promise<void>) => {
+const errorHandler = async (c: Context<{ Variables: ContextVariables }>, next: () => Promise<void>) => {
   try {
     await next();
   } catch (error) {
     const statusCode = getErrorStatusCode(error);
     const message = getClientSafeErrorMessage(error);
-    const requestId = c.get('requestId') as string;
+    const requestId = c.get('requestId');
     
     logger.error('Request failed', {
       requestId,
@@ -80,7 +81,7 @@ const errorHandler = async (c: any, next: () => Promise<void>) => {
       statusCode,
     }, error instanceof Error ? error : undefined);
     
-    return c.json({ error: message }, statusCode);
+    return c.json({ error: message }, statusCode as any);
   }
 };
 
@@ -98,7 +99,7 @@ const api = app
     type: ArticleTypeSchema,
   })), async (c) => {
     const { locale, type } = c.req.valid('query');
-    const requestId = c.get('requestId') as string;
+    const requestId = c.get('requestId');
 
     logger.info('Articles request received', {
       requestId,
@@ -127,7 +128,7 @@ const api = app
     locale: LocaleSchema,
   })), async (c) => {
     const { locale } = c.req.valid('query');
-    const requestId = c.get('requestId') as string;
+    const requestId = c.get('requestId');
 
     logger.info('Blog posts request received', {
       requestId,
@@ -149,7 +150,7 @@ const api = app
     locale: LocaleSchema,
   })), async (c) => {
     const { locale } = c.req.valid('query');
-    const requestId = c.get('requestId') as string;
+    const requestId = c.get('requestId');
 
     logger.info('News items request received', {
       requestId,
