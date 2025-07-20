@@ -1,5 +1,8 @@
+'use client';
+
 import { ArrowRight, Code, GitBranch, Cpu } from 'lucide-react';
-import { getTranslation, type Locale } from '@/lib/i18n';
+import { type Locale } from '@/lib/i18n';
+import { useTranslation } from '@/hooks/useTranslation';
 import Link from 'next/link';
 import CustomCard from '@/components/Card';
 import { Button } from '@/components/ui/button';
@@ -9,7 +12,7 @@ interface HomePageProps {
 }
 
 export default function HomePage({ locale }: HomePageProps) {
-  const t = (key: keyof typeof import('@/lib/i18n').translations.en) => getTranslation(locale, key);
+  const { t } = useTranslation(locale);
 
   const basePath = locale === 'ja' ? '/ja' : '/en';
 

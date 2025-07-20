@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import ClientLayout from '@/components/ClientLayout';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { PageErrorBoundary } from '@/components/ErrorBoundary';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,9 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.className}>
       <body className="min-h-screen bg-background text-foreground">
-        <ErrorBoundary>
+        <PageErrorBoundary>
           <ClientLayout>{children}</ClientLayout>
-        </ErrorBoundary>
+        </PageErrorBoundary>
       </body>
     </html>
   );

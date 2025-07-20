@@ -3,21 +3,18 @@ import { ArticleSchema, type Article, type Locale, type ArticleType } from './sc
 import { z } from 'zod';
 
 const getSupabaseConfig = () => {
-  const env = process.env.NODE_ENV || 'development';
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
   
-  if (env === 'development') {
-    // Local Supabase configuration
-    return {
-      url: process.env.SUPABASE_URL || 'http://127.0.0.1:54321',
-      key: process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0'
-    };
+  if (!url) {
+    throw new Error('SUPABASE_URL environment variable is required');
   }
   
-  // Production configuration (from environment variables)
-  return {
-    url: process.env.SUPABASE_URL!,
-    key: process.env.SUPABASE_ANON_KEY!
-  };
+  if (!key) {
+    throw new Error('SUPABASE_ANON_KEY environment variable is required');
+  }
+  
+  return { url, key };
 };
 
 const config = getSupabaseConfig();

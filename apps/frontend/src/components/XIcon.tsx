@@ -1,14 +1,16 @@
+import { DEFAULT_ICON_SIZES, VIEWBOX } from '@/lib/constants';
+
 interface XIconProps {
   size?: number;
   className?: string;
 }
 
-export default function XIcon({ size = 24, className = '' }: XIconProps) {
+export default function XIcon({ size = DEFAULT_ICON_SIZES.social, className = '' }: XIconProps) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      viewBox={VIEWBOX.square}
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
