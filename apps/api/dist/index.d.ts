@@ -1,5 +1,10 @@
 import 'dotenv/config';
-declare const api: import("hono/hono-base").HonoBase<import("hono/types").BlankEnv, {
+type ContextVariables = {
+    requestId: string;
+};
+declare const api: import("hono/hono-base").HonoBase<{
+    Variables: ContextVariables;
+}, {
     "/api": {
         $get: {
             input: {};
@@ -15,8 +20,8 @@ declare const api: import("hono/hono-base").HonoBase<import("hono/types").BlankE
         $get: {
             input: {
                 query: {
-                    type: "blog" | "news";
                     locale: "en" | "ja";
+                    type: "blog" | "news";
                 };
             };
             output: {
@@ -24,26 +29,14 @@ declare const api: import("hono/hono-base").HonoBase<import("hono/types").BlankE
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
             };
             outputFormat: "json";
             status: import("hono/utils/http-status.js").ContentfulStatusCode;
-        } | {
-            input: {
-                query: {
-                    type: "blog" | "news";
-                    locale: "en" | "ja";
-                };
-            };
-            output: {
-                error: "Failed to fetch articles";
-            };
-            outputFormat: "json";
-            status: 500;
         };
     };
 } & {
@@ -59,25 +52,14 @@ declare const api: import("hono/hono-base").HonoBase<import("hono/types").BlankE
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
             };
             outputFormat: "json";
             status: import("hono/utils/http-status.js").ContentfulStatusCode;
-        } | {
-            input: {
-                query: {
-                    locale: "en" | "ja";
-                };
-            };
-            output: {
-                error: "Failed to fetch blog posts";
-            };
-            outputFormat: "json";
-            status: 500;
         };
     };
 } & {
@@ -93,25 +75,14 @@ declare const api: import("hono/hono-base").HonoBase<import("hono/types").BlankE
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
             };
             outputFormat: "json";
             status: import("hono/utils/http-status.js").ContentfulStatusCode;
-        } | {
-            input: {
-                query: {
-                    locale: "en" | "ja";
-                };
-            };
-            output: {
-                error: "Failed to fetch news items";
-            };
-            outputFormat: "json";
-            status: 500;
         };
     };
 }, "/api">;

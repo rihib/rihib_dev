@@ -1,11 +1,11 @@
 import { z } from 'zod';
 // Article type enum (strict validation)
 export const ArticleTypeSchema = z.enum(['blog', 'news'], {
-    errorMap: () => ({ message: "Type must be either 'blog' or 'news'" })
+    message: "Type must be either 'blog' or 'news'"
 });
 // Locale enum (strict validation)
 export const LocaleSchema = z.enum(['en', 'ja'], {
-    errorMap: () => ({ message: "Locale must be either 'en' or 'ja'" })
+    message: "Locale must be either 'en' or 'ja'"
 });
 // Article schema (strict database validation)
 export const ArticleSchema = z.object({
