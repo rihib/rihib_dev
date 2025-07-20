@@ -31,6 +31,7 @@ pnpm dev         # Start frontend + API
 ```
 
 **Access**:
+
 - Frontend: <http://localhost:3000>
 - API: <http://localhost:8787>
 - Supabase Studio: <http://localhost:54323>

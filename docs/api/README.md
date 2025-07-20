@@ -34,12 +34,14 @@ Rihib APIは、個人ウェブサイト用のREST APIで、ブログ記事やニ
 ### 1. Swagger UI
 
 オンラインのSwagger Editorで確認:
-1. https://editor.swagger.io/ にアクセス
+
+1. <https://editor.swagger.io/> にアクセス
 2. `openapi.yaml`の内容をコピー&ペースト
 
 ### 2. VS Code拡張機能
 
 VS Codeで確認:
+
 - `OpenAPI (Swagger) Editor` 拡張機能をインストール
 - `openapi.yaml`を開いてプレビュー
 
@@ -58,7 +60,7 @@ swagger-ui-serve docs/api/openapi.yaml
 OpenAPI仕様書は、`apps/api/src/schemas.ts`で定義されているZodスキーマに基づいて作成されています。
 
 - `ArticleSchema` → `Article`
-- `LocaleSchema` → `Locale` 
+- `LocaleSchema` → `Locale`
 - `ArticleTypeSchema` → `ArticleType`
 - `ArticlesResponseSchema` → `ArticlesResponse`
 - `ErrorResponseSchema` → `ErrorResponse`

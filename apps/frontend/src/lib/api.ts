@@ -1,19 +1,21 @@
 import { hc } from 'hono/client';
 import type { ApiType } from '@workspace/api';
+import type { Article, Locale, ArticleType, ArticlesResponse, ErrorResponse } from '@workspace/api';
+import { ENVIRONMENTS, ENVIRONMENT_URLS, DEFAULT_PORTS, HTTP_STATUS } from './constants';
 
 // Re-export types from API for consistency
 export type { Article, Locale, ArticleType } from '@workspace/api';
 
 const getApiBaseUrl = () => {
-  const env = process.env.NEXT_PUBLIC_ENV || 'dev';
-  
+  const env = process.env.NEXT_PUBLIC_ENV || ENVIRONMENTS.DEVELOPMENT;
+
   // Production: use relative path (same domain)
-  if (env === 'prd') {
-    return '';
+  if (env === ENVIRONMENTS.PRODUCTION) {
+    return ENVIRONMENT_URLS[ENVIRONMENTS.PRODUCTION].api;
   }
-  
+
   // Development: use environment variable or default to localhost:8787
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8787';
+  return process.env.NEXT_PUBLIC_API_URL || ENVIRONMENT_URLS[ENVIRONMENTS.DEVELOPMENT].api;
 };
 
 // Create RPC client
@@ -22,17 +24,23 @@ const client = hc<ApiType>(getApiBaseUrl());
 export const getArticles = async (locale: 'en' | 'ja', type: 'blog' | 'news') => {
   try {
     const response = await client.api.articles.$get({
-      query: { locale, type }
+      query: { locale, type },
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    return data.articles;
+
+    // Type guard to check if response has articles property
+    if ('articles' in data) {
+      return data.articles;
+    } else {
+      throw new Error(data.error || 'Unknown error occurred');
+    }
   } catch (error) {
-    console.error('Error fetching articles:', error);
+    console.error('Failed to fetch articles:', error);
     return [];
   }
 };
@@ -40,17 +48,23 @@ export const getArticles = async (locale: 'en' | 'ja', type: 'blog' | 'news') =>
 export const getBlogPosts = async (locale: 'en' | 'ja') => {
   try {
     const response = await client.api.blog.$get({
-      query: { locale }
+      query: { locale },
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    return data.articles;
+
+    // Type guard to check if response has articles property
+    if ('articles' in data) {
+      return data.articles;
+    } else {
+      throw new Error(data.error || 'Unknown error occurred');
+    }
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error('Failed to fetch blog posts:', error);
     return [];
   }
 };
@@ -58,17 +72,23 @@ export const getBlogPosts = async (locale: 'en' | 'ja') => {
 export const getNewsItems = async (locale: 'en' | 'ja') => {
   try {
     const response = await client.api.news.$get({
-      query: { locale }
+      query: { locale },
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    return data.articles;
+
+    // Type guard to check if response has articles property
+    if ('articles' in data) {
+      return data.articles;
+    } else {
+      throw new Error(data.error || 'Unknown error occurred');
+    }
   } catch (error) {
-    console.error('Error fetching news items:', error);
+    console.error('Failed to fetch news items:', error);
     return [];
   }
 };

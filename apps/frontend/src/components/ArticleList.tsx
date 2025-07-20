@@ -1,11 +1,7 @@
 import { Calendar, ExternalLink } from 'lucide-react';
 import type { Article } from '@/lib/api';
-
-interface ArticleListProps {
-  articles: Article[];
-  readMoreText: string;
-  emptyMessage: string;
-}
+import type { ArticleListProps } from '@/types/components';
+import type { BaseComponentProps } from '@/types/common';
 
 export default function ArticleList({ articles, readMoreText, emptyMessage }: ArticleListProps) {
   return (

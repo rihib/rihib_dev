@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from '@/hooks/useTranslation';
 import type { Locale } from '@/lib/i18n';

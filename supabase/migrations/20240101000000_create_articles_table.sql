@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS articles (
   published_at DATE NOT NULL,
   url TEXT NOT NULL,
   type TEXT NOT NULL CHECK (type IN ('blog', 'news')),
-  locale TEXT NOT NULL DEFAULT 'en',
+  locale TEXT NOT NULL DEFAULT 'en' CHECK (locale IN ('en', 'ja')),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
