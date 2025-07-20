@@ -1,17 +1,28 @@
 import 'dotenv/config';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { logger } from 'hono/logger';
+import { logger as honoLogger } from 'hono/logger';
 import { serve } from '@hono/node-server';
 import { zValidator } from '@hono/zod-validator';
 import { getBlogPosts, getNewsItems } from './supabase.js';
 import { LocaleSchema, ArticleTypeSchema } from './schemas.js';
 import { z } from 'zod';
-import { SERVER_PORTS, ENVIRONMENTS, ALLOWED_ORIGINS, ALLOWED_METHODS, ALLOWED_HEADERS, HTTP_STATUS, RESPONSE_MESSAGES, } from './constants/index.js';
+import { SERVER_PORTS, ENVIRONMENTS, ALLOWED_ORIGINS, ALLOWED_METHODS, ALLOWED_HEADERS, RESPONSE_MESSAGES, } from './constants/index.js';
+import { logger, requestIdMiddleware, getClientSafeErrorMessage, getErrorStatusCode, isValidEnvironment } from './utils/index.js';
 const app = new Hono();
-app.use('*', logger());
+// Add request ID middleware first
+app.use('*', requestIdMiddleware);
+// Add Hono's built-in logger
+app.use('*', honoLogger());
+/**
+ * Gets allowed origins based on current environment
+ */
 const getAllowedOrigins = () => {
-    const env = process.env.NODE_ENV || ENVIRONMENTS.DEVELOPMENT;
+    const env = process.env.NODE_ENV;
+    if (!isValidEnvironment(env)) {
+        logger.warn('Invalid NODE_ENV, defaulting to development', { env });
+        return ALLOWED_ORIGINS[ENVIRONMENTS.DEVELOPMENT];
+    }
     if (env === ENVIRONMENTS.PRODUCTION) {
         return ALLOWED_ORIGINS[ENVIRONMENTS.PRODUCTION];
     }
@@ -22,6 +33,28 @@ app.use('*', cors({
     allowMethods: ALLOWED_METHODS,
     allowHeaders: ALLOWED_HEADERS,
 }));
+/**
+ * Error handling middleware
+ */
+const errorHandler = async (c, next) => {
+    try {
+        await next();
+    }
+    catch (error) {
+        const statusCode = getErrorStatusCode(error);
+        const message = getClientSafeErrorMessage(error);
+        const requestId = c.get('requestId');
+        logger.error('Request failed', {
+            requestId,
+            endpoint: c.req.path,
+            method: c.req.method,
+            statusCode,
+        }, error instanceof Error ? error : undefined);
+        return c.json({ error: message }, statusCode);
+    }
+};
+// Apply error handling middleware
+app.use('*', errorHandler);
 // RPC-style routes
 const api = app
     .basePath('/api')
@@ -33,67 +66,76 @@ const api = app
     type: ArticleTypeSchema,
 })), async (c) => {
     const { locale, type } = c.req.valid('query');
-    try {
-        let articles;
-        if (type === 'blog') {
-            articles = await getBlogPosts(locale);
-        }
-        else {
-            articles = await getNewsItems(locale);
-        }
-        return c.json({ articles });
+    const requestId = c.get('requestId');
+    logger.info('Articles request received', {
+        requestId,
+        locale,
+        type,
+        endpoint: '/api/articles'
+    });
+    let articles;
+    if (type === 'blog') {
+        articles = await getBlogPosts(locale);
     }
-    catch (error) {
-        console.error('Error fetching articles:', {
-            locale,
-            type,
-            error: error instanceof Error ? error.message : error,
-            stack: error instanceof Error ? error.stack : undefined
-        });
-        return c.json({ error: RESPONSE_MESSAGES.ARTICLES_FETCH_ERROR }, HTTP_STATUS.INTERNAL_SERVER_ERROR);
+    else {
+        articles = await getNewsItems(locale);
     }
+    logger.info('Articles request completed', {
+        requestId,
+        locale,
+        type,
+        count: articles.length
+    });
+    return c.json({ articles });
 })
     .get('/blog', zValidator('query', z.object({
     locale: LocaleSchema,
 })), async (c) => {
     const { locale } = c.req.valid('query');
-    try {
-        const articles = await getBlogPosts(locale);
-        return c.json({ articles });
-    }
-    catch (error) {
-        console.error('Error fetching blog posts:', {
-            locale,
-            error: error instanceof Error ? error.message : error,
-            stack: error instanceof Error ? error.stack : undefined
-        });
-        return c.json({ error: RESPONSE_MESSAGES.BLOG_FETCH_ERROR }, HTTP_STATUS.INTERNAL_SERVER_ERROR);
-    }
+    const requestId = c.get('requestId');
+    logger.info('Blog posts request received', {
+        requestId,
+        locale,
+        endpoint: '/api/blog'
+    });
+    const articles = await getBlogPosts(locale);
+    logger.info('Blog posts request completed', {
+        requestId,
+        locale,
+        count: articles.length
+    });
+    return c.json({ articles });
 })
     .get('/news', zValidator('query', z.object({
     locale: LocaleSchema,
 })), async (c) => {
     const { locale } = c.req.valid('query');
-    try {
-        const articles = await getNewsItems(locale);
-        return c.json({ articles });
-    }
-    catch (error) {
-        console.error('Error fetching news items:', {
-            locale,
-            error: error instanceof Error ? error.message : error,
-            stack: error instanceof Error ? error.stack : undefined
-        });
-        return c.json({ error: RESPONSE_MESSAGES.NEWS_FETCH_ERROR }, HTTP_STATUS.INTERNAL_SERVER_ERROR);
-    }
+    const requestId = c.get('requestId');
+    logger.info('News items request received', {
+        requestId,
+        locale,
+        endpoint: '/api/news'
+    });
+    const articles = await getNewsItems(locale);
+    logger.info('News items request completed', {
+        requestId,
+        locale,
+        count: articles.length
+    });
+    return c.json({ articles });
 });
 // Health check endpoint
 app.get('/', (c) => {
     return c.json({ message: 'Rihib API Server' });
 });
 const port = Number(process.env.PORT) || SERVER_PORTS.DEFAULT;
-console.log(`Server is running on port ${port}`);
+logger.info('Starting API server', {
+    port,
+    environment: process.env.NODE_ENV || 'development',
+    nodeVersion: process.version
+});
 serve({
     fetch: app.fetch,
     port
 });
+logger.info('API server is running', { port });

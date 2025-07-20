@@ -1,17 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 import { ArticleSchema, type Article, type Locale, type ArticleType } from './schemas.js';
 import { z } from 'zod';
+import { logger, DatabaseError, ValidationError, isNonEmptyString } from './utils/index.js';
+import { ENV_VARS } from './constants/index.js';
 
+/**
+ * Gets and validates Supabase configuration from environment variables
+ */
 const getSupabaseConfig = () => {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_ANON_KEY;
+  const url = process.env[ENV_VARS.SUPABASE_URL];
+  const key = process.env[ENV_VARS.SUPABASE_ANON_KEY];
   
-  if (!url) {
-    throw new Error('SUPABASE_URL environment variable is required');
+  if (!isNonEmptyString(url)) {
+    throw new Error(`${ENV_VARS.SUPABASE_URL} environment variable is required`);
   }
   
-  if (!key) {
-    throw new Error('SUPABASE_ANON_KEY environment variable is required');
+  if (!isNonEmptyString(key)) {
+    throw new Error(`${ENV_VARS.SUPABASE_ANON_KEY} environment variable is required`);
   }
   
   return { url, key };
@@ -21,6 +26,14 @@ const config = getSupabaseConfig();
 export const supabase = createClient(config.url, config.key);
 
 export const getArticles = async (locale: Locale, type: ArticleType): Promise<Article[]> => {
+  const startTime = Date.now();
+  
+  logger.info('Fetching articles from Supabase', {
+    locale,
+    type,
+    endpoint: '/articles'
+  });
+
   const { data, error } = await supabase
     .from('articles')
     .select('*')
@@ -28,9 +41,21 @@ export const getArticles = async (locale: Locale, type: ArticleType): Promise<Ar
     .eq('type', type)
     .order('published_at', { ascending: false });
 
+  const duration = Date.now() - startTime;
+
   if (error) {
-    console.error('Error fetching articles:', error);
-    throw error;
+    logger.error('Database error while fetching articles', {
+      locale,
+      type,
+      duration,
+      supabaseError: error.message
+    }, error);
+    
+    throw new DatabaseError('Failed to fetch articles from database', {
+      locale,
+      type,
+      originalError: error.message
+    });
   }
 
   // Validate data with Zod schema
@@ -38,11 +63,29 @@ export const getArticles = async (locale: Locale, type: ArticleType): Promise<Ar
   
   try {
     const validatedData = articlesSchema.parse(data || []);
+    
+    logger.info('Successfully fetched and validated articles', {
+      locale,
+      type,
+      count: validatedData.length,
+      duration
+    });
+    
     return validatedData;
   } catch (zodError) {
-    console.error('Zod validation error:', zodError);
-    console.error('Raw data from Supabase:', JSON.stringify(data, null, 2));
-    throw zodError;
+    logger.error('Data validation error', {
+      locale,
+      type,
+      duration,
+      rawDataCount: data?.length || 0,
+      zodError: zodError instanceof Error ? zodError.message : String(zodError)
+    }, zodError instanceof Error ? zodError : undefined);
+    
+    throw new ValidationError('Invalid data format received from database', {
+      locale,
+      type,
+      originalError: zodError instanceof Error ? zodError.message : String(zodError)
+    });
   }
 };
 
