@@ -1,13 +1,24 @@
 'use client';
 
 import type { AppError, ErrorReportData, ErrorBreadcrumb, ErrorSeverity } from '@/types/errors';
+import { BreadcrumbManager } from './error-logging/breadcrumb-manager';
+import { ErrorStorage } from './error-logging/error-storage';
+import { ErrorTracker } from './error-logging/error-tracker';
 
 class ErrorLogger {
-  private breadcrumbs: ErrorBreadcrumb[] = [];
-  private maxBreadcrumbs = 50;
+  private readonly breadcrumbManager: BreadcrumbManager;
+  private readonly errorStorage: ErrorStorage;
+  private readonly errorTracker: ErrorTracker;
   private reportingEndpoint: string | null = null;
 
   constructor() {
+    // Initialize components
+    this.breadcrumbManager = new BreadcrumbManager(50);
+    this.errorStorage = new ErrorStorage();
+    this.errorTracker = new ErrorTracker((breadcrumb) =>
+      this.breadcrumbManager.addBreadcrumb(breadcrumb)
+    );
+
     // Initialize reporting endpoint based on environment
     this.reportingEndpoint = process.env.NEXT_PUBLIC_ERROR_REPORTING_URL || null;
 
@@ -69,17 +80,7 @@ class ErrorLogger {
   }
 
   addBreadcrumb(breadcrumb: Omit<ErrorBreadcrumb, 'timestamp'>) {
-    const fullBreadcrumb: ErrorBreadcrumb = {
-      ...breadcrumb,
-      timestamp: new Date().toISOString(),
-    };
-
-    this.breadcrumbs.push(fullBreadcrumb);
-
-    // Keep only the most recent breadcrumbs
-    if (this.breadcrumbs.length > this.maxBreadcrumbs) {
-      this.breadcrumbs = this.breadcrumbs.slice(-this.maxBreadcrumbs);
-    }
+    this.breadcrumbManager.addBreadcrumb(breadcrumb);
   }
 
   logError(error: AppError, additionalContext?: Record<string, unknown>) {
@@ -111,7 +112,7 @@ class ErrorLogger {
 
     // Store in local storage for debugging (development only)
     if (process.env.NODE_ENV === 'development') {
-      this.storeErrorLocally(error, additionalContext);
+      this.errorStorage.storeError(error, additionalContext);
     }
   }
 
@@ -131,7 +132,7 @@ class ErrorLogger {
         ...additionalContext,
       },
       metadata: error.metadata,
-      breadcrumbs: this.breadcrumbs.slice(-5), // Last 5 breadcrumbs
+      breadcrumbs: this.breadcrumbManager.getRecentBreadcrumbs(5), // Last 5 breadcrumbs
       environment: process.env.NEXT_PUBLIC_ENV || 'dev',
       buildVersion: process.env.NEXT_PUBLIC_BUILD_VERSION || 'unknown',
       url: typeof window !== 'undefined' ? window.location.href : 'unknown',
@@ -147,7 +148,7 @@ class ErrorLogger {
       console.error('Error details:', error);
       console.log('Context:', logEntry.context);
       console.log('Metadata:', error.metadata);
-      console.log('Recent breadcrumbs:', this.breadcrumbs.slice(-5));
+      console.log('Recent breadcrumbs:', this.breadcrumbManager.getRecentBreadcrumbs(5));
       if (error.stack) {
         console.log('Stack trace:', error.stack);
       }
@@ -157,80 +158,15 @@ class ErrorLogger {
 
   // Get breadcrumbs for external services
   getBreadcrumbs(): ErrorBreadcrumb[] {
-    return [...this.breadcrumbs];
-  }
-
-  private storeErrorLocally(error: AppError, additionalContext?: Record<string, unknown>) {
-    if (
-      typeof localStorage === 'undefined' ||
-      typeof window === 'undefined' ||
-      typeof navigator === 'undefined'
-    ) {
-      return;
-    }
-
-    try {
-      const storedErrors = this.getStoredErrors();
-      const errorEntry = {
-        error,
-        additionalContext,
-        timestamp: new Date().toISOString(),
-        url: window.location.href,
-        userAgent: navigator.userAgent,
-      };
-
-      storedErrors.push(errorEntry);
-
-      // Keep only the last 100 errors
-      const recentErrors = storedErrors.slice(-100);
-
-      localStorage.setItem('dev_errors', JSON.stringify(recentErrors));
-    } catch (storageError) {
-      console.warn('Failed to store error locally:', storageError);
-    }
-  }
-
-  private getStoredErrors(): Array<any> {
-    if (typeof localStorage === 'undefined') {
-      return [];
-    }
-
-    try {
-      const stored = localStorage.getItem('dev_errors');
-      return stored ? JSON.parse(stored) : [];
-    } catch {
-      return [];
-    }
+    return this.breadcrumbManager.getBreadcrumbs();
   }
 
   clearStoredErrors() {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.removeItem('dev_errors');
-    }
+    this.errorStorage.clearStoredErrors();
   }
 
   getStoredErrorsForDebugging() {
-    return this.getStoredErrors();
-  }
-
-  private getUserId(): string | undefined {
-    // Get user ID from your auth system
-    // This is a placeholder - implement based on your auth solution
-    return undefined;
-  }
-
-  private getSessionId(): string {
-    // Generate or retrieve session ID
-    let sessionId = sessionStorage.getItem('error_session_id');
-    if (!sessionId) {
-      sessionId = this.generateId();
-      sessionStorage.setItem('error_session_id', sessionId);
-    }
-    return sessionId;
-  }
-
-  private generateId(): string {
-    return Math.random().toString(36).substring(2) + Date.now().toString(36);
+    return this.errorStorage.getStoredErrors();
   }
 
   private severityToLogLevel(severity: ErrorSeverity): 'debug' | 'info' | 'warning' | 'error' {
@@ -249,32 +185,27 @@ class ErrorLogger {
 
   // Navigation tracking for better error context
   trackNavigation(from: string, to: string) {
-    this.addBreadcrumb({
-      category: 'navigation',
-      message: `Navigated from ${from} to ${to}`,
-      level: 'info',
-      data: { from, to },
-    });
+    this.errorTracker.trackNavigation(from, to);
   }
 
   // User action tracking
   trackUserAction(action: string, target?: string, data?: Record<string, unknown>) {
-    this.addBreadcrumb({
-      category: 'user_action',
-      message: `User ${action}${target ? ` on ${target}` : ''}`,
-      level: 'info',
-      data: { action, target, ...data },
-    });
+    this.errorTracker.trackUserAction(action, target, data);
   }
 
   // API call tracking
   trackApiCall(method: string, endpoint: string, status?: number, duration?: number) {
-    this.addBreadcrumb({
-      category: 'api',
-      message: `${method} ${endpoint}${status ? ` - ${status}` : ''}`,
-      level: status && status >= 400 ? 'warning' : 'info',
-      data: { method, endpoint, status, duration },
-    });
+    this.errorTracker.trackApiCall(method, endpoint, status, duration);
+  }
+
+  // Get tracking context
+  getTrackingContext() {
+    return this.errorTracker.getContext();
+  }
+
+  // Update user ID for tracking
+  updateUserId(userId: string) {
+    this.errorTracker.updateUserId(userId);
   }
 }
 
