@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslation } from '@/hooks/useTranslation';
 import type { Locale } from '@/lib/i18n';
+import { BADGE_DIMENSIONS } from '@/lib/constants';
 
 interface BadgesSectionProps {
   locale: Locale;
@@ -31,9 +32,9 @@ export function BadgesSection({ locale }: BadgesSectionProps) {
                 <Image
                   src="/img/seckhack365-badge.png"
                   alt="SecHack365修了認定"
-                  width={128}
-                  height={128}
-                  className="w-32 h-auto"
+                  width={BADGE_DIMENSIONS.secHack365.width}
+                  height={BADGE_DIMENSIONS.secHack365.height}
+                  className={BADGE_DIMENSIONS.secHack365.className}
                 />
               </a>
             </div>

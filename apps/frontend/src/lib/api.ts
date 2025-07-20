@@ -6,6 +6,15 @@ import { ENVIRONMENTS, ENVIRONMENT_URLS, DEFAULT_PORTS, HTTP_STATUS } from './co
 // Re-export types from API for consistency
 export type { Article, Locale, ArticleType } from '@workspace/api';
 
+// Type guards for API responses
+const isArticlesResponse = (data: unknown): data is ArticlesResponse => {
+  return typeof data === 'object' && data !== null && 'articles' in data;
+};
+
+const isErrorResponse = (data: unknown): data is ErrorResponse => {
+  return typeof data === 'object' && data !== null && 'error' in data;
+};
+
 const getApiBaseUrl = () => {
   const env = process.env.NEXT_PUBLIC_ENV || ENVIRONMENTS.DEVELOPMENT;
 
@@ -31,13 +40,14 @@ export const getArticles = async (locale: 'en' | 'ja', type: 'blog' | 'news') =>
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as ArticlesResponse | ErrorResponse;
 
-    // Type guard to check if response has articles property
-    if ('articles' in data) {
+    if (isArticlesResponse(data)) {
       return data.articles;
+    } else if (isErrorResponse(data)) {
+      throw new Error(data.error);
     } else {
-      throw new Error(data.error || 'Unknown error occurred');
+      throw new Error('Unknown error occurred');
     }
   } catch (error) {
     console.error('Failed to fetch articles:', error);
@@ -55,13 +65,14 @@ export const getBlogPosts = async (locale: 'en' | 'ja') => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as ArticlesResponse | ErrorResponse;
 
-    // Type guard to check if response has articles property
-    if ('articles' in data) {
+    if (isArticlesResponse(data)) {
       return data.articles;
+    } else if (isErrorResponse(data)) {
+      throw new Error(data.error);
     } else {
-      throw new Error(data.error || 'Unknown error occurred');
+      throw new Error('Unknown error occurred');
     }
   } catch (error) {
     console.error('Failed to fetch blog posts:', error);
@@ -79,13 +90,14 @@ export const getNewsItems = async (locale: 'en' | 'ja') => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as ArticlesResponse | ErrorResponse;
 
-    // Type guard to check if response has articles property
-    if ('articles' in data) {
+    if (isArticlesResponse(data)) {
       return data.articles;
+    } else if (isErrorResponse(data)) {
+      throw new Error(data.error);
     } else {
-      throw new Error(data.error || 'Unknown error occurred');
+      throw new Error('Unknown error occurred');
     }
   } catch (error) {
     console.error('Failed to fetch news items:', error);

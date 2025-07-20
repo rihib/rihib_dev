@@ -43,7 +43,8 @@ Supabase commands:
 **Frontend:**
 
 - `apps/frontend/src/lib/i18n.ts` - Translations/locale detection
-- `apps/frontend/src/lib/api.ts` - API client
+- `apps/frontend/src/lib/api.ts` - API client with proper type guards
+- `apps/frontend/src/lib/constants/` - Centralized constants (design, animation, contact, etc.)
 - `apps/frontend/src/components/ClientLayout.tsx` - Layout
 
 **API:**

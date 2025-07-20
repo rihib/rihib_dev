@@ -36,7 +36,7 @@ export default function HomePage({ locale }: HomePageProps) {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <Link href={`${basePath}/profile#about`} className="block">
             <CustomCard
-              icon={<Cpu className="w-12 h-12 text-blue-500" />}
+              icon={<Cpu className="w-full h-full text-blue-500" />}
               title={t('home.mlInfrastructure')}
               description="Kubernetes, kube-scheduler"
               className="transition-transform hover:scale-105 cursor-pointer"
@@ -44,7 +44,7 @@ export default function HomePage({ locale }: HomePageProps) {
           </Link>
           <Link href={`${basePath}/profile#oss`} className="block">
             <CustomCard
-              icon={<GitBranch className="w-12 h-12 text-green-500" />}
+              icon={<GitBranch className="w-full h-full text-green-500" />}
               title={t('home.ossContribution')}
               description="Kubernetes, etc."
               className="transition-transform hover:scale-105 cursor-pointer"
@@ -52,7 +52,7 @@ export default function HomePage({ locale }: HomePageProps) {
           </Link>
           <Link href={`${basePath}/profile#internship`} className="block">
             <CustomCard
-              icon={<Code className="w-12 h-12 text-purple-500" />}
+              icon={<Code className="w-full h-full text-purple-500" />}
               title={t('home.softwareDevelopment')}
               description="Web, OS, Middleware"
               className="transition-transform hover:scale-105 cursor-pointer"

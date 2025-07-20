@@ -1,5 +1,7 @@
 # Refactor Documentations
 
+use context7
+
 - @CLAUDE.md:
   - Motivation: To provide guidelines for Claude's work, it must be kept up-to-date, accurate, and concise, containing only essential information.
   - TODO

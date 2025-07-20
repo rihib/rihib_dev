@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ICON_CLASSES } from '@/lib/constants';
 
 interface CardProps {
   icon: ReactNode;
@@ -14,7 +15,7 @@ export default function CustomCard({ icon, title, description, className }: Card
       className={`text-center hover:shadow-xl transition-shadow bg-white dark:bg-gray-800 ${className || ''}`}
     >
       <CardHeader>
-        <div className="w-12 h-12 mx-auto mb-4">{icon}</div>
+        <div className={`${ICON_CLASSES['3xl']} mx-auto mb-4`}>{icon}</div>
         <CardTitle className="text-xl">{title}</CardTitle>
       </CardHeader>
       <CardContent>
