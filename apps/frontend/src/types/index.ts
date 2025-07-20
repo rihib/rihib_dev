@@ -75,8 +75,6 @@ export {
   createComponentError,
   createAPIClientError,
   createHookError,
-  createPerformanceError,
-  aggregateErrors,
 } from './errors';
 
 // Type assertion utilities for better developer experience
@@ -90,7 +88,3 @@ export {
 
 // Utility exports for backward compatibility and convenience
 export { TypePredicates } from './type-predicates';
-export { createDiscriminatedUnion } from './discriminated-union-utils';
-export { createTypedEventEmitter } from './typed-event-emitter';
-export { createStateMachine } from './state-machine-utils';
-export { TypeSystemInfo } from './type-system-info';

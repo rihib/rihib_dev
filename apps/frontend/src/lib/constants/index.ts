@@ -14,6 +14,7 @@ export * from './icons';
 // Configuration constants
 export * from './api';
 export * from './environment';
+export * from './contact';
 
 // Utilities
 export * from './utils';
@@ -37,6 +38,7 @@ export {
   TRANSITION_DURATION,
   TRANSITIONS,
   AUTO_CLOSE_DELAYS,
+  PROGRESS_INTERVALS,
 } from './animation';
 
 export { DEFAULT_ICON_SIZES, ICON_CLASSES, ICON_COLORS } from './icons';

@@ -1,6 +1,6 @@
 # Refactor Frontend
 
-Refactoring under @apps/frontend/ .
+Refactoring under @apps/frontend/ . use context7
 
 - [ ] Run build, type checking, and linting to ensure no errors or warnings occur. If they do occur, fix them by finding and addressing the root cause rather than disabling the errors or warnings themselves
 - [ ] Remove dead code, unnecessary dependencies, and unused imports

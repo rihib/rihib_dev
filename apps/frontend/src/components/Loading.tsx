@@ -2,6 +2,7 @@
 
 import { Loader2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { ICON_SIZE_MAP } from '@/lib/constants';
 
 interface LoadingProps {
   className?: string;
@@ -10,16 +11,10 @@ interface LoadingProps {
 }
 
 export function Loading({ className = '', size = 'md', text = 'Loading...' }: LoadingProps) {
-  const iconSizes = {
-    sm: 16,
-    md: 24,
-    lg: 32,
-  };
-
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <div className="flex items-center space-x-2">
-        <Loader2 className="animate-spin" size={iconSizes[size]} />
+        <Loader2 className="animate-spin" size={ICON_SIZE_MAP[size]} />
         {text && <span className="text-muted-foreground">{text}</span>}
       </div>
     </div>

@@ -52,8 +52,6 @@ export {
   createComponentError,
   createAPIClientError,
   createHookError,
-  createTimeoutError,
-  createPerformanceError,
 } from './errors/error-factories';
 
 // Error utility functions
@@ -65,5 +63,4 @@ export {
   isValidationError,
   isAuthenticationError,
   isServerError,
-  aggregateErrors,
 } from './errors/error-utilities';

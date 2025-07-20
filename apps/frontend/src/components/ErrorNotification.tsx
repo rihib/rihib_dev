@@ -18,6 +18,7 @@ import {
   PROGRESS_INTERVALS,
   DEFAULT_ICON_SIZES,
   Z_INDEX,
+  CONTACT,
 } from '@/lib/constants';
 
 interface ErrorNotificationProps {
@@ -199,7 +200,7 @@ export function ErrorToast({ toast, onDismiss, onAction }: ErrorToastProps) {
         }
         return newProgress;
       });
-    }, 100);
+    }, PROGRESS_INTERVALS.normal);
 
     return () => clearInterval(interval);
   }, [toast.autoClose, toast.autoCloseDelay, isPaused, onDismiss, toast.id]);
@@ -219,7 +220,12 @@ export function ErrorToast({ toast, onDismiss, onAction }: ErrorToastProps) {
       onMouseLeave={() => toast.pauseOnHover && setIsPaused(false)}
     >
       {toast.progress && toast.autoClose && (
-        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-100">
+        <div
+          className={cn(
+            'absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600 transition-all',
+            TRANSITION_DURATION.fast
+          )}
+        >
           <div className="h-full bg-current" style={{ width: `${progress}%` }} />
         </div>
       )}
@@ -383,7 +389,7 @@ export function ErrorModal({ modal, onDismiss, onAction }: ErrorModalProps) {
                   const body = encodeURIComponent(
                     `Error details: ${modal.message}\\n\\nMetadata: ${JSON.stringify(modal.metadata || {}, null, 2)}`
                   );
-                  window.open(`mailto:support@rihib.dev?subject=${subject}&body=${body}`);
+                  window.open(`mailto:${CONTACT.supportEmail}?subject=${subject}&body=${body}`);
                 }}
                 className="w-full"
               >
