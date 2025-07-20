@@ -1,5 +1,5 @@
 /**
- * Production-ready logger with structured logging support
+ * Production-ready logger using Pino for asynchronous, high-performance logging
  */
 export interface LogContext {
     requestId?: string;
@@ -12,26 +12,28 @@ export interface LogContext {
     ip?: string;
     [key: string]: unknown;
 }
-export interface LogEntry {
-    level: 'info' | 'warn' | 'error' | 'debug';
-    message: string;
-    timestamp: string;
-    context?: LogContext;
-    error?: {
-        name: string;
-        message: string;
-        stack?: string;
-    };
-}
 declare class Logger {
+    private pinoLogger;
     private requestId;
     setRequestId(requestId: string): void;
-    private formatLog;
-    private output;
+    private createChildLogger;
     info(message: string, context?: LogContext): void;
     warn(message: string, context?: LogContext): void;
     error(message: string, context?: LogContext, error?: Error): void;
     debug(message: string, context?: LogContext): void;
+    /**
+     * Log with custom level and additional data
+     */
+    log(level: 'info' | 'warn' | 'error' | 'debug', message: string, data?: Record<string, unknown>): void;
+    /**
+     * Create a child logger with persistent context
+     */
+    child(context: LogContext): {
+        info: (msg: string, ctx?: LogContext) => void;
+        warn: (msg: string, ctx?: LogContext) => void;
+        error: (msg: string, ctx?: LogContext, err?: Error) => void;
+        debug: (msg: string, ctx?: LogContext) => void;
+    };
 }
 export declare const logger: Logger;
 export {};

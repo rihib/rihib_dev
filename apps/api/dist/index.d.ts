@@ -20,8 +20,8 @@ declare const api: import("hono/hono-base").HonoBase<{
         $get: {
             input: {
                 query: {
-                    type: "blog" | "news";
                     locale: "en" | "ja";
+                    type: "blog" | "news";
                 };
             };
             output: {
@@ -29,8 +29,8 @@ declare const api: import("hono/hono-base").HonoBase<{
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
@@ -52,8 +52,8 @@ declare const api: import("hono/hono-base").HonoBase<{
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
@@ -75,8 +75,8 @@ declare const api: import("hono/hono-base").HonoBase<{
                     id: number;
                     title: string;
                     published_at: string;
-                    type: "blog" | "news";
                     url: string;
+                    type: "blog" | "news";
                     locale: "en" | "ja";
                     created_at: string;
                 }[];
