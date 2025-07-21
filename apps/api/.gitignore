@@ -1,0 +1,9 @@
+# See: https://github.com/honojs/create-hono/blob/main/.gitignore
+dist/*
+node_modules
+bin
+package-lock.json
+yarn-error.log
+pnpm-lock.yaml
+test-dir
+yarn.lock

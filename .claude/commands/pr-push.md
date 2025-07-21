@@ -23,7 +23,7 @@ NOTE: Even if you think no changes exist, always run `git add -A`. Since these i
      - `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
      - `test`: Adding missing or correcting existing tests
      - `wip`: Work in progress, not ready for review
-     - BREAKING CHANGE: If the commit introduces a breaking change, appends a `!` after the type/scope, and add `BREAKING CHANGE: <description>` in the commit message body
+     - BREAKING CHANGE: If the commit introduces a breaking change, appends a `！` after the type/scope, and add `BREAKING CHANGE: <description>` in the commit message body
 8. Push to remote with `git push -u origin feature/description-of-change`. Always push
 9. If PR hasn't been created yet, create a pull request with `gh pr create` using the following structure:
 
