@@ -11,11 +11,13 @@
     - [x] フリーランス実績や活動の項目が時系列順に並んでいないので直す（最近のものから上に来るようにする）
     - [x] Denoは使わないようにする
     - [x] お知らせはLinkedInの投稿やX、ブログはQiita, Zenn, note, Mediumなどに投稿するようにする
+    - [ ] ホームページで横幅が狭いときに一部のカードのテキストが改行されて、カードの高さが揃わなくなるので、改行されてカードの高さが伸びたら、他のカードもそれに合わせて高さを伸ばすようにする
   - [ ] バックエンド
     - [x] Hono RPC + Zodスキーマを使用してAPIを実装
     - [x] ローカルのSupabase + Drizzle ORMを使うようにする
     - [x] 必要なAPIを洗い出し、OpenAPIで仕様を定義する
     - [x] Copilotのレビューを反映
+    - [ ] supabaseディレクトリはappsディレクトリに移動する
     - [ ] 初期のダミーデータは削除する＆Supabase Studioで記事のメタデータを編集する
     - [ ] 価値観のセクションはより視覚的に３本軸を表現してわかりやすくする
 - [ ] リファクタリング
@@ -23,7 +25,7 @@
   - [x] copilotのレビューを修正
   - [ ] claudeのカスタムコマンド(refactor-codes)を作って、コードのリファクタリングを行う
     - [x] refactor-api
-    - [ ] refactor-frontend
+    - [x] refactor-frontend
     - [ ] refactor-root
     - [ ] refactor-docs
   - [ ] [similarity](https://github.com/mizchi/similarity)を使って、コードの重複を検出する
@@ -81,3 +83,4 @@
   - [ ] Supabase + NextAuthでログイン機能を作り、adminページを作成する
   - [ ] ESLint, PrettierからBiomeに移行
   - [ ] [フレームワーク「Svelte」「Solid」が話題。画期的だった仮想DOMと脱仮想DOMへの流れ](https://levtech.jp/media/article/column/detail_411/)
+  - [ ] miseを使う
