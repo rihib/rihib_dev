@@ -49,10 +49,15 @@ Supabase commands:
 
 **API:**
 
-- `apps/api/src/index.ts` - Hono API server
+- `apps/api/src/index.ts` - Hono API server (main entry point)
+- `apps/api/src/routes/` - Route definitions (modular structure)
+- `apps/api/src/controllers/` - Business logic layer
+- `apps/api/src/services/` - Data access layer
 - `apps/api/src/supabase.ts` - Supabase client and database operations
 - `apps/api/src/schemas.ts` - Zod validation schemas
 - `apps/api/src/types.ts` - TypeScript type definitions
+- `apps/api/src/utils/` - Utility functions (logging, error handling, etc.)
+- `apps/api/src/constants/` - API constants and configuration
 
 **Database:**
 
