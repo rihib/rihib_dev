@@ -1,4 +1,4 @@
-# Refactor
+# Refactor Specified Directories or Files
 
 Performs refactoring of directories or files specified as arguments.
 
