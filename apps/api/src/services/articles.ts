@@ -14,7 +14,7 @@ export class ArticleService {
 
   /**
    * Creates an instance of ArticleService
-   * @param supabaseClient - The Supabase client instance for database operations
+   * @param {SupabaseClient} supabaseClient - The Supabase client instance for database operations
    */
   constructor(supabaseClient: SupabaseClient) {
     this.supabaseClient = supabaseClient;
