@@ -57,8 +57,8 @@ export const getArticles = async (locale: 'en' | 'ja', type: 'blog' | 'news') =>
 
 export const getBlogPosts = async (locale: 'en' | 'ja') => {
   try {
-    const response = await client.api.blog.$get({
-      query: { locale },
+    const response = await client.api.articles.$get({
+      query: { locale, type: 'blog' },
     });
 
     if (!response.ok) {
@@ -82,8 +82,8 @@ export const getBlogPosts = async (locale: 'en' | 'ja') => {
 
 export const getNewsItems = async (locale: 'en' | 'ja') => {
   try {
-    const response = await client.api.news.$get({
-      query: { locale },
+    const response = await client.api.articles.$get({
+      query: { locale, type: 'news' },
     });
 
     if (!response.ok) {

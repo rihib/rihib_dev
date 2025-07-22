@@ -4,10 +4,7 @@ import type { Context } from 'hono';
 import { cors } from 'hono/cors';
 import { logger as honoLogger } from 'hono/logger';
 import { serve } from '@hono/node-server';
-import { zValidator } from '@hono/zod-validator';
-import { getBlogPosts, getNewsItems } from './supabase.js';
-import { LocaleSchema, ArticleTypeSchema } from './schemas.js';
-import { z } from 'zod';
+import { articleRoutes } from './routes/index.js';
 import {
   SERVER_PORTS,
   ENVIRONMENTS,
@@ -97,80 +94,7 @@ const api = app
   .get('/', (c) => {
     return c.json({ message: RESPONSE_MESSAGES.SERVER_RUNNING });
   })
-  .get('/articles', zValidator('query', z.object({
-    locale: LocaleSchema,
-    type: ArticleTypeSchema,
-  })), async (c) => {
-    const { locale, type } = c.req.valid('query');
-    const requestId = c.get('requestId');
-
-    logger.info('Articles request received', {
-      requestId,
-      locale,
-      type,
-      endpoint: '/api/articles'
-    });
-
-    let articles;
-    if (type === 'blog') {
-      articles = await getBlogPosts(locale);
-    } else {
-      articles = await getNewsItems(locale);
-    }
-    
-    logger.info('Articles request completed', {
-      requestId,
-      locale,
-      type,
-      count: articles.length
-    });
-    
-    return c.json({ articles });
-  })
-  .get('/blog', zValidator('query', z.object({
-    locale: LocaleSchema,
-  })), async (c) => {
-    const { locale } = c.req.valid('query');
-    const requestId = c.get('requestId');
-
-    logger.info('Blog posts request received', {
-      requestId,
-      locale,
-      endpoint: '/api/blog'
-    });
-
-    const articles = await getBlogPosts(locale);
-    
-    logger.info('Blog posts request completed', {
-      requestId,
-      locale,
-      count: articles.length
-    });
-    
-    return c.json({ articles });
-  })
-  .get('/news', zValidator('query', z.object({
-    locale: LocaleSchema,
-  })), async (c) => {
-    const { locale } = c.req.valid('query');
-    const requestId = c.get('requestId');
-
-    logger.info('News items request received', {
-      requestId,
-      locale,
-      endpoint: '/api/news'
-    });
-
-    const articles = await getNewsItems(locale);
-    
-    logger.info('News items request completed', {
-      requestId,
-      locale,
-      count: articles.length
-    });
-    
-    return c.json({ articles });
-  });
+  .route('/articles', articleRoutes);
 
 // Health check endpoint
 app.get('/', (c) => {
