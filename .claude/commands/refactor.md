@@ -4,7 +4,7 @@ Performs refactoring of directories or files specified as arguments.
 
 use context7
 
-- [ ] Copy template
+- [ ] Create @docs/claude/refactor<timestamp>.md.
   - [ ] If the specified directory or file is documentation, copy it to @docs/claude/ with the name refactor<timestamp>.md
   - [ ] If the specified directory or file is code, copy it to @docs/claude/ with the name refactor<timestamp>.md
 - [ ] Analyze the directory or file specified in the argument and document it in refactor<timestamp>.md

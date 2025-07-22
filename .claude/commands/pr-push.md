@@ -6,7 +6,7 @@ NOTE: Even if you think no changes exist, always run `git add -A`. Since these i
 2. If on main branch, create a new feature branch with `git checkout -b feature/description-of-change`
 3. Review changes with `git diff`
 4. If there are important changes, update @CLAUDE.md content. @CLAUDE.md is a document containing only essential information needed for Claude to work, and should be kept up-to-date, accurate, and concise without unnecessary information
-5. Run lint checks. If errors occur, fix them before proceeding to the next step
+5. Run lint checks for both code and docs. If errors occur, fix them before proceeding to the next step
 6. Stage all changes with `git add -A`. Always use `git add -A` to stage all changes. Never stage files individually
 7. Commit with `git commit -m "<type>[optional scope]: <description>"` using Conventional Commits format
    - type:
