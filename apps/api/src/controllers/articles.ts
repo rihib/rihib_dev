@@ -20,9 +20,8 @@ export class ArticleController {
    * @throws {DatabaseError} When database operations fail
    * @throws {ValidationError} When data validation fails
    */
-  async getArticles(c: Context): Promise<Response> {
-    const locale = c.req.query('locale') as Locale;
-    const type = c.req.query('type') as ArticleType;
+  async getArticles(c: any): Promise<Response> {
+    const { locale, type } = c.req.valid('query');
     const requestId = c.get('requestId');
 
     logger.info('Articles request received', {
