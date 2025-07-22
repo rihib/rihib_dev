@@ -3,12 +3,18 @@
  * Handles all database interactions for articles
  */
 
+import { type SupabaseClient } from '@supabase/supabase-js';
 import { supabase } from '../supabase.js';
 import { ArticleSchema, type Article, type Locale, type ArticleType } from '../schemas.js';
 import { z } from 'zod';
 import { logger, DatabaseError, ValidationError } from '../utils/index.js';
 
 export class ArticleService {
+  private supabaseClient: SupabaseClient;
+
+  constructor(supabaseClient: SupabaseClient) {
+    this.supabaseClient = supabaseClient;
+  }
   /**
    * Fetches articles from database with type and locale filtering
    */
@@ -21,7 +27,7 @@ export class ArticleService {
       service: 'ArticleService'
     });
 
-    let query = supabase
+    let query = this.supabaseClient
       .from('articles')
       .select('*')
       .eq('locale', locale)
@@ -100,4 +106,4 @@ export class ArticleService {
 }
 
 // Export singleton instance
-export const articleService = new ArticleService();
+export const articleService = new ArticleService(supabase);

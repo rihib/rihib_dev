@@ -3,16 +3,22 @@
  * Handles article-related business logic and request/response processing
  */
 
+import type { Context } from 'hono';
 import { articleService } from '../services/articles.js';
 import { logger } from '../utils/index.js';
 import type { Locale, ArticleType, ArticlesResponse } from '../schemas.js';
+
+type ContextVariables = {
+  requestId: string;
+};
 
 export class ArticleController {
   /**
    * Get articles with required type filtering (consolidated endpoint)
    */
-  async getArticles(c: any): Promise<Response> {
-    const { locale, type } = c.req.valid('query') as { locale: Locale; type: ArticleType };
+  async getArticles(c: Context): Promise<Response> {
+    const locale = c.req.query('locale') as Locale;
+    const type = c.req.query('type') as ArticleType;
     const requestId = c.get('requestId');
 
     logger.info('Articles request received', {
