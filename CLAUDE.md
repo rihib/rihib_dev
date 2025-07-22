@@ -58,6 +58,7 @@ Supabase commands:
 - `apps/api/src/types.ts` - TypeScript type definitions
 - `apps/api/src/utils/` - Utility functions (logging, error handling, etc.)
 - `apps/api/src/constants/` - API constants and configuration
+- `apps/api/docs/` - API documentation (README, OpenAPI spec)
 
 **Database:**
 
