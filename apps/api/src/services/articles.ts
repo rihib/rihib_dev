@@ -12,11 +12,20 @@ import { logger, DatabaseError, ValidationError } from '../utils/index.js';
 export class ArticleService {
   private supabaseClient: SupabaseClient;
 
+  /**
+   * Creates an instance of ArticleService
+   * @param supabaseClient - The Supabase client instance for database operations
+   */
   constructor(supabaseClient: SupabaseClient) {
     this.supabaseClient = supabaseClient;
   }
   /**
    * Fetches articles from database with type and locale filtering
+   * @param locale - The language locale to filter articles by (en or ja)
+   * @param type - Optional article type filter (blog or news)
+   * @returns Promise that resolves to an array of validated Article objects
+   * @throws {DatabaseError} When database query fails
+   * @throws {ValidationError} When data validation fails
    */
   async getArticles(locale: Locale, type?: ArticleType): Promise<Article[]> {
     const startTime = Date.now();
@@ -92,6 +101,10 @@ export class ArticleService {
 
   /**
    * Fetches blog posts for a specific locale
+   * @param locale - The language locale to filter blog posts by (en or ja)
+   * @returns Promise that resolves to an array of blog Article objects
+   * @throws {DatabaseError} When database query fails
+   * @throws {ValidationError} When data validation fails
    */
   async getBlogPosts(locale: Locale): Promise<Article[]> {
     return this.getArticles(locale, 'blog');
@@ -99,6 +112,10 @@ export class ArticleService {
 
   /**
    * Fetches news items for a specific locale
+   * @param locale - The language locale to filter news items by (en or ja)
+   * @returns Promise that resolves to an array of news Article objects
+   * @throws {DatabaseError} When database query fails
+   * @throws {ValidationError} When data validation fails
    */
   async getNewsItems(locale: Locale): Promise<Article[]> {
     return this.getArticles(locale, 'news');

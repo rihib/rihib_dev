@@ -15,6 +15,10 @@ type ContextVariables = {
 export class ArticleController {
   /**
    * Get articles with required type filtering (consolidated endpoint)
+   * @param c - The Hono context object containing request and response data
+   * @returns Promise that resolves to a JSON response containing articles
+   * @throws {DatabaseError} When database operations fail
+   * @throws {ValidationError} When data validation fails
    */
   async getArticles(c: Context): Promise<Response> {
     const locale = c.req.query('locale') as Locale;
