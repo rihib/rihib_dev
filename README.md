@@ -46,6 +46,10 @@ pnpm dev         # Start frontend + API
 - **Components**: shadcn/ui design system
 - **Environment**: `dev` (local Supabase) | `prd` (remote Supabase)
 
+## Claude Code Setup
+
+Run `/terminal-setup`.
+
 ## Author
 
 ### Rihito Bannai

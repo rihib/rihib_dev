@@ -65,6 +65,7 @@
     - [ ] [console-ninja](https://github.com/wallabyjs/console-ninja#mcp-server)
     - [ ] [Figma](https://help.figma.com/hc/ja/articles/32132100833559-Dev-Mode-MCPサーバー利用ガイド)
   - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
+  - [ ] [Sniffly](https://github.com/chiphuyen/sniffly)の導入
 - [ ] テスト、CI/CD
   - [ ] フロントエンドとAPIの単体テスト＆APIテスト＆E2Eテストを作成
     - [ ] [Storybookとは？Storybookを用いたフロント開発](https://zenn.dev/fullyou/articles/853b77a3ce9144)
@@ -85,3 +86,5 @@
   - [ ] ESLint, PrettierからBiomeに移行
   - [ ] [フレームワーク「Svelte」「Solid」が話題。画期的だった仮想DOMと脱仮想DOMへの流れ](https://levtech.jp/media/article/column/detail_411/)
   - [ ] miseを使う
+  - [ ] [llms.txt](https://tech.basemachina.jp/entry/llms-full-txt-ai-support-chat)を作成する
+  - [ ] [Semcheck](https://blog.generative-agents.co.jp/entry/semcheck)を導入する
