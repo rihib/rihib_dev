@@ -64,6 +64,7 @@
     - [ ] [imagesorcery-mcp](https://github.com/sunriseapps/imagesorcery-mcp)
     - [ ] [console-ninja](https://github.com/wallabyjs/console-ninja#mcp-server)
     - [ ] [Figma](https://help.figma.com/hc/ja/articles/32132100833559-Dev-Mode-MCPサーバー利用ガイド)
+    - [ ] [serena](https://github.com/oraios/serena)
   - [ ] [devcontainer](https://docs.anthropic.com/ja/docs/claude-code/devcontainer)
   - [ ] [Sniffly](https://github.com/chiphuyen/sniffly)の導入
 - [ ] テスト、CI/CD
